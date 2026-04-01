@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "../SiteWeb"
+		},
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"git.ignoreLimitWarning": true
+	}
+}
