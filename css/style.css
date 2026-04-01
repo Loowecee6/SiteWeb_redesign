@@ -484,6 +484,27 @@ section {
     transform: translateX(6px);
 }
 
+/* Hero Section Buttons - Custom Style */
+#hero .btn-primary {
+    background: var(--gold);
+    color: var(--blue-dark);
+    border-color: var(--gold);
+}
+#hero .btn-primary:hover {
+    background: var(--white);
+    color: var(--blue-dark);
+    border-color: var(--white);
+}
+#hero .btn-secondary {
+    color: var(--white);
+    border-color: rgba(255, 255, 255, 0.25);
+}
+#hero .btn-secondary:hover {
+    background: var(--white);
+    color: var(--blue-deep);
+    border-color: var(--white);
+}
+
 /* Stats Card - Overlapping Design */
 .hero-stats-card {
     background: rgba(255, 255, 255, 0.04);
@@ -604,13 +625,13 @@ section {
 
 .services-grid {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(6, 1fr);
     gap: 20px;
     background: transparent;
 }
 
-/* Pattern: 3 items | 2 items | 1 item */
-/* Services 1-3: Grande carte (2 columns each) */
+/* Pattern 3-2-1 */
+/* Services 1-3: each spans 2 columns */
 .service-card:nth-child(1),
 .service-card:nth-child(2),
 .service-card:nth-child(3) {
@@ -618,20 +639,18 @@ section {
     padding: 40px 32px;
 }
 
-/* Services 4-5: Moyenne (1 column each) */
+/* Services 4-5: each spans 3 columns */
 .service-card:nth-child(4),
 .service-card:nth-child(5) {
-    grid-column: span 1;
+    grid-column: span 3;
     padding: 32px 24px;
 }
 
-/* Service 6: Pleine largeur */
+/* Service 6: centered under first three */
 .service-card:nth-child(6) {
-    grid-column: span 5;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-    align-items: center;
+    grid-column: 2 / span 4;
+    justify-self: center;
+    width: 100%;
     padding: 48px;
 }
 
@@ -1052,74 +1071,186 @@ section {
    TEAM SECTION - ASYMETRIC DESIGN
    ========================================================================== */
 #team {
-    background: var(--grey-light);
+    background: var(--blue-deep);
+    position: relative;
+    overflow: hidden;
+}
+
+#team::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 30px,
+        rgba(255, 255, 255, 0.02) 30px,
+        rgba(255, 255, 255, 0.02) 60px
+    );
+    pointer-events: none;
+}
+
+/* Team section header styles - dark background adaptation */
+#team .section-label-line {
+    background: var(--gold);
+}
+
+#team .section-label span {
+    color: var(--gold);
+}
+
+#team .section-title {
+    color: var(--white);
+}
+
+#team .section-title em {
+    color: var(--gold);
+}
+
+#team .section-sub {
+    color: rgba(255, 255, 255, 0.7);
 }
 
 .team-grid {
     display: grid;
-    grid-template-columns: 1.3fr 0.7fr;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: 1fr;
     gap: 32px;
     margin-top: 64px;
+    position: relative;
+    z-index: 1;
 }
 
 .team-card {
     background: var(--white);
-    padding: 48px 40px;
+    padding: 56px 48px;
     position: relative;
-    transition: all var(--transition-normal);
-    border: 1px solid transparent;
+    transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    color: var(--anthracite);
+}
+
+.team-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        45deg,
+        transparent 30%,
+        rgba(0, 102, 204, 0.1) 50%,
+        transparent 70%
+    );
+    transform: translateX(-100%) rotate(45deg);
+    transition: transform 0.8s ease;
+    pointer-events: none;
+}
+
+.team-card:hover::before {
+    transform: translateX(100%) rotate(45deg);
 }
 
 .team-card:hover {
-    box-shadow: var(--shadow-lg);
-    transform: translateY(-4px);
+    transform: translateY(-12px) scale(1.02);
+    box-shadow: 
+        0 30px 60px rgba(0, 0, 0, 0.4),
+        0 0 40px rgba(0, 102, 204, 0.3);
+    border-color: var(--blue-deep);
 }
 
-/* Lead card - larger with accent */
 .team-card-lead {
-    background: var(--blue-deep);
-    color: var(--white);
-    overflow: hidden;
+    border: 2px solid var(--gold);
 }
 
 .team-card-lead::before {
     content: '';
     position: absolute;
     top: 0;
+    left: 0;
     right: 0;
-    width: 200px;
-    height: 200px;
-    background: radial-gradient(circle, rgba(201, 168, 76, 0.15) 0%, transparent 70%);
+    height: 4px;
+    background: linear-gradient(90deg, var(--gold) 0%, var(--blue-accent) 50%, var(--gold) 100%);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-.team-card-lead .team-role {
-    color: var(--gold);
+.team-card-lead::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--gold) 0%, var(--blue-accent) 50%, var(--gold) 100%);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-.team-card-lead .team-bio {
-    color: rgba(255, 255, 255, 0.7);
+.team-card-lead:hover::before,
+.team-card-lead:hover::after {
+    transform: scaleX(1);
 }
 
-/* Avatar */
+.team-card-lead:hover {
+    border-color: var(--gold);
+    box-shadow: 
+        0 30px 60px rgba(0, 0, 0, 0.4),
+        0 0 50px rgba(201, 168, 76, 0.4);
+}
+
 .team-avatar {
-    width: 96px;
-    height: 96px;
+    width: 112px;
+    height: 112px;
     background: var(--blue-light-bg);
     border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: var(--font-display);
-    font-size: 32px;
-    font-weight: 600;
-    color: var(--blue-deep);
-    margin-bottom: 28px;
+    display: block;
+    margin-bottom: 24px;
     transition: all var(--transition-normal);
+    overflow: hidden;
+    position: relative;
 }
 
 .team-card-lead .team-avatar {
-    background: rgba(255, 255, 255, 0.1);
-    color: var(--white);
+    border: 3px solid var(--gold);
+}
+
+.team-avatar::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    transition: border-color var(--transition-normal);
+}
+
+.team-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.team-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--blue-light-bg);
+    color: var(--blue-deep);
+}
+
+.team-placeholder svg {
+    width: 48px;
+    height: 48px;
+    opacity: 0.5;
 }
 
 .team-card:hover .team-avatar {
@@ -1127,8 +1258,36 @@ section {
     box-shadow: 0 8px 24px rgba(0, 64, 128, 0.15);
 }
 
-.team-card-lead:hover .team-avatar {
+.team-card-lead:hover .team-avatar::after {
     box-shadow: 0 8px 24px rgba(201, 168, 76, 0.3);
+}
+
+.team-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 16px;
+    background: var(--blue-deep);
+    color: var(--white);
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    border-radius: 3px;
+    align-self: flex-start;
+    transition: all var(--transition-normal);
+}
+
+.team-card-lead .team-badge {
+    background: var(--gold);
+    color: var(--blue-dark);
+}
+
+.team-card:hover .team-badge {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .team-name {
@@ -1136,22 +1295,22 @@ section {
     font-size: 26px;
     font-weight: 600;
     color: var(--anthracite);
-    margin-bottom: 12px;
+    margin-bottom: 10px;
     line-height: 1.3;
-}
-
-.team-card-lead .team-name {
-    color: var(--white);
 }
 
 .team-role {
     font-family: var(--font-body);
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 600;
     color: var(--blue-deep);
-    margin-bottom: 20px;
-    letter-spacing: 1px;
+    margin-bottom: 24px;
+    letter-spacing: 1.5px;
     text-transform: uppercase;
+}
+
+.team-card-lead .team-role {
+    color: var(--gold);
 }
 
 .team-bio {
@@ -1159,23 +1318,7 @@ section {
     font-size: 14px;
     color: var(--grey-dark);
     line-height: 1.75;
-}
-
-/* Decorative element */
-.team-decoration {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: var(--gold);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform var(--transition-normal);
-}
-
-.team-card:hover .team-decoration {
-    transform: scaleX(1);
+    flex-grow: 1;
 }
 
 /* ==========================================================================
@@ -1217,11 +1360,14 @@ section {
 
 /* Pattern: 1 large (span 4) | 2 medium (span 2 each) | 3 small (span 2 each) */
 .case-card {
+    display: block;
     position: relative;
     overflow: hidden;
     cursor: pointer;
     background: #1a1a1a;
     transition: all var(--transition-normal);
+    text-decoration: none;
+    color: inherit;
 }
 
 /* Case 1 - Large (span 4) */
@@ -1353,6 +1499,27 @@ section {
     height: 500px;
     background: radial-gradient(circle, rgba(201, 168, 76, 0.08) 0%, transparent 60%);
     border-radius: 50%;
+}
+
+/* Testimonials section header styles - dark background adaptation */
+#testimonials .section-label-line {
+    background: var(--gold);
+}
+
+#testimonials .section-label span {
+    color: var(--gold);
+}
+
+#testimonials .section-title {
+    color: var(--white);
+}
+
+#testimonials .section-title em {
+    color: var(--gold);
+}
+
+#testimonials .section-sub {
+    color: rgba(255, 255, 255, 0.7);
 }
 
 .testimonials-grid {
@@ -2689,4 +2856,12 @@ nav.scrolled {
     .contact-form-wrap {
         padding: 48px 32px;
     }
+}
+
+/* ==========================================================================
+   METHODOLOGY PAGE OVERRIDES
+   ========================================================================== */
+#method-details .services-grid .service-card:nth-child(4) {
+    grid-column: 2 / span 4;
+    justify-self: center;
 }
