@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog — Articles Communication & Stratégie | Afrique</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0f0e0d;
+    --sand: #f5f0e8;
+    --gold: #c4922a;
+    --gold-light: #e8b84b;
+    --terracotta: #b85c38;
+    --deep: #1a2e3b;
+    --muted: #6b6460;
+    --rule: #d4c9b8;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--sand);
+    color: var(--ink);
+    line-height: 1.7;
+  }
+
+  /* HEADER */
+  .site-header {
+    background: var(--deep);
+    padding: 18px 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 3px solid var(--gold);
+  }
+  .site-header .logo {
+    font-family: 'Playfair Display', serif;
+    color: #fff;
+    font-size: 1.3rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+  .site-header .logo span { color: var(--gold-light); }
+  .site-header nav a {
+    color: rgba(255,255,255,.65);
+    text-decoration: none;
+    font-size: .82rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    margin-left: 32px;
+    transition: color .2s;
+  }
+  .site-header nav a:hover { color: var(--gold-light); }
+
+  /* HERO */
+  .blog-hero {
+    background: var(--deep);
+    padding: 72px 60px 60px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .blog-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 40px,
+      rgba(196,146,42,.04) 40px,
+      rgba(196,146,42,.04) 41px
+    );
+  }
+  .hero-tag {
+    display: inline-block;
+    background: var(--gold);
+    color: #fff;
+    font-size: .72rem;
+    font-weight: 600;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    padding: 5px 16px;
+    border-radius: 2px;
+    margin-bottom: 24px;
+  }
+  .blog-hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3.4rem);
+    color: #fff;
+    max-width: 700px;
+    margin: 0 auto 16px;
+    font-weight: 900;
+    line-height: 1.2;
+  }
+  .blog-hero p {
+    color: rgba(255,255,255,.55);
+    font-size: .95rem;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  /* ARTICLES GRID */
+  .articles-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 64px 40px;
+  }
+
+  /* ARTICLE CARD */
+  .article {
+    background: #fff;
+    margin-bottom: 80px;
+    border: 1px solid var(--rule);
+    overflow: hidden;
+    position: relative;
+  }
+  .article:last-child { margin-bottom: 0; }
+
+  .article-header {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    min-height: 340px;
+  }
+  .article-header.reverse { direction: rtl; }
+  .article-header.reverse > * { direction: ltr; }
+
+  .article-meta {
+    padding: 44px 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: #fff;
+  }
+  .theme-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+  .theme-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--gold);
+    flex-shrink: 0;
+  }
+  .theme-label {
+    font-size: .72rem;
+    font-weight: 600;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+  .article-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    font-weight: 700;
+    line-height: 1.25;
+    color: var(--deep);
+    margin-bottom: 16px;
+  }
+  .article-intro {
+    color: var(--muted);
+    font-size: .92rem;
+    line-height: 1.65;
+    margin-bottom: 24px;
+    font-style: italic;
+  }
+  .article-info {
+    display: flex;
+    gap: 20px;
+    font-size: .75rem;
+    color: var(--muted);
+    letter-spacing: .04em;
+  }
+  .article-info span { display: flex; align-items: center; gap: 6px; }
+
+  .article-visual {
+    position: relative;
+    overflow: hidden;
+  }
+  .article-visual svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  /* ARTICLE BODY */
+  .article-body {
+    padding: 48px 48px 52px;
+    border-top: 1px solid var(--rule);
+    columns: 2;
+    column-gap: 48px;
+  }
+  .article-body h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    color: var(--deep);
+    margin: 28px 0 10px;
+    column-span: none;
+    break-after: avoid;
+  }
+  .article-body h2:first-child { margin-top: 0; }
+  .article-body p {
+    font-size: .9rem;
+    color: #3a3530;
+    margin-bottom: 14px;
+    line-height: 1.75;
+  }
+  .article-body .pull-quote {
+    column-span: all;
+    border-left: 4px solid var(--gold);
+    padding: 20px 28px;
+    margin: 24px 0;
+    background: var(--sand);
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    font-style: italic;
+    color: var(--deep);
+    line-height: 1.5;
+  }
+  .article-body ul {
+    list-style: none;
+    margin-bottom: 14px;
+  }
+  .article-body ul li {
+    font-size: .9rem;
+    color: #3a3530;
+    line-height: 1.7;
+    padding-left: 18px;
+    position: relative;
+    margin-bottom: 4px;
+  }
+  .article-body ul li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-weight: 700;
+  }
+
+  /* FOOTER */
+  .article-footer {
+    padding: 20px 48px;
+    background: var(--deep);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .article-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: rgba(255,255,255,.12);
+    line-height: 1;
+  }
+  .read-more {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--gold-light);
+    font-size: .78rem;
+    font-weight: 600;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+  .read-more::after {
+    content: '→';
+    font-size: 1rem;
+  }
+
+  /* SITE FOOTER */
+  .site-footer {
+    background: #0a1820;
+    color: rgba(255,255,255,.4);
+    text-align: center;
+    padding: 32px;
+    font-size: .78rem;
+    letter-spacing: .06em;
+    border-top: 2px solid var(--gold);
+  }
+  .site-footer strong { color: var(--gold-light); }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="logo">Blue<span>Com</span> Stratégies</div>
+  <nav>
+    <a href="#">Accueil</a>
+    <a href="#">Services</a>
+    <a href="#">Blog</a>
+    <a href="#">Contact</a>
+  </nav>
+</header>
+
+<div class="blog-hero">
+  <div class="hero-tag">Blog & Expertise</div>
+  <h1>Communication, Stratégie & Influence en Afrique</h1>
+  <p>Six articles de fond pour les décideurs et communicants du continent — rédigés depuis Dakar.</p>
+</div>
+
+<div class="articles-container">
+
+  <!-- ═══════════════════════════════════════════ ARTICLE 1 ═══ -->
+  <article class="article">
+    <div class="article-header">
+      <div class="article-meta">
+        <div class="theme-badge"><span class="theme-dot"></span><span class="theme-label">Stratégie</span></div>
+        <h1 class="article-title">Communication institutionnelle : les tendances 2026 pour le continent africain</h1>
+        <p class="article-intro">L'Afrique entre dans une ère de maturité communicationnelle. Ce qui fonctionnait hier ne suffit plus. Décryptage des nouvelles dynamiques.</p>
+        <div class="article-info">
+          <span>🗓 Avril 2026</span>
+          <span>⏱ 7 min de lecture</span>
+          <span>📍 Dakar, Sénégal</span>
+        </div>
+      </div>
+      <div class="article-visual">
+        <svg viewBox="0 0 400 340" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="340" fill="#1a2e3b"/>
+          <!-- Continent africain stylisé -->
+          <path d="M180 40 C210 38 240 50 255 75 C268 95 265 115 275 130 C290 150 305 155 310 175 C318 200 308 225 295 240 C278 260 255 270 240 285 C228 297 220 308 210 318 C200 328 188 332 178 325 C165 316 158 300 148 285 C135 268 120 258 112 240 C100 218 102 192 108 170 C115 145 125 128 128 108 C132 85 138 65 152 52 C160 44 170 41 180 40Z" fill="rgba(196,146,42,0.15)" stroke="rgba(196,146,42,0.4)" stroke-width="1.5"/>
+          <!-- Points lumineux - villes -->
+          <circle cx="175" cy="105" r="4" fill="#e8b84b" opacity="0.9"/>
+          <circle cx="195" cy="125" r="3" fill="#e8b84b" opacity="0.7"/>
+          <circle cx="185" cy="160" r="5" fill="#e8b84b" opacity="1"/>
+          <circle cx="210" cy="185" r="3" fill="#e8b84b" opacity="0.6"/>
+          <circle cx="165" cy="200" r="4" fill="#e8b84b" opacity="0.8"/>
+          <circle cx="230" cy="145" r="3" fill="#e8b84b" opacity="0.5"/>
+          <circle cx="155" cy="240" r="3" fill="#e8b84b" opacity="0.7"/>
+          <!-- Lignes réseau -->
+          <line x1="175" y1="105" x2="185" y2="160" stroke="rgba(232,184,75,0.3)" stroke-width="1"/>
+          <line x1="185" y1="160" x2="210" y2="185" stroke="rgba(232,184,75,0.3)" stroke-width="1"/>
+          <line x1="185" y1="160" x2="165" y2="200" stroke="rgba(232,184,75,0.3)" stroke-width="1"/>
+          <line x1="185" y1="160" x2="230" y2="145" stroke="rgba(232,184,75,0.2)" stroke-width="1"/>
+          <line x1="165" y1="200" x2="155" y2="240" stroke="rgba(232,184,75,0.3)" stroke-width="1"/>
+          <!-- Titre de la visuelle -->
+          <text x="200" y="20" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-size="9" font-family="DM Sans, sans-serif" letter-spacing="3">TENDANCES 2026</text>
+          <!-- Ondes signal -->
+          <circle cx="185" cy="160" r="12" fill="none" stroke="rgba(232,184,75,0.2)" stroke-width="1"/>
+          <circle cx="185" cy="160" r="22" fill="none" stroke="rgba(232,184,75,0.12)" stroke-width="1"/>
+          <circle cx="185" cy="160" r="35" fill="none" stroke="rgba(232,184,75,0.07)" stroke-width="1"/>
+          <!-- Grille de fond -->
+          <line x1="0" y1="85" x2="400" y2="85" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+          <line x1="0" y1="170" x2="400" y2="170" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+          <line x1="0" y1="255" x2="400" y2="255" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+          <line x1="100" y1="0" x2="100" y2="340" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+          <line x1="200" y1="0" x2="200" y2="340" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+          <line x1="300" y1="0" x2="300" y2="340" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+          <!-- Icône stratégie -->
+          <rect x="320" y="260" width="55" height="55" rx="4" fill="rgba(196,146,42,0.1)" stroke="rgba(196,146,42,0.3)" stroke-width="1"/>
+          <text x="347" y="295" text-anchor="middle" font-size="24">📡</text>
+        </svg>
+      </div>
+    </div>
+    <div class="article-body">
+      <h2>Un continent en pleine transformation communicationnelle</h2>
+      <p>En 2026, l'Afrique ne reçoit plus les tendances mondiales avec un temps de retard : elle les co-génère. Des rédactions numériques de Lagos aux studios de production de Dakar, en passant par les think tanks d'Abidjan et de Nairobi, le continent produit désormais ses propres codes, ses propres formats, ses propres narratifs. Pour les institutions — gouvernements, entreprises publiques, organisations internationales, grandes entreprises privées — cette mutation impose une révision profonde des stratégies de communication.</p>
+      <p>La communication institutionnelle africaine entre dans l'ère de la souveraineté narrative. Fini le temps où une institution se contentait d'adapter des messages conçus ailleurs. Les publics africains, jeunes, connectés, plurilingues, attendent des prises de parole authentiques, ancrées dans leurs réalités, délivrées dans leurs langues et portées par des visages qui leur ressemblent.</p>
+
+      <div class="pull-quote">"L'Afrique ne reçoit plus les tendances : elle les fabrique. Les institutions qui l'ignorent parlent dans le vide."</div>
+
+      <h2>Tendance n°1 — La localisation radicale des messages</h2>
+      <p>La traduction ne suffit plus. Les institutions performantes en 2026 investissent dans la création de contenus originaux en langues nationales — wolof, haoussa, amharique, swahili, bambara. Cette localisation va bien au-delà des mots : elle touche les références culturelles, les codes visuels, les formats narratifs. Une marque qui s'adresse à un public sénégalais en mobilisant les codes du storytelling wolof obtient un taux d'engagement jusqu'à trois fois supérieur à celle qui recycle un message standardisé.</p>
+      <p>Les agences de communication avant-gardistes constituent désormais des équipes éditoriales multilingues capables de produire simultanément dans plusieurs langues du continent, sans que la version française ou anglaise reste la "version originale".</p>
+
+      <h2>Tendance n°2 — La transparence comme capital réputationnel</h2>
+      <p>Dans un contexte de défiance généralisée envers les institutions — alimentée par les scandales de gouvernance, la désinformation et la montée de la conscience citoyenne — la transparence est devenue un actif stratégique. Les organisations qui publient leurs données, rendent compte de leurs actions et exposent leurs processus de décision construisent une crédibilité durable que la publicité traditionnelle ne peut plus acheter.</p>
+      <p>Ce mouvement s'accompagne d'une demande croissante de reporting d'impact : ONG, institutions financières, entreprises cotées ou non — toutes sont désormais attendues sur la preuve tangible de leur contribution au développement.</p>
+
+      <h2>Tendance n°3 — L'influence par les pairs</h2>
+      <p>Le modèle top-down de la communication institutionnelle s'érode. Les décideurs africains font davantage confiance aux pairs — autres dirigeants, académiciens reconnus, journalistes d'investigation respectés — qu'aux communiqués officiels. Les stratégies d'influence intelligentes intègrent désormais la cartographie des réseaux d'influence informels, souvent plus puissants que les circuits officiels.</p>
+      <ul>
+        <li>Identification des relais d'opinion sectoriels et géographiques</li>
+        <li>Co-construction de contenus avec des voix légitimes locales</li>
+        <li>Engagement des communautés diasporiques comme amplificateurs</li>
+        <li>Investissement dans les plateformes d'opinion africaines (The Africa Report, Jeune Afrique, presse locale indépendante)</li>
+      </ul>
+
+      <h2>Tendance n°4 — La communication de données et de preuves</h2>
+      <p>L'ère de l'affirmation sans preuve est révolue. En 2026, les institutions crédibles communiquent avec des données — des infographies, des tableaux de bord accessibles au public, des rapports vérifiables. Cette culture de la preuve, longtemps l'apanage des ONG et des bailleurs internationaux, s'impose désormais aux entreprises et aux institutions publiques africaines.</p>
+      <p>Les data journalists et les spécialistes de la visualisation de données sont devenus des profils très recherchés dans les équipes de communication institutionnelle. Savoir transformer une donnée brute en récit visuel percutant est une compétence stratégique à part entière.</p>
+
+      <h2>Perspectives pour les agences conseil</h2>
+      <p>Pour les agences comme pour leurs clients, 2026 marque un tournant : la communication institutionnelle africaine doit être pensée depuis le continent, pour le continent, avec les outils du continent. Cela implique des investissements dans la formation, dans la production de contenus originaux et dans la construction de réseaux d'influence authentiques. Les institutions qui s'y engagent avec sérieux disposeront d'un avantage compétitif durable dans la bataille des perceptions.</p>
+    </div>
+    <div class="article-footer">
+      <span class="article-number">01</span>
+      <a href="#" class="read-more">Lire la suite complète</a>
+    </div>
+  </article>
+
+  <!-- ═══════════════════════════════════════════ ARTICLE 2 ═══ -->
+  <article class="article">
+    <div class="article-header reverse">
+      <div class="article-meta">
+        <div class="theme-badge"><span class="theme-dot" style="background:var(--terracotta)"></span><span class="theme-label" style="color:var(--terracotta)">Gestion de Crise</span></div>
+        <h1 class="article-title">Gestion de crise : anticiper plutôt que réagir</h1>
+        <p class="article-intro">Quand la crise frappe, il est souvent trop tard pour construire. La résilience organisationnelle se bâtit en temps de paix. Voici comment.</p>
+        <div class="article-info">
+          <span>🗓 Avril 2026</span>
+          <span>⏱ 8 min de lecture</span>
+          <span>📍 Dakar, Sénégal</span>
+        </div>
+      </div>
+      <div class="article-visual">
+        <svg viewBox="0 0 400 340" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="340" fill="#1e0f0a"/>
+          <!-- Bouclier stylisé -->
+          <path d="M200 50 L280 85 L280 175 C280 225 200 270 200 270 C200 270 120 225 120 175 L120 85 Z" fill="rgba(184,92,56,0.08)" stroke="rgba(184,92,56,0.35)" stroke-width="2"/>
+          <!-- Intérieur bouclier -->
+          <path d="M200 75 L258 103 L258 175 C258 213 200 248 200 248 C200 248 142 213 142 175 L142 103 Z" fill="rgba(184,92,56,0.05)" stroke="rgba(184,92,56,0.2)" stroke-width="1"/>
+          <!-- Croix de crise / check -->
+          <line x1="200" y1="135" x2="200" y2="195" stroke="rgba(232,184,75,0.8)" stroke-width="3" stroke-linecap="round"/>
+          <line x1="170" y1="165" x2="230" y2="165" stroke="rgba(232,184,75,0.8)" stroke-width="3" stroke-linecap="round"/>
+          <!-- Ondes d'alerte -->
+          <circle cx="200" cy="165" r="15" fill="rgba(184,92,56,0.15)" stroke="rgba(184,92,56,0.4)" stroke-width="1.5"/>
+          <!-- Éclairs / alertes aux coins -->
+          <text x="50" y="60" fill="rgba(184,92,56,0.6)" font-size="22">⚡</text>
+          <text x="320" y="60" fill="rgba(184,92,56,0.6)" font-size="22">⚡</text>
+          <text x="50" y="310" fill="rgba(184,92,56,0.4)" font-size="18">⚡</text>
+          <text x="330" y="310" fill="rgba(184,92,56,0.4)" font-size="18">⚡</text>
+          <!-- Horloge stylisée -->
+          <circle cx="340" cy="270" r="30" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+          <circle cx="340" cy="270" r="25" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+          <line x1="340" y1="270" x2="340" y2="252" stroke="rgba(232,184,75,0.5)" stroke-width="2" stroke-linecap="round"/>
+          <line x1="340" y1="270" x2="353" y2="273" stroke="rgba(232,184,75,0.5)" stroke-width="2" stroke-linecap="round"/>
+          <!-- Scan lines -->
+          <line x1="0" y1="110" x2="400" y2="110" stroke="rgba(184,92,56,0.06)" stroke-width="1"/>
+          <line x1="0" y1="220" x2="400" y2="220" stroke="rgba(184,92,56,0.06)" stroke-width="1"/>
+          <text x="200" y="320" text-anchor="middle" fill="rgba(255,255,255,0.2)" font-size="8" font-family="DM Sans, sans-serif" letter-spacing="4">CRISIS PREPAREDNESS</text>
+        </svg>
+      </div>
+    </div>
+    <div class="article-body">
+      <h2>La crise n'arrive jamais vraiment à l'improviste</h2>
+      <p>Dans l'imaginaire collectif, la crise surgit de nulle part — un tweet viral, un article d'investigation, un incident industriel, une déclaration maladroite. Mais pour le communicant aguerri, la crise laisse toujours des signes avant-coureurs. Le vrai enjeu n'est pas de savoir gérer la crise : c'est de la détecter à temps pour en contrôler l'ampleur.</p>
+      <p>En Afrique, le contexte opérationnel amplifie les risques. Les réseaux sociaux circulent à une vitesse fulgurante dans des sociétés où le bouche-à-oreille reste un vecteur d'information majeur. Une rumeur mal gérée à Dakar peut traverser la sous-région en quelques heures. Une vidéo floue sur WhatsApp peut déclencher une crise réputationnelle qui prendra des mois à désamorcer.</p>
+
+      <div class="pull-quote">"Une organisation qui ne gère que les crises déclarées travaille toujours avec un temps de retard. La veille est la première ligne de défense."</div>
+
+      <h2>Phase 1 — L'audit de vulnérabilité</h2>
+      <p>Toute stratégie anti-crise sérieuse commence par un diagnostic honnête des zones de fragilité de l'organisation. Cet audit de vulnérabilité cartographie les risques par nature : risques opérationnels (accidents, ruptures de service), risques réputationnels (comportements, pratiques internes), risques exogènes (contexte politique, rumeurs concurrentielles), risques numériques (piratage, usurpation d'identité en ligne).</p>
+      <p>Pour chaque risque identifié, on évalue la probabilité d'occurrence et l'impact potentiel sur les parties prenantes. Cette matrice permet de prioriser les efforts de préparation et de concentrer les ressources sur les scénarios les plus probables et les plus dommageables.</p>
+
+      <h2>Phase 2 — La cellule de crise</h2>
+      <p>Une cellule de crise efficace ne s'improvise pas le jour J. Elle est constituée, formée et rodée en amont. Elle comprend systématiquement : un décideur légitime (DG, Président), un responsable communication, un juriste, un expert technique sectoriel et, selon les secteurs, un expert médical ou environnemental.</p>
+      <ul>
+        <li>Définir clairement qui décide, qui parle, qui coordonne</li>
+        <li>Disposer d'une liste de contacts médias, institutionnels et partenaires actualisée</li>
+        <li>Établir des protocoles d'escalade selon la gravité de la crise</li>
+        <li>Prévoir des espaces de réunion sécurisés et des canaux de communication de secours</li>
+      </ul>
+
+      <h2>Phase 3 — Les messages-clés préparés</h2>
+      <p>L'une des erreurs les plus coûteuses en gestion de crise est de rédiger les premiers messages sous la pression de l'événement. Les organisations préparées disposent de "messages-clés de crise" rédigés à froid, validés juridiquement, adaptés à chaque type de scénario. Ces messages ne pré-supposent pas les détails — ils posent le cadre : positionnement de l'organisation, valeurs mobilisées, engagement envers les parties prenantes.</p>
+      <p>En 24 à 48 heures, une organisation doit être capable de publier une déclaration officielle, d'activer ses porte-paroles formés, d'informer ses publics internes, et de commencer à contrôler le récit dans les médias. Ce n'est possible qu'avec une préparation préalable.</p>
+
+      <h2>Phase 4 — La veille en temps réel</h2>
+      <p>La détection précoce est le pilier souvent négligé de la gestion de crise. En Afrique subsaharienne, cela implique une veille multicanale : presse écrite nationale et régionale, radio (vecteur d'information primaire dans de nombreux pays), réseaux sociaux (Twitter/X, Facebook, TikTok, WhatsApp), mais aussi les "capteurs terrain" — correspondants locaux, partenaires associatifs, syndicats. Une anomalie détectée 72 heures avant qu'elle ne devienne virale laisse le temps d'agir. Détectée après, elle impose de subir.</p>
+
+      <h2>L'après-crise : transformer l'épreuve en capital</h2>
+      <p>Les organisations qui traversent une crise avec intégrité, transparence et célérité en ressortent souvent renforcées. La communication post-crise — bilan, leçons tirées, engagements pris — est une opportunité rare de consolider la confiance des parties prenantes. Elle transforme une cicatrice en preuve de résilience institutionnelle.</p>
+    </div>
+    <div class="article-footer">
+      <span class="article-number">02</span>
+      <a href="#" class="read-more">Lire la suite complète</a>
+    </div>
+  </article>
+
+  <!-- ═══════════════════════════════════════════ ARTICLE 3 ═══ -->
+  <article class="article">
+    <div class="article-header">
+      <div class="article-meta">
+        <div class="theme-badge"><span class="theme-dot" style="background:#4a90b8"></span><span class="theme-label" style="color:#4a90b8">Media Training</span></div>
+        <h1 class="article-title">L'art de l'interview médiatique pour dirigeants</h1>
+        <p class="article-intro">Face aux caméras ou aux micros, les dirigeants africains jouent leur crédibilité en temps réel. Maîtriser l'exercice est une compétence qui s'apprend.</p>
+        <div class="article-info">
+          <span>🗓 Avril 2026</span>
+          <span>⏱ 6 min de lecture</span>
+          <span>📍 Dakar, Sénégal</span>
+        </div>
+      </div>
+      <div class="article-visual">
+        <svg viewBox="0 0 400 340" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="340" fill="#0d1f2d"/>
+          <!-- Micro de studio -->
+          <rect x="185" y="90" width="30" height="55" rx="15" fill="none" stroke="rgba(74,144,184,0.7)" stroke-width="2.5"/>
+          <rect x="190" y="95" width="20" height="45" rx="10" fill="rgba(74,144,184,0.1)"/>
+          <!-- Grille micro -->
+          <line x1="190" y1="108" x2="210" y2="108" stroke="rgba(74,144,184,0.4)" stroke-width="1"/>
+          <line x1="190" y1="116" x2="210" y2="116" stroke="rgba(74,144,184,0.4)" stroke-width="1"/>
+          <line x1="190" y1="124" x2="210" y2="124" stroke="rgba(74,144,184,0.4)" stroke-width="1"/>
+          <!-- Pied micro -->
+          <line x1="200" y1="145" x2="200" y2="185" stroke="rgba(74,144,184,0.6)" stroke-width="2"/>
+          <rect x="175" y="185" width="50" height="8" rx="4" fill="rgba(74,144,184,0.3)" stroke="rgba(74,144,184,0.5)" stroke-width="1"/>
+          <!-- Ondes sonores -->
+          <path d="M160 117 Q148 132 160 147" fill="none" stroke="rgba(232,184,75,0.6)" stroke-width="2" stroke-linecap="round"/>
+          <path d="M148 107 Q128 132 148 157" fill="none" stroke="rgba(232,184,75,0.4)" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M240 117 Q252 132 240 147" fill="none" stroke="rgba(232,184,75,0.6)" stroke-width="2" stroke-linecap="round"/>
+          <path d="M252 107 Q272 132 252 157" fill="none" stroke="rgba(232,184,75,0.4)" stroke-width="1.5" stroke-linecap="round"/>
+          <!-- Caméra stylisée -->
+          <rect x="280" y="230" width="65" height="42" rx="4" fill="rgba(74,144,184,0.08)" stroke="rgba(74,144,184,0.3)" stroke-width="1.5"/>
+          <circle cx="308" cy="251" r="12" fill="none" stroke="rgba(74,144,184,0.4)" stroke-width="1.5"/>
+          <circle cx="308" cy="251" r="6" fill="rgba(74,144,184,0.15)"/>
+          <rect x="345" y="240" width="12" height="22" rx="2" fill="rgba(74,144,184,0.2)" stroke="rgba(74,144,184,0.3)" stroke-width="1"/>
+          <!-- Lumière ON AIR -->
+          <rect x="50" y="40" width="72" height="24" rx="3" fill="rgba(220,50,50,0.15)" stroke="rgba(220,50,50,0.5)" stroke-width="1.5"/>
+          <circle cx="64" cy="52" r="4" fill="#dc3232" opacity="0.9"/>
+          <text x="74" y="57" fill="rgba(220,80,80,0.9)" font-size="10" font-family="DM Sans, sans-serif" font-weight="600" letter-spacing="2">ON AIR</text>
+          <!-- Notes -->
+          <rect x="42" y="200" width="80" height="100" rx="3" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+          <line x1="52" y1="218" x2="112" y2="218" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+          <line x1="52" y1="230" x2="112" y2="230" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+          <line x1="52" y1="242" x2="95" y2="242" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+          <line x1="52" y1="254" x2="105" y2="254" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+          <text x="200" y="320" text-anchor="middle" fill="rgba(255,255,255,0.15)" font-size="8" font-family="DM Sans, sans-serif" letter-spacing="4">MEDIA TRAINING</text>
+        </svg>
+      </div>
+    </div>
+    <div class="article-body">
+      <h2>Pourquoi les dirigeants africains sous-estiment l'interview médiatique</h2>
+      <p>Un dirigeant brillant, rompu aux subtilités de la stratégie d'entreprise ou aux arcanes de la politique sectorielle, peut se retrouver totalement déstabilisé face à un journaliste tenace. Ce paradoxe est fréquent en Afrique, où la culture de la prise de parole publique formalisée reste moins développée qu'en Europe ou en Amérique du Nord. Pourtant, une seule interview mal maîtrisée peut effacer des mois de communication soignée.</p>
+      <p>Le media training n'est pas une formation au mensonge ou à l'esquive — c'est une discipline qui apprend à exprimer clairement ce que l'on sait, à délimiter ce que l'on ne peut pas dire, et à rester maître du message dans n'importe quelle situation.</p>
+
+      <div class="pull-quote">"Ce n'est pas ce que vous dites qui reste dans l'esprit du téléspectateur. C'est comment vous l'avez dit — et ce que votre corps exprimait pendant ce temps."</div>
+
+      <h2>Les trois piliers du porte-parole efficace</h2>
+      <p><strong>La clarté du message.</strong> Avant toute interview, le dirigeant doit identifier ses trois messages-clés — pas plus. Ces messages doivent être formulés simplement, sans jargon, en des termes que n'importe quel citoyen peut comprendre. Le piège du dirigeant experti est de répondre de manière exhaustive à chaque question au détriment de la lisibilité du message global.</p>
+      <p><strong>La crédibilité non-verbale.</strong> Les études sur la communication interpersonnelle sont constantes : plus de 55% de la perception d'un message passe par le langage corporel. Le regard fuyant, la posture fermée, les mains qui s'agitent — ces signaux parasites peuvent neutraliser un message pourtant solide. Le media training travaille intensément sur ces dimensions.</p>
+      <p><strong>La maîtrise de l'imprévu.</strong> Les journalistes chevronnés testent systématiquement les porte-paroles avec des questions déstabilisantes, des reformulations tendancieuses ou des chiffres contestables. La technique du "bridging" — répondre brièvement à la question posée puis revenir sur ses propres messages — est l'outil fondamental pour ne jamais perdre le fil de sa communication.</p>
+
+      <h2>Les spécificités du paysage médiatique africain</h2>
+      <p>Se préparer à une interview pour RFM Dakar ou pour RFI n'implique pas les mêmes codes qu'une intervention sur une chaîne panafricaine comme Africa 24 ou TV5 Monde Afrique. La tonalité, le rythme, les attentes du journaliste, le profil de l'audience — tout diffère. Un bon programme de media training contextualisé au Sénégal ou à l'Afrique de l'Ouest intègre ces spécificités plutôt que de calquer des méthodologies conçues pour les médias européens.</p>
+      <ul>
+        <li>Maîtriser le code vestimentaire adapté aux médias visuels locaux</li>
+        <li>Adapter le registre de langue selon le support (wolof, français standard, français local)</li>
+        <li>Anticiper les questions politiquement sensibles dans le contexte sénégalais et régional</li>
+        <li>Gérer les interviews simultanées en conférence de presse (multiplicité des journalistes)</li>
+      </ul>
+
+      <h2>Le format hybride : préparation et simulation</h2>
+      <p>Les programmes de media training les plus efficaces combinent un module théorique — compréhension des logiques journalistiques, des formats médias, des contraintes de production — et des simulations filmées avec debriefing. Ces exercices, parfois inconfortables, sont les plus formateurs. Voir sa propre image, analyser ses tics de langage, mesurer l'écart entre l'intention et la perception : c'est dans cet espace d'inconfort maîtrisé que le dirigeant forge sa confiance médiatique.</p>
+
+      <h2>Une compétence stratégique, pas un luxe</h2>
+      <p>Dans un continent où la perception publique des dirigeants influence directement la valeur de marque des organisations, investir dans la formation médiatique de ses cadres supérieurs n'est pas une dépense de prestige — c'est une décision stratégique. Chaque interview est une occasion de renforcer ou d'éroder le capital confiance. Il appartient à l'organisation de décider laquelle des deux directions elle empruntera.</p>
+    </div>
+    <div class="article-footer">
+      <span class="article-number">03</span>
+      <a href="#" class="read-more">Lire la suite complète</a>
+    </div>
+  </article>
+
+  <!-- ═══════════════════════════════════════════ ARTICLE 4 ═══ -->
+  <article class="article">
+    <div class="article-header reverse">
+      <div class="article-meta">
+        <div class="theme-badge"><span class="theme-dot" style="background:#3d9970"></span><span class="theme-label" style="color:#3d9970">Digital</span></div>
+        <h1 class="article-title">Stratégie digitale : comment engager vos audiences en Afrique</h1>
+        <p class="article-intro">Le digital africain n'est pas un marché uniforme. C'est un archipel de cultures, de plateformes et d'usages que seule une stratégie sur-mesure peut conquérir.</p>
+        <div class="article-info">
+          <span>🗓 Avril 2026</span>
+          <span>⏱ 7 min de lecture</span>
+          <span>📍 Dakar, Sénégal</span>
+        </div>
+      </div>
+      <div class="article-visual">
+        <svg viewBox="0 0 400 340" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="340" fill="#0a1a14"/>
+          <!-- Téléphone mobile -->
+          <rect x="155" y="55" width="90" height="160" rx="12" fill="rgba(61,153,112,0.08)" stroke="rgba(61,153,112,0.4)" stroke-width="2"/>
+          <rect x="162" y="72" width="76" height="116" rx="4" fill="rgba(61,153,112,0.06)"/>
+          <!-- Barre de signal -->
+          <rect x="170" y="80" width="6" height="14" rx="1" fill="rgba(61,153,112,0.4)"/>
+          <rect x="179" y="76" width="6" height="18" rx="1" fill="rgba(61,153,112,0.5)"/>
+          <rect x="188" y="71" width="6" height="23" rx="1" fill="rgba(61,153,112,0.7)"/>
+          <rect x="197" y="67" width="6" height="27" rx="1" fill="rgba(61,153,112,0.9)"/>
+          <!-- Screen content: like, share, comment -->
+          <rect x="166" y="110" width="68" height="40" rx="3" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+          <circle cx="178" cy="121" r="6" fill="rgba(61,153,112,0.3)"/>
+          <rect x="188" y="117" width="36" height="4" rx="2" fill="rgba(255,255,255,0.1)"/>
+          <rect x="188" y="124" width="28" height="3" rx="1.5" fill="rgba(255,255,255,0.07)"/>
+          <!-- Icônes social -->
+          <text x="170" y="162" fill="rgba(232,184,75,0.7)" font-size="14">👍</text>
+          <text x="192" y="162" fill="rgba(232,184,75,0.7)" font-size="14">💬</text>
+          <text x="214" y="162" fill="rgba(232,184,75,0.7)" font-size="14">↗</text>
+          <!-- Bouton home -->
+          <circle cx="200" cy="200" r="8" fill="none" stroke="rgba(61,153,112,0.4)" stroke-width="1.5"/>
+          <!-- Bulles de notification -->
+          <circle cx="310" cy="100" r="18" fill="rgba(61,153,112,0.12)" stroke="rgba(61,153,112,0.3)" stroke-width="1.5"/>
+          <text x="310" y="106" text-anchor="middle" fill="rgba(61,153,112,0.8)" font-size="13" font-weight="bold">+</text>
+          <circle cx="330" cy="140" r="12" fill="rgba(61,153,112,0.1)" stroke="rgba(61,153,112,0.25)" stroke-width="1"/>
+          <circle cx="90" cy="130" r="14" fill="rgba(232,184,75,0.1)" stroke="rgba(232,184,75,0.25)" stroke-width="1"/>
+          <circle cx="75" cy="190" r="10" fill="rgba(61,153,112,0.08)" stroke="rgba(61,153,112,0.2)" stroke-width="1"/>
+          <!-- Lignes de connexion -->
+          <line x1="245" y1="135" x2="298" y2="118" stroke="rgba(61,153,112,0.2)" stroke-width="1"/>
+          <line x1="155" y1="150" x2="104" y2="138" stroke="rgba(61,153,112,0.2)" stroke-width="1"/>
+          <!-- Stats bar en bas -->
+          <rect x="42" y="268" width="316" height="45" rx="4" fill="rgba(61,153,112,0.05)" stroke="rgba(61,153,112,0.12)" stroke-width="1"/>
+          <rect x="58" y="283" width="20" height="16" rx="2" fill="rgba(61,153,112,0.5)"/>
+          <rect x="88" y="290" width="20" height="9" rx="2" fill="rgba(61,153,112,0.35)"/>
+          <rect x="118" y="278" width="20" height="21" rx="2" fill="rgba(61,153,112,0.6)"/>
+          <rect x="148" y="285" width="20" height="14" rx="2" fill="rgba(61,153,112,0.4)"/>
+          <rect x="178" y="274" width="20" height="25" rx="2" fill="rgba(232,184,75,0.7)"/>
+          <rect x="208" y="281" width="20" height="18" rx="2" fill="rgba(61,153,112,0.45)"/>
+          <text x="200" y="325" text-anchor="middle" fill="rgba(255,255,255,0.15)" font-size="8" font-family="DM Sans, sans-serif" letter-spacing="4">DIGITAL STRATEGY</text>
+        </svg>
+      </div>
+    </div>
+    <div class="article-body">
+      <h2>Le mythe du "marché digital africain"</h2>
+      <p>Il n'existe pas un marché digital africain — il en existe cinquante-quatre, avec leurs propres écosystèmes, leurs propres plateformes dominantes, leurs propres rythmes de consommation. Une stratégie digitale pensée pour le Nigéria ne fonctionnera pas telle quelle au Sénégal. Une campagne optimisée pour Nairobi nécessitera une refonte complète pour Abidjan. Cette granularité est la première réalité que toute organisation active sur le continent doit intégrer.</p>
+      <p>En 2026, avec plus de 700 millions d'utilisateurs internet sur le continent et des taux de pénétration mobile qui continuent de progresser, l'Afrique représente l'un des espaces digitaux à la croissance la plus dynamique au monde. Mais cette croissance est hétérogène, mobile-first, et portée par des dynamiques culturelles profondes que les stratégies génériques ignorent à leurs risques et périls.</p>
+
+      <div class="pull-quote">"En Afrique, le digital se consomme principalement sur téléphone, dans les transports, par petites doses. Votre contenu a 3 secondes pour convaincre."</div>
+
+      <h2>Mobile-first, mobile-only</h2>
+      <p>Plus de 85% des internautes africains accèdent au web exclusivement via leur smartphone. Cette réalité devrait bouleverser chaque décision de production de contenu : les vidéos doivent être pensées en format vertical, les sites doivent être ultra-légers et fonctionner avec une connexion limitée, les textes doivent être courts et lisibles sur petit écran. Chaque pixel de votre stratégie digitale doit être validé sur un téléphone d'entrée de gamme avec une connexion 3G instable.</p>
+
+      <h2>Les plateformes qui comptent, marché par marché</h2>
+      <p>Facebook reste la plateforme à la plus large audience globale sur le continent, mais TikTok a explosé chez les 15-35 ans dans toutes les capitales africaines, devenant incontournable pour la communication de marque. WhatsApp est le canal de communication inter-personnel numéro un — et une opportunité de communication institutionnelle encore sous-exploitée. Instagram domine dans les catégories lifestyle, mode, beauté et gastronomie. Twitter/X conserve son rôle de forum des élites urbaines et décideurs. YouTube est la première plateforme de divertissement long format.</p>
+      <ul>
+        <li>Sénégal/Afrique de l'Ouest : Facebook, WhatsApp, TikTok, YouTube</li>
+        <li>Afrique de l'Est : Twitter/X fort, Instagram croissant, TikTok dominant chez les jeunes</li>
+        <li>Afrique du Nord : TikTok en explosion, Snapchat présent, Facebook solide</li>
+        <li>Afrique australe : Facebook, WhatsApp, Instagram, LinkedIn actif</li>
+      </ul>
+
+      <h2>L'engagement authentique comme moteur</h2>
+      <p>Les audiences africaines ont un radar très fin pour détecter l'inauthenticité. Une marque qui essaie de "faire africain" sans ancrage culturel réel sera sanctionnée. À l'inverse, une organisation qui investit dans la création de contenu ancré dans les cultures locales — en mobilisant des créateurs issus de ces cultures — génère un capital d'engagement et de confiance extraordinaire.</p>
+      <p>Les créateurs de contenu (influenceurs au sens large) jouent un rôle pivot dans cette équation. En Afrique de l'Ouest, un créateur avec 50 000 abonnés très engagés aura souvent plus d'impact qu'un compte institutionnel à 500 000 abonnés dormants. La micro-influence ciblée surpasse régulièrement la macro-influence généraliste.</p>
+
+      <h2>Mesurer pour optimiser</h2>
+      <p>Une stratégie digitale sans mesure est une intuition, pas une stratégie. Les indicateurs à suivre varient selon les objectifs, mais dans le contexte africain, l'engagement rate (taux d'interaction par abonné) et le reach organique méritent autant d'attention que les métriques de conversion habituelles. Définir ses KPIs en amont, se doter des outils d'analyse adaptés, et réviser sa stratégie tous les trimestres sur la base des données réelles : voilà le socle d'une présence digitale performante.</p>
+    </div>
+    <div class="article-footer">
+      <span class="article-number">04</span>
+      <a href="#" class="read-more">Lire la suite complète</a>
+    </div>
+  </article>
+
+  <!-- ═══════════════════════════════════════════ ARTICLE 5 ═══ -->
+  <article class="article">
+    <div class="article-header">
+      <div class="article-meta">
+        <div class="theme-badge"><span class="theme-dot" style="background:#8b5cf6"></span><span class="theme-label" style="color:#8b5cf6">Relations Publiques</span></div>
+        <h1 class="article-title">Lobbying et affaires publiques : les fondamentaux pour l'Afrique</h1>
+        <p class="article-intro">Influencer les politiques publiques en Afrique requiert une compréhension fine des pouvoirs formels et informels. Un art subtil, mais décisif.</p>
+        <div class="article-info">
+          <span>🗓 Avril 2026</span>
+          <span>⏱ 8 min de lecture</span>
+          <span>📍 Dakar, Sénégal</span>
+        </div>
+      </div>
+      <div class="article-visual">
+        <svg viewBox="0 0 400 340" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="340" fill="#120e1a"/>
+          <!-- Bâtiment institutionnel stylisé -->
+          <rect x="130" y="120" width="140" height="140" fill="rgba(139,92,246,0.06)" stroke="rgba(139,92,246,0.25)" stroke-width="1.5"/>
+          <!-- Colonnes -->
+          <rect x="145" y="120" width="12" height="140" fill="rgba(139,92,246,0.08)" stroke="rgba(139,92,246,0.2)" stroke-width="1"/>
+          <rect x="170" y="120" width="12" height="140" fill="rgba(139,92,246,0.08)" stroke="rgba(139,92,246,0.2)" stroke-width="1"/>
+          <rect x="218" y="120" width="12" height="140" fill="rgba(139,92,246,0.08)" stroke="rgba(139,92,246,0.2)" stroke-width="1"/>
+          <rect x="243" y="120" width="12" height="140" fill="rgba(139,92,246,0.08)" stroke="rgba(139,92,246,0.2)" stroke-width="1"/>
+          <!-- Fronton -->
+          <polygon points="115,120 200,70 285,120" fill="rgba(139,92,246,0.08)" stroke="rgba(139,92,246,0.3)" stroke-width="1.5"/>
+          <!-- Porte -->
+          <rect x="183" y="205" width="34" height="55" rx="17" fill="rgba(139,92,246,0.12)" stroke="rgba(139,92,246,0.3)" stroke-width="1.5"/>
+          <!-- Étoiles réseau autour -->
+          <circle cx="68" cy="90" r="5" fill="rgba(232,184,75,0.8)"/>
+          <circle cx="332" cy="80" r="4" fill="rgba(232,184,75,0.7)"/>
+          <circle cx="55" cy="200" r="4" fill="rgba(139,92,246,0.8)"/>
+          <circle cx="345" cy="185" r="5" fill="rgba(139,92,246,0.7)"/>
+          <circle cx="88" cy="280" r="3" fill="rgba(232,184,75,0.6)"/>
+          <circle cx="315" cy="275" r="4" fill="rgba(232,184,75,0.6)"/>
+          <!-- Lignes influence -->
+          <line x1="68" y1="90" x2="145" y2="120" stroke="rgba(139,92,246,0.2)" stroke-width="1.5" stroke-dasharray="4,4"/>
+          <line x1="332" y1="80" x2="255" y2="120" stroke="rgba(139,92,246,0.2)" stroke-width="1.5" stroke-dasharray="4,4"/>
+          <line x1="55" y1="200" x2="130" y2="195" stroke="rgba(139,92,246,0.15)" stroke-width="1.5" stroke-dasharray="4,4"/>
+          <line x1="345" y1="185" x2="270" y2="195" stroke="rgba(139,92,246,0.15)" stroke-width="1.5" stroke-dasharray="4,4"/>
+          <line x1="88" y1="280" x2="150" y2="260" stroke="rgba(139,92,246,0.12)" stroke-width="1.5" stroke-dasharray="4,4"/>
+          <line x1="315" y1="275" x2="250" y2="260" stroke="rgba(139,92,246,0.12)" stroke-width="1.5" stroke-dasharray="4,4"/>
+          <!-- Drapeau -->
+          <line x1="200" y1="70" x2="200" y2="48" stroke="rgba(232,184,75,0.6)" stroke-width="1.5"/>
+          <polygon points="200,48 220,54 200,60" fill="rgba(232,184,75,0.5)"/>
+          <text x="200" y="325" text-anchor="middle" fill="rgba(255,255,255,0.15)" font-size="8" font-family="DM Sans, sans-serif" letter-spacing="4">PUBLIC AFFAIRS</text>
+        </svg>
+      </div>
+    </div>
+    <div class="article-body">
+      <h2>Démystifier le lobbying en contexte africain</h2>
+      <p>Le mot "lobbying" reste souvent mal compris ou connoté négativement en Afrique, associé à tort à la corruption ou aux pratiques opaques. Or, dans son acception stricte, le lobbying désigne l'ensemble des activités légitimes visant à influencer les décisions publiques en faveur d'intérêts privés ou collectifs — par le dialogue, l'argumentation, la production de preuves et la construction de coalitions. C'est une pratique démocratique essentielle, à condition d'être conduite avec éthique et transparence.</p>
+      <p>En Afrique subsaharienne, les affaires publiques prennent des formes spécifiques, fortement influencées par des dynamiques relationnelles, des logiques communautaires et des réseaux informels dont il serait naïf de faire abstraction. Comprendre ces réalités est la première condition pour opérer efficacement dans ce domaine.</p>
+
+      <div class="pull-quote">"En Afrique, les décisions publiques se préparent souvent dans des espaces informels avant d'être formalisées dans les institutions. L'influence commence bien avant le vote."</div>
+
+      <h2>Cartographier les pouvoirs formels et informels</h2>
+      <p>Toute stratégie d'affaires publiques commence par une cartographie rigoureuse de l'écosystème décisionnel. Sur le continent africain, cette cartographie doit impérativement intégrer les deux niveaux de pouvoir : le pouvoir formel — gouvernement, parlement, administrations sectorielles, agences de régulation — et le pouvoir informel, souvent plus déterminant : autorités religieuses, chefferies traditionnelles, associations professionnelles, syndicats, diaspora influente, réseaux d'alumni des grandes écoles.</p>
+      <p>Cette double cartographie révèle souvent des vecteurs d'influence inattendus. Un chef religieux respecté qui soutient publiquement une politique peut valoir plus, en termes d'adhésion populaire, que dix déclarations ministérielles. Un syndicat bien implanté qui s'oppose à une réforme peut en bloquer l'application malgré une adoption parlementaire formelle.</p>
+
+      <h2>Construire des coalitions durables</h2>
+      <p>Le lobbying solitaire est le lobbying le moins efficace. Les stratégies d'influence qui obtiennent des résultats durables sont celles qui rassemblent des coalitions larges — associations professionnelles, société civile, acteurs académiques, partenaires internationaux. Cette coalition démultiplie la crédibilité du plaidoyer, élargit les réseaux de contacts et distribue le risque de décrédibilisation.</p>
+      <ul>
+        <li>Identifier les alliés naturels et les partenaires inattendus</li>
+        <li>Définir un récit commun qui transcende les intérêts particuliers</li>
+        <li>Coordonner les prises de parole pour éviter les messages contradictoires</li>
+        <li>Gérer les dissensions internes avec diplomatie et discrétion</li>
+      </ul>
+
+      <h2>Le rôle décisif des données et de l'expertise</h2>
+      <p>Les décideurs africains sont de plus en plus exigeants sur la qualité des arguments qui leur sont soumis. Les stratégies de lobbying fondées sur des données robustes, des études d'impact crédibles et des comparaisons internationales pertinentes ont un avantage décisif sur celles qui reposent sur de simples pétitions d'intérêts. Investir dans la production de connaissances — études sectorielles, rapports de terrain, analyses juridiques — est désormais une condition de l'influence durable.</p>
+
+      <h2>L'éthique, socle de la crédibilité à long terme</h2>
+      <p>En matière d'affaires publiques, la réputation est l'actif le plus précieux et le plus fragile. Une organisation qui cherche à influencer les politiques publiques par des voies illicites — corruption, informations manipulées, pressions illégitimes — peut obtenir un résultat à court terme, mais hypothèque définitivement sa capacité d'influence future. Dans un continent où les réseaux de confiance sont étroits et où l'information circule vite, les pratiques douteuses se révèlent inévitablement. L'éthique n'est pas seulement une valeur : c'est une stratégie de long terme.</p>
+    </div>
+    <div class="article-footer">
+      <span class="article-number">05</span>
+      <a href="#" class="read-more">Lire la suite complète</a>
+    </div>
+  </article>
+
+  <!-- ═══════════════════════════════════════════ ARTICLE 6 ═══ -->
+  <article class="article">
+    <div class="article-header reverse">
+      <div class="article-meta">
+        <div class="theme-badge"><span class="theme-dot" style="background:#e07b2a"></span><span class="theme-label" style="color:#e07b2a">Audiovisuel</span></div>
+        <h1 class="article-title">La vidéo corporate : outil stratégique de communication</h1>
+        <p class="article-intro">Dans un univers de l'attention fragmentée, la vidéo corporate bien conçue est l'un des investissements communicationnels à plus fort retour. À condition de sortir des clichés.</p>
+        <div class="article-info">
+          <span>🗓 Avril 2026</span>
+          <span>⏱ 6 min de lecture</span>
+          <span>📍 Dakar, Sénégal</span>
+        </div>
+      </div>
+      <div class="article-visual">
+        <svg viewBox="0 0 400 340" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="340" fill="#1a0f05"/>
+          <!-- Caméra principale -->
+          <rect x="90" y="100" width="180" height="130" rx="8" fill="rgba(224,123,42,0.08)" stroke="rgba(224,123,42,0.35)" stroke-width="2"/>
+          <!-- Objectif -->
+          <circle cx="180" cy="165" r="45" fill="rgba(224,123,42,0.05)" stroke="rgba(224,123,42,0.3)" stroke-width="1.5"/>
+          <circle cx="180" cy="165" r="32" fill="rgba(224,123,42,0.07)" stroke="rgba(224,123,42,0.2)" stroke-width="1"/>
+          <circle cx="180" cy="165" r="18" fill="rgba(224,123,42,0.12)" stroke="rgba(224,123,42,0.25)" stroke-width="1"/>
+          <circle cx="180" cy="165" r="7" fill="rgba(224,123,42,0.4)"/>
+          <!-- Reflet objectif -->
+          <circle cx="172" cy="158" r="4" fill="rgba(255,255,255,0.1)"/>
+          <!-- Viseur -->
+          <rect x="250" y="100" width="40" height="26" rx="4" fill="rgba(224,123,42,0.06)" stroke="rgba(224,123,42,0.25)" stroke-width="1.5"/>
+          <rect x="255" y="105" width="30" height="16" rx="2" fill="rgba(224,123,42,0.06)"/>
+          <!-- Pied et bras -->
+          <line x1="180" y1="230" x2="180" y2="280" stroke="rgba(224,123,42,0.4)" stroke-width="3"/>
+          <line x1="140" y1="280" x2="220" y2="280" stroke="rgba(224,123,42,0.3)" stroke-width="2"/>
+          <line x1="140" y1="280" x2="120" y2="320" stroke="rgba(224,123,42,0.2)" stroke-width="2"/>
+          <line x1="180" y1="280" x2="180" y2="320" stroke="rgba(224,123,42,0.2)" stroke-width="2"/>
+          <line x1="220" y1="280" x2="240" y2="320" stroke="rgba(224,123,42,0.2)" stroke-width="2"/>
+          <!-- Lumière / clap -->
+          <rect x="300" y="55" width="62" height="50" rx="3" fill="rgba(224,123,42,0.08)" stroke="rgba(224,123,42,0.25)" stroke-width="1.5"/>
+          <!-- Clap bandes -->
+          <line x1="300" y1="70" x2="362" y2="70" stroke="rgba(0,0,0,0.3)" stroke-width="8"/>
+          <line x1="300" y1="70" x2="362" y2="70" stroke="rgba(224,123,42,0.6)" stroke-width="1"/>
+          <!-- Bandes diagonales clap -->
+          <path d="M308 62 L318 70 L328 62 L338 70 L348 62 L358 70" fill="none" stroke="rgba(224,123,42,0.5)" stroke-width="1.5"/>
+          <!-- Texte clap -->
+          <text x="331" y="93" text-anchor="middle" fill="rgba(224,123,42,0.6)" font-size="7" font-family="DM Sans, sans-serif" letter-spacing="1">TAKE 1</text>
+          <!-- Bouton REC -->
+          <circle cx="330" cy="40" r="8" fill="rgba(220,50,50,0.8)"/>
+          <circle cx="330" cy="40" r="5" fill="rgba(220,50,50,1)"/>
+          <text x="344" y="44" fill="rgba(220,80,80,0.7)" font-size="8" font-family="DM Sans, sans-serif" font-weight="600" letter-spacing="1">REC</text>
+          <!-- Lumières scène -->
+          <line x1="55" y1="30" x2="110" y2="100" stroke="rgba(255,220,100,0.12)" stroke-width="18"/>
+          <line x1="90" y1="28" x2="130" y2="100" stroke="rgba(255,220,100,0.08)" stroke-width="12"/>
+          <text x="200" y="325" text-anchor="middle" fill="rgba(255,255,255,0.15)" font-size="8" font-family="DM Sans, sans-serif" letter-spacing="4">CORPORATE VIDEO</text>
+        </svg>
+      </div>
+    </div>
+    <div class="article-body">
+      <h2>Pourquoi la vidéo corporate est devenue incontournable</h2>
+      <p>Les chiffres sont implacables : une vidéo d'entreprise bien produite génère jusqu'à 80% de mémorisation supplémentaire par rapport à un texte équivalent. Sur les réseaux sociaux africains, le contenu vidéo obtient un taux d'engagement entre 3 et 5 fois supérieur aux posts statiques. Et dans un continent où la tradition orale reste un vecteur culturel majeur, le format audiovisuel résonne avec une puissance particulière.</p>
+      <p>Pourtant, la vidéo corporate africaine souffre souvent d'une même pathologie : elle est pensée comme un exercice formel — directeur général face caméra, liste de services, musique générique — plutôt que comme un outil stratégique de narration et de persuasion. Ce fossé entre le potentiel du format et la médiocrité de l'exécution est une opportunité pour les organisations prêtes à investir dans l'excellence.</p>
+
+      <div class="pull-quote">"Une vidéo corporate qui ne raconte pas d'histoire ne laisse pas de trace. Le spectateur oublie les chiffres. Il retient les émotions."</div>
+
+      <h2>Les formats qui performent en 2026</h2>
+      <p>Le film institutionnel long format (3 à 5 minutes) reste pertinent pour les présentations formelles, les appels d'offres et les événements. Mais il doit désormais coexister avec des formats adaptés aux usages numériques : les capsules de 60 à 90 secondes pour les réseaux sociaux, les témoignages clients en format authentique et non sur-produit, les reportages de terrain qui montrent l'organisation en action, les lives et webinaires qui créent un espace d'interaction réel.</p>
+      <ul>
+        <li><strong>Film institutionnel</strong> : ancre l'identité et les valeurs, format de référence</li>
+        <li><strong>Capsule sociale</strong> : taux d'engagement élevé, format vertical mobile-first</li>
+        <li><strong>Témoignage client/bénéficiaire</strong> : crédibilité maximale, émotionnel puissant</li>
+        <li><strong>Reportage terrain</strong> : montre l'organisation en action, authentique</li>
+        <li><strong>Interview dirigeant</strong> : humanise l'institution, positionne l'expertise</li>
+      </ul>
+
+      <h2>La production : entre excellence technique et authenticité</h2>
+      <p>La qualité technique est une condition nécessaire mais non suffisante. Une vidéo produite avec un matériel professionnel mais sans histoire, sans personnage mémorable, sans tension dramatique, restera invisible dans le flux de contenus. À l'inverse, une vidéo imparfaite techniquement mais portée par un témoignage bouleversant ou un récit authentique peut générer des millions de vues et dépasser toutes les frontières.</p>
+      <p>Le brief créatif est l'étape la plus stratégique de toute production vidéo. Il définit l'objectif (notoriété, confiance, conversion ?), la cible prioritaire, le message central, le ton (institutionnel, émotionnel, informatif, inspirant ?), et les contraintes techniques (formats, durées, plateformes de diffusion). Un brief solide sauve des milliers de francs CFA de reprises et de corrections.</p>
+
+      <h2>La diffusion : la vidéo vit par son distribution</h2>
+      <p>Une vidéo qui reste sur un serveur ou se noie dans un onglet YouTube sans trafic est un investissement perdu. La stratégie de distribution est aussi importante que la production elle-même. Elle inclut : l'optimisation SEO de la vidéo (titre, description, sous-titres), la programmation des publications sur chaque plateforme aux heures de forte audience, l'activation des réseaux d'amplification (partenaires, collaborateurs, relais d'opinion), et le recyclage du contenu sous différentes formes (extraits, GIFs, citations visuelles).</p>
+
+      <h2>Mesurer l'impact et itérer</h2>
+      <p>Toute production vidéo doit être adossée à des objectifs mesurables définis en amont : taux de complétion (proportion de spectateurs qui regardent jusqu'à la fin), taux d'engagement, nombre de partages, impact sur les demandes d'information ou les conversions. Ces données permettent d'apprendre de chaque production et d'améliorer continuellement la stratégie. Les organisations qui traitent la vidéo comme une discipline mesurable — et non comme un one-shot de communication — sont celles qui en tirent les meilleurs résultats sur la durée.</p>
+    </div>
+    <div class="article-footer">
+      <span class="article-number">06</span>
+      <a href="#" class="read-more">Lire la suite complète</a>
+    </div>
+  </article>
+
+</div>
+
+<footer class="site-footer">
+  <strong>BLUECOM Stratégies</strong> — Agence conseil en communication, Dakar, Sénégal &nbsp;·&nbsp; Tous droits réservés 2026
+</footer>
+
+</body>
+</html>
