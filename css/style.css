@@ -1341,6 +1341,16 @@ section {
     position: relative;
 }
 
+#realisations .section-title {
+    color: var(--blue-mid);
+}
+
+#realisations .section-title em {
+    color: var(--gold);
+    font-style: italic;
+    font-weight: 400;
+}
+
 #realisations::before {
     content: '';
     position: absolute;
@@ -1354,7 +1364,7 @@ section {
 .cases-grid {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
-    grid-template-rows: repeat(2, 280px);
+    grid-auto-rows: 280px;
     gap: 24px;
 }
 
@@ -1368,6 +1378,7 @@ section {
     transition: all var(--transition-normal);
     text-decoration: none;
     color: inherit;
+    min-height: 280px;
 }
 
 /* Case 1 - Large (span 4) */
@@ -2739,7 +2750,8 @@ nav.scrolled {
     /* Realisations */
     .cases-grid {
         grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: auto;
+        grid-auto-rows: 350px;
+        gap: 20px;
     }
     
     .case-card:nth-child(1) {
@@ -2802,7 +2814,8 @@ nav.scrolled {
     /* Realisations */
     .cases-grid {
         grid-template-columns: 1fr;
-        gap: 16px;
+        grid-auto-rows: 400px;
+        gap: 20px;
     }
     
     .case-card:nth-child(1),
