@@ -253,7 +253,7 @@
                     const postNumber = (index + 1).toString().padStart(2, '0');
 
                     const articleCard = `
-                        <article class="blog-card ${index === 0 ? 'featured' : ''}">
+                        <a href="blog-post.html?slug=${post.slug.current}" class="blog-card ${index === 0 ? 'featured' : ''}" style="text-decoration: none; color: inherit; display: flex; flex-direction: column;">
                             <div class="blog-card-img" style="background-image: url('${imageUrl}'); background-size: cover; background-position: center;">
                                 <div class="blog-card-img-inner">
                                     <span class="blog-img-text">${postNumber}</span>
@@ -266,9 +266,9 @@
                                 </div>
                                 <h3 class="blog-title">${post.title}</h3>
                                 <p class="blog-excerpt">${post.excerpt || ''}</p>
-                                <a href="blog-post.html?slug=${post.slug.current}" class="blog-read-more">Lire l'article →</a>
+                                <span class="blog-read-more">Lire l'article →</span>
                             </div>
-                        </article>
+                        </a>
                     `;
                     blogGrid.innerHTML += articleCard;
                 });

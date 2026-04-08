@@ -781,15 +781,17 @@
             const indexBlogGrid = document.querySelector('#blog .blog-grid');
             if (!indexBlogGrid) return;
 
-            const posts = await fetchAllPosts();
-            
-            if (posts && posts.length > 0) {
+                const posts = await fetchAllPosts();
+                console.log("All posts:", JSON.stringify(posts, null, 2));
+                
+                if (posts && posts.length > 0) {
                 indexBlogGrid.innerHTML = ''; // On vide les articles de démo
                 
                 // On n'affiche que les 3 derniers sur l'accueil
                 const latestPosts = posts.slice(0, 3);
 
                 latestPosts.forEach((post, index) => {
+                    console.log("Rendering post:", post.title, "slug:", post.slug ? post.slug.current : 'NO SLUG');
                     const date = new Date(post.publishedAt).toLocaleDateString('fr-FR', {
                         day: 'numeric',
                         month: 'long',
@@ -799,8 +801,10 @@
                     const imageUrl = urlFor(post.mainImage);
                     const postNumber = (index + 1).toString().padStart(2, '0');
 
+                    const slugValue = post.slug ? post.slug.current : 'no-slug';
+                    const targetUrl = `blog-post.html?slug=${slugValue}`;
                     const articleCard = `
-                        <a href="blog-post.html?slug=${post.slug.current}" class="blog-card ${index === 0 ? 'featured' : ''}">
+                        <a href="#" class="blog-card ${index === 0 ? 'featured' : ''}" data-slug="${slugValue}">
                             <div class="blog-card-img" style="background-image: url('${imageUrl}'); background-size: cover; background-position: center;">
                                 <div class="blog-card-img-inner">
                                     <span class="blog-img-text">${postNumber}</span>
@@ -815,8 +819,24 @@
                                 <p class="blog-excerpt">${post.excerpt || ''}</p>
                                 <span class="blog-read-more">Lire l'article →</span>
                             </div>
-                        </a>
+                        </div>
                     `;
+                    
+                    // Add click handler after adding to DOM
+                    setTimeout(() => {
+                        document.querySelectorAll('.blog-card[data-slug]').forEach(card => {
+                            card.addEventListener('click', (e) => {
+                                e.preventDefault();
+                                e.stopPropagation();
+                                const slug = card.getAttribute('data-slug');
+                                // Use absolute URL
+                                const baseUrl = window.location.origin + window.location.pathname.replace(/[^/]*$/, '');
+                                const targetUrl = baseUrl + `blog-post.html?slug=${slug}`;
+                                console.log("Full target URL:", targetUrl);
+                                window.location.href = targetUrl;
+                            });
+                        });
+                    }, 100);
                     indexBlogGrid.innerHTML += articleCard;
                 });
             }

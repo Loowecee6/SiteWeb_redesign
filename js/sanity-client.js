@@ -26,11 +26,12 @@ async function fetchAllPosts() {
         mainImage,
         excerpt
     }`);
-    const url = `https://0x8v5gxj.api.sanity.io/v2021-10-21/data/query/production?query=${query}`;
+    const url = `https://0x8v5gxj.api.sanity.io/v2024-03-01/data/query/production?query=${query}`;
     
     try {
         const response = await fetch(url);
         const result = await response.json();
+        console.log("Sanity fetchAllPosts result:", result);
         return result.result;
     } catch (error) {
         console.error("Erreur Sanity:", error);
@@ -43,11 +44,12 @@ async function fetchAllPosts() {
  */
 async function fetchPostBySlug(slug) {
     const query = encodeURIComponent(`*[_type == "post" && slug.current == "${slug}"][0]`);
-    const url = `https://0x8v5gxj.api.sanity.io/v2021-10-21/data/query/production?query=${query}`;
+    const url = `https://0x8v5gxj.api.sanity.io/v2024-03-01/data/query/production?query=${query}`;
     
     try {
         const response = await fetch(url);
         const result = await response.json();
+        console.log("Sanity fetchPostBySlug result:", result);
         return result.result;
     } catch (error) {
         console.error("Erreur Sanity single post:", error);

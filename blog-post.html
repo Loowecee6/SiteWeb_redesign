@@ -65,16 +65,6 @@
 
         <!-- BLOG CONTENT -->
         <article class="blog-content">
-            <div class="article-body">
-                <p>Le paysage de la communication en Afrique connaît une transformation profonde. Alors que le continent continue son ascension économique et que sa jeunesse devient de plus en plus connectée, les entreprises et institutions africaines doivent repenser leur approche communicationnelle pour rester pertinentes et influentes.</p>
-
-                <h2>L'authenticité comme nouvelle devise</h2>
-                <p>Les publics africains, particulièrement les jeunes générations, sont de plus en plus exigeants sur <strong>l'authenticité</strong> des communications. Fini les messages marketing surfaites importés d'Occident. Les consommateurs cherchent des marques qui parlent leur langue, comprennent leurs réalités et partagent leurs valeurs.</p>
-                <p>Cette tendance vers l'authenticité s'accompagne d'une demande croissante de <strong>représentation locale</strong>. Les campagnes qui mettent en scène des visages et des histoires véritablement africains, plutôt que des modèles internationaux, génèrent un engagement bien supérieur.</p>
-
-                <h3>Les 3 piliers de l'authenticité</h3>
-                <ol>
-                    <li><strong>Langage local et contextualisation</strong> — Adapter le discours à chaque marché, sans craindre de puiser dans les richesses linguistiques et culturelles du continent</li>
                     <li><strong>Récits inspirants</strong> — Raconter des histoires de réussite locale, d'innovation africaine et de leadership continental</li>
                     <li><strong>Transparence et valeurs</strong> — Communiquer clairement sur les engagements sociaux, environnementaux et économiques de l'organisation</li>
                 </ol>
@@ -238,65 +228,54 @@
             const urlParams = new URLSearchParams(window.location.search);
             const slug = urlParams.get('slug');
 
-            console.log("Recherche de l'article avec le slug:", slug);
-
-            if (!slug) {
-                console.warn("Aucun slug spécifié, affichage du contenu par défaut.");
-                return;
+            // 1. Charger TOUS les articles pour le widget latéral
+            const allPosts = await fetchAllPosts();
+            const widgetContainer = document.getElementById('recent-posts-widget');
+            
+            if (allPosts && widgetContainer) {
+                widgetContainer.innerHTML = '';
+                // On affiche les 4 plus récents dans le widget
+                allPosts.slice(0, 4).forEach(p => {
+                    const item = `
+                        <article class="blog-card" style="max-width: 350px;">
+                            <div class="blog-card-body">
+                                <h3 class="blog-title">${p.title}</h3>
+                                <a href="blog-post.html?slug=${p.slug.current}" class="blog-read-more">Lire l'article →</a>
+                            </div>
+                        </article>
+                    `;
+                    widgetContainer.innerHTML += item;
+                });
             }
 
+            // 2. Charger l'article principal
+            if (!slug) return;
             const post = await fetchPostBySlug(slug);
 
             if (post) {
-                console.log("Article trouvé:", post);
-
-                // 1. Titre et Métadonnées
-                document.title = `${post.title} | BLUECOM Stratégies`;
-                const h1 = document.querySelector('h1');
-                if (h1) h1.textContent = post.title;
-
-                const cat = document.querySelector('.blog-cat-top');
-                if (cat) cat.textContent = post.category || 'Article';
+                document.title = `${post.title} | BLUECOM`;
+                document.querySelector('h1').textContent = post.title;
+                document.querySelector('.blog-cat-top').textContent = post.category || 'Article';
                 
-                if (post.publishedAt) {
-                    const dateStr = new Date(post.publishedAt).toLocaleDateString('fr-FR', {
-                        day: 'numeric', month: 'long', year: 'numeric'
-                    });
-                    const dateElem = document.querySelector('.blog-date-top');
-                    if (dateElem) dateElem.textContent = dateStr;
-                }
-
-                // 2. Corps de l'article (Body)
                 const articleBody = document.querySelector('.article-body');
                 if (articleBody && post.body) {
-                    articleBody.innerHTML = ''; // On vide le texte de démo
-                    
+                    articleBody.innerHTML = ''; 
                     const htmlContent = sanityBlockContentToHtml({
                         blocks: post.body,
                         projectId: SANITY_PROJECT_ID,
                         dataset: SANITY_DATASET,
                         serializers: {
                             types: {
-                                image: props => {
-                                    const imgUrl = urlFor(props.node);
-                                    return `<figure class="article-image"><img src="${imgUrl}" alt="Illustration" /><br></figure>`;
-                                }
+                                image: props => `<figure><img src="${urlFor(props.node)}" style="width:100%; border-radius:8px; margin:20px 0;"/></figure>`
                             }
                         }
                     });
-                    
                     articleBody.innerHTML = htmlContent;
                 }
 
-                // 3. Image Hero (Background)
                 if (post.mainImage) {
                     const hero = document.querySelector('.blog-hero');
-                    if (hero) {
-                        const imageUrl = urlFor(post.mainImage);
-                        hero.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('${imageUrl}')`;
-                        hero.style.backgroundSize = 'cover';
-                        hero.style.backgroundPosition = 'center';
-                    }
+                    hero.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('${urlFor(post.mainImage)}')`;
                 }
             } else {
                 console.error("Article non trouvé dans Sanity pour le slug:", slug);
