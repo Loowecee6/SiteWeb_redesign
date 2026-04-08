@@ -775,5 +775,52 @@
 
     <!-- Scripts -->
     <script src="js/main.js"></script>
+    <script src="js/sanity-client.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const indexBlogGrid = document.querySelector('#blog .blog-grid');
+            if (!indexBlogGrid) return;
+
+            const posts = await fetchAllPosts();
+            
+            if (posts && posts.length > 0) {
+                indexBlogGrid.innerHTML = ''; // On vide les articles de démo
+                
+                // On n'affiche que les 3 derniers sur l'accueil
+                const latestPosts = posts.slice(0, 3);
+
+                latestPosts.forEach((post, index) => {
+                    const date = new Date(post.publishedAt).toLocaleDateString('fr-FR', {
+                        day: 'numeric',
+                        month: 'long',
+                        year: 'numeric'
+                    });
+
+                    const imageUrl = urlFor(post.mainImage);
+                    const postNumber = (index + 1).toString().padStart(2, '0');
+
+                    const articleCard = `
+                        <a href="blog-post.html?slug=${post.slug.current}" class="blog-card ${index === 0 ? 'featured' : ''}">
+                            <div class="blog-card-img" style="background-image: url('${imageUrl}'); background-size: cover; background-position: center;">
+                                <div class="blog-card-img-inner">
+                                    <span class="blog-img-text">${postNumber}</span>
+                                </div>
+                            </div>
+                            <div class="blog-card-body">
+                                <div class="blog-meta">
+                                    <span class="blog-cat">${post.category || 'Article'}</span>
+                                    <span class="blog-date">${date}</span>
+                                </div>
+                                <h3 class="blog-title">${post.title}</h3>
+                                <p class="blog-excerpt">${post.excerpt || ''}</p>
+                                <span class="blog-read-more">Lire l'article →</span>
+                            </div>
+                        </a>
+                    `;
+                    indexBlogGrid.innerHTML += articleCard;
+                });
+            }
+        });
+    </script>
 </body>
 </html>

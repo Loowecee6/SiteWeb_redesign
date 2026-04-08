@@ -231,7 +231,6 @@
     <!-- Scripts -->
     <script src="js/main.js"></script>
     <script src="js/sanity-client.js"></script>
-    <!-- Outil pour transformer le texte riche Sanity en HTML -->
     <script src="https://unpkg.com/@sanity/block-content-to-html@latest/dist/block-content-to-html.min.js"></script>
     
     <script>
@@ -239,49 +238,68 @@
             const urlParams = new URLSearchParams(window.location.search);
             const slug = urlParams.get('slug');
 
+            console.log("Recherche de l'article avec le slug:", slug);
+
             if (!slug) {
-                console.error("Aucun slug trouvé dans l'URL");
+                console.warn("Aucun slug spécifié, affichage du contenu par défaut.");
                 return;
             }
 
             const post = await fetchPostBySlug(slug);
 
             if (post) {
-                // 1. Mise à jour des textes simples
-                document.title = `${post.title} | BLUECOM Stratégies`;
-                document.querySelector('h1').textContent = post.title;
-                document.querySelector('.blog-cat-top').textContent = post.category || 'Article';
-                
-                const date = new Date(post.publishedAt).toLocaleDateString('fr-FR', {
-                    day: 'numeric',
-                    month: 'long',
-                    year: 'numeric'
-                });
-                document.querySelector('.blog-date-top').textContent = date;
+                console.log("Article trouvé:", post);
 
-                // 2. Gestion du contenu riche (le corps de l'article)
+                // 1. Titre et Métadonnées
+                document.title = `${post.title} | BLUECOM Stratégies`;
+                const h1 = document.querySelector('h1');
+                if (h1) h1.textContent = post.title;
+
+                const cat = document.querySelector('.blog-cat-top');
+                if (cat) cat.textContent = post.category || 'Article';
+                
+                if (post.publishedAt) {
+                    const dateStr = new Date(post.publishedAt).toLocaleDateString('fr-FR', {
+                        day: 'numeric', month: 'long', year: 'numeric'
+                    });
+                    const dateElem = document.querySelector('.blog-date-top');
+                    if (dateElem) dateElem.textContent = dateStr;
+                }
+
+                // 2. Corps de l'article (Body)
                 const articleBody = document.querySelector('.article-body');
                 if (articleBody && post.body) {
                     articleBody.innerHTML = ''; // On vide le texte de démo
                     
-                    // Utilisation de la librairie blockContentToHtml
                     const htmlContent = sanityBlockContentToHtml({
                         blocks: post.body,
                         projectId: SANITY_PROJECT_ID,
-                        dataset: SANITY_DATASET
+                        dataset: SANITY_DATASET,
+                        serializers: {
+                            types: {
+                                image: props => {
+                                    const imgUrl = urlFor(props.node);
+                                    return `<figure class="article-image"><img src="${imgUrl}" alt="Illustration" /><br></figure>`;
+                                }
+                            }
+                        }
                     });
                     
                     articleBody.innerHTML = htmlContent;
                 }
 
-                // 3. Image (optionnel si vous voulez changer le hero background)
+                // 3. Image Hero (Background)
                 if (post.mainImage) {
                     const hero = document.querySelector('.blog-hero');
-                    const imageUrl = urlFor(post.mainImage);
-                    hero.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('${imageUrl}')`;
-                    hero.style.backgroundSize = 'cover';
-                    hero.style.backgroundPosition = 'center';
+                    if (hero) {
+                        const imageUrl = urlFor(post.mainImage);
+                        hero.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('${imageUrl}')`;
+                        hero.style.backgroundSize = 'cover';
+                        hero.style.backgroundPosition = 'center';
+                    }
                 }
+            } else {
+                console.error("Article non trouvé dans Sanity pour le slug:", slug);
             }
         });
     </script>
