@@ -35,13 +35,12 @@
                 <span></span>
             </button>
             <ul id="navLinks" class="nav-links">
-                <li><a href="index.html">Accueil</a></li>
-                <li><a href="about.html">Notre ADN</a></li>
+                <li><a href="about.html">L'Agence</a></li>
                 <li><a href="services.html">Expertises</a></li>
                 <li><a href="methodology.html">Méthodologie</a></li>
                 <li><a href="portfolio.html">Réalisations</a></li>
                 <li><a href="blog.html">Blog</a></li>
-                <li><a href="#contact" class="nav-cta">Prendre RDV</a></li>
+                <li><a href="index.html#contact" class="nav-cta">Prendre RDV</a></li>
             </ul>
         </div>
     </nav>
@@ -541,54 +540,8 @@
                     <p class="section-sub">Restez informé des dernières évolutions en communication institutionnelle et leadership.</p>
                 </div>
                 <div class="blog-grid">
-                    <a href="blog-1.html" class="blog-card featured">
-                        <div class="blog-card-img">
-                            <div class="blog-card-img-inner">
-                                <span class="blog-img-text">01</span>
-                            </div>
-                        </div>
-                        <div class="blog-card-body">
-                            <div class="blog-meta">
-                                <span class="blog-cat">Stratégie</span>
-                                <span class="blog-date">15 mars 2026</span>
-                            </div>
-                            <h3 class="blog-title">Communication institutionnelle : les tendances 2026 pour le continent africain</h3>
-                            <p class="blog-excerpt">Analyse des nouvelles approches qui redéfinissent la communication des entreprises et institutions africaines sur la scène internationale.</p>
-                            <span class="blog-read-more">Lire l'article →</span>
-                        </div>
-                    </a>
-                    <a href="blog-2.html" class="blog-card">
-                        <div class="blog-card-img">
-                            <div class="blog-card-img-inner">
-                                <span class="blog-img-text">02</span>
-                            </div>
-                        </div>
-                        <div class="blog-card-body">
-                            <div class="blog-meta">
-                                <span class="blog-cat">Crise</span>
-                                <span class="blog-date">8 mars 2026</span>
-                            </div>
-                            <h3 class="blog-title">Gestion de crise : anticiper plutôt que réagir</h3>
-                            <p class="blog-excerpt">Comment mettre en place une veille proactive et un plan de crise efficace pour protéger votre réputation.</p>
-                            <span class="blog-read-more">Lire l'article →</span>
-                        </div>
-                    </a>
-                    <a href="blog-3.html" class="blog-card">
-                        <div class="blog-card-img">
-                            <div class="blog-card-img-inner">
-                                <span class="blog-img-text">03</span>
-                            </div>
-                        </div>
-                        <div class="blog-card-body">
-                            <div class="blog-meta">
-                                <span class="blog-cat">Media Training</span>
-                                <span class="blog-date">1er mars 2026</span>
-                            </div>
-                            <h3 class="blog-title">L'art de l'interview médiatique pour dirigeants</h3>
-                            <p class="blog-excerpt">Techniques et bonnes pratiques pour maîtriser son discours et véhiculer une image positive.</p>
-                            <span class="blog-read-more">Lire l'article →</span>
-                        </div>
-                    </a>
+                    <!-- Articles injectés par Sanity -->
+                    <div class="loading-state">Chargement des analyses...</div>
                 </div>
             </div>
         </section>
@@ -781,30 +734,22 @@
             const indexBlogGrid = document.querySelector('#blog .blog-grid');
             if (!indexBlogGrid) return;
 
-                const posts = await fetchAllPosts();
-                console.log("All posts:", JSON.stringify(posts, null, 2));
-                
-                if (posts && posts.length > 0) {
-                indexBlogGrid.innerHTML = ''; // On vide les articles de démo
-                
-                // On n'affiche que les 3 derniers sur l'accueil
+            const posts = await fetchAllPosts();
+            
+            if (posts && posts.length > 0) {
+                indexBlogGrid.innerHTML = '';
                 const latestPosts = posts.slice(0, 3);
 
                 latestPosts.forEach((post, index) => {
-                    console.log("Rendering post:", post.title, "slug:", post.slug ? post.slug.current : 'NO SLUG');
                     const date = new Date(post.publishedAt).toLocaleDateString('fr-FR', {
-                        day: 'numeric',
-                        month: 'long',
-                        year: 'numeric'
+                        day: 'numeric', month: 'long', year: 'numeric'
                     });
-
                     const imageUrl = urlFor(post.mainImage);
                     const postNumber = (index + 1).toString().padStart(2, '0');
+                    const slug = post.slug ? post.slug.current : '';
 
-                    const slugValue = post.slug ? post.slug.current : 'no-slug';
-                    const targetUrl = `blog-post.html?slug=${slugValue}`;
                     const articleCard = `
-                        <a href="#" class="blog-card ${index === 0 ? 'featured' : ''}" data-slug="${slugValue}">
+                        <a href="blog-post.html#${slug}" class="blog-card ${index === 0 ? 'featured' : ''}">
                             <div class="blog-card-img" style="background-image: url('${imageUrl}'); background-size: cover; background-position: center;">
                                 <div class="blog-card-img-inner">
                                     <span class="blog-img-text">${postNumber}</span>
@@ -812,31 +757,15 @@
                             </div>
                             <div class="blog-card-body">
                                 <div class="blog-meta">
-                                    <span class="blog-cat">${post.category || 'Article'}</span>
+                                    <span class="blog-cat">${post.category || 'Expertise'}</span>
                                     <span class="blog-date">${date}</span>
                                 </div>
-                                <h3 class="blog-title">${post.title}</h3>
-                                <p class="blog-excerpt">${post.excerpt || ''}</p>
+                                <h3 class="blog-title">${post.title || 'Analyse Bluecom'}</h3>
+                                <p class="blog-excerpt">${post.excerpt || 'Découvrez notre dernière analyse stratégique pour le continent africain.'}</p>
                                 <span class="blog-read-more">Lire l'article →</span>
                             </div>
-                        </div>
+                        </a>
                     `;
-                    
-                    // Add click handler after adding to DOM
-                    setTimeout(() => {
-                        document.querySelectorAll('.blog-card[data-slug]').forEach(card => {
-                            card.addEventListener('click', (e) => {
-                                e.preventDefault();
-                                e.stopPropagation();
-                                const slug = card.getAttribute('data-slug');
-                                // Use absolute URL
-                                const baseUrl = window.location.origin + window.location.pathname.replace(/[^/]*$/, '');
-                                const targetUrl = baseUrl + `blog-post.html?slug=${slug}`;
-                                console.log("Full target URL:", targetUrl);
-                                window.location.href = targetUrl;
-                            });
-                        });
-                    }, 100);
                     indexBlogGrid.innerHTML += articleCard;
                 });
             }

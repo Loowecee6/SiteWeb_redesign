@@ -30,11 +30,11 @@
                 <span></span>
             </button>
             <ul id="navLinks" class="nav-links">
-                <li><a href="about.html">Notre ADN</a></li>
+                <li><a href="about.html">L'Agence</a></li>
                 <li><a href="services.html">Expertises</a></li>
                 <li><a href="methodology.html">Méthodologie</a></li>
                 <li><a href="portfolio.html">Réalisations</a></li>
-                <li><a href="blog.html" class="nav-cta">Blog</a></li>
+                <li><a href="blog.html">Blog</a></li>
                 <li><a href="index.html#contact" class="nav-cta">Prendre RDV</a></li>
             </ul>
         </div>
@@ -253,7 +253,7 @@
                     const postNumber = (index + 1).toString().padStart(2, '0');
 
                     const articleCard = `
-                        <a href="blog-post.html?slug=${post.slug.current}" class="blog-card ${index === 0 ? 'featured' : ''}" style="text-decoration: none; color: inherit; display: flex; flex-direction: column;">
+                        <a href="blog-post.html#${post.slug.current}" class="blog-card ${index === 0 ? 'featured' : ''}" style="text-decoration: none; color: inherit; display: flex; flex-direction: column;">
                             <div class="blog-card-img" style="background-image: url('${imageUrl}'); background-size: cover; background-position: center;">
                                 <div class="blog-card-img-inner">
                                     <span class="blog-img-text">${postNumber}</span>

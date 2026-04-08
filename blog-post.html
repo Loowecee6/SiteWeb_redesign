@@ -1,284 +1,304 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Communication institutionnelle : les tendances 2026 pour le continent africain | BLUECOM Stratégies</title>
-    <meta name="description"
-        content="Analyse des nouvelles approches qui redéfinissent la communication des entreprises et institutions africaines sur la scène internationale.">
-
-    <!-- Fontes -->
+    <title>Analyse Stratégique | BLUECOM</title>
+    <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --blue: #002147;
+            --gold: #c5a059;
+            --ivory: #fcfcfc;
+            --text-main: #2d3436;
+            --text-light: #636e72;
+            --transition: cubic-bezier(0.16, 1, 0.3, 1);
+        }
 
-    <!-- Styles -->
-    <link rel="stylesheet" href="css/style.css">
+        /* Reading Progress Bar */
+        #progress-bar {
+            position: fixed; top: 0; left: 0; width: 0%; height: 4px;
+            background: var(--gold); z-index: 1000; transition: width 0.1s linear;
+        }
+
+        body { font-family: 'Outfit', sans-serif; background: #fff; color: var(--text-main); margin: 0; }
+        
+        /* PREMIUM NAVIGATION */
+        nav#navbar { background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid #f0f0f0; }
+
+        /* HERO EDITORIAL */
+        .article-hero {
+            position: relative; min-height: 70vh; display: flex; align-items: center; justify-content: center;
+            background: var(--blue); color: #fff; overflow: hidden; padding: 100px 20px;
+        }
+        .hero-bg-img {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            object-fit: cover; opacity: 0.4; transform: scale(1.05); transition: transform 2s var(--transition);
+        }
+        .hero-overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to bottom, rgba(0,33,71,0.95), rgba(0,33,71,0.7));
+        }
+        .hero-content { position: relative; z-index: 10; max-width: 900px; text-align: center; }
+        
+        .cat-badge {
+            display: inline-block; padding: 8px 20px; background: var(--gold); color: var(--blue);
+            font-weight: 800; font-size: 11px; text-transform: uppercase; border-radius: 2px;
+            margin-bottom: 30px; letter-spacing: 2px; transform: translateY(20px); opacity: 0;
+            animation: slideIn 0.8s var(--transition) forwards;
+        }
+        
+        .article-title {
+            font-size: clamp(34px, 6vw, 64px); line-height: 1.1; font-weight: 800;
+            margin-bottom: 40px; text-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            transform: translateY(30px); opacity: 0;
+            animation: slideIn 0.8s var(--transition) 0.2s forwards;
+        }
+        
+        .article-meta-header {
+            display: flex; justify-content: center; align-items: center; gap: 30px;
+            font-weight: 500; font-size: 14px; color: var(--gold);
+            transform: translateY(20px); opacity: 0;
+            animation: slideIn 0.8s var(--transition) 0.4s forwards;
+        }
+
+        /* ARTICLE LAYOUT */
+        .article-container { 
+            max-width: 1200px; margin: 0 auto; padding: 100px 20px;
+            display: grid; grid-template-columns: 1fr 340px; gap: 100px;
+        }
+
+        .article-main-content {
+            font-size: 21px; line-height: 1.8; color: #333;
+            letter-spacing: -0.01em;
+        }
+        
+        /* Typography Richness */
+        .editorial-body h2 { 
+            font-size: 38px; color: var(--blue); margin: 80px 0 30px; font-weight: 800; 
+            letter-spacing: -1px; position: relative;
+        }
+        .editorial-body h2::before {
+            content: ''; position: absolute; left: -40px; top: 50%; width: 20px; height: 2px; background: var(--gold);
+        }
+        .editorial-body h3 { font-size: 28px; color: var(--blue); margin: 50px 0 20px; font-weight: 700; }
+        .editorial-body p { margin-bottom: 35px; }
+        .editorial-body strong { color: #000; font-weight: 700; }
+        
+        .editorial-body blockquote {
+            margin: 60px 0; padding: 40px 60px; background: #f8f9fa;
+            border-left: 6px solid var(--gold); font-size: 26px; font-style: italic;
+            color: var(--blue); font-weight: 500; line-height: 1.5;
+            position: relative;
+        }
+        .editorial-body blockquote::after {
+            content: '"'; position: absolute; top: -20px; right: 40px; font-size: 120px; 
+            color: var(--gold); opacity: 0.15; font-family: serif;
+        }
+
+        .editorial-body figure { margin: 60px 0; text-align: center; }
+        .editorial-body figure img { width: 100%; border-radius: 20px; box-shadow: 0 40px 100px rgba(0,0,0,0.12); }
+        .editorial-body figcaption { margin-top: 15px; font-size: 14px; color: var(--text-light); font-style: italic; }
+
+        /* SIDEBAR PREMIUM */
+        .sidebar { position: sticky; top: 120px; align-self: start; }
+        .sidebar-title { 
+            font-size: 14px; text-transform: uppercase; letter-spacing: 2px; font-weight: 800;
+            color: var(--gold); margin-bottom: 40px; display: flex; align-items: center; gap: 15px;
+        }
+        .sidebar-title::after { content: ''; flex: 1; height: 1px; background: #eee; }
+
+        .recent-card {
+            display: flex; gap: 20px; text-decoration: none; color: inherit; margin-bottom: 35px;
+            group:hover .card-img { transform: scale(1.05); }
+        }
+        .recent-img-wrap { width: 80px; height: 80px; overflow: hidden; border-radius: 12px; flex-shrink: 0; background: #eee; }
+        .recent-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s var(--transition); }
+        .recent-content h4 { font-size: 16px; margin: 0 0 8px 0; font-weight: 700; line-height: 1.4; color: var(--blue); }
+        .recent-content span { font-size: 12px; color: var(--text-light); }
+
+        /* FOOTER */
+        footer { background: var(--blue); color: #fff; padding: 120px 0 60px; }
+        .footer-inner { 
+            display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 100px;
+            padding-bottom: 80px; border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+        .footer-brand img { height: 50px; filter: brightness(0) invert(1); margin-bottom: 30px; }
+        .footer-brand p { opacity: 0.6; max-width: 400px; font-size: 16px; line-height: 1.8; }
+        .footer-links h4 { color: var(--gold); text-transform: uppercase; letter-spacing: 2px; font-size: 13px; margin-bottom: 30px; }
+        .footer-links ul { list-style: none; padding: 0; margin: 0; }
+        .footer-links li { margin-bottom: 15px; }
+        .footer-links a { color: #fff; opacity: 0.6; text-decoration: none; font-weight: 500; transition: opacity 0.3s; }
+        .footer-links a:hover { opacity: 1; color: var(--gold); }
+
+        @keyframes slideIn { from { transform: translateY(30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+        @media (max-width: 1024px) {
+            .article-container { grid-template-columns: 1fr; gap: 60px; padding-top: 60px; }
+            .sidebar { position: static; }
+            .editorial-body h2::before { display: none; }
+        }
+    </style>
 </head>
-
 <body>
+    <div id="progress-bar"></div>
 
-    <!-- Navigation -->
     <nav id="navbar">
         <div class="nav-inner container">
-            <a href="index.html" class="logo" aria-label="BLUECOM Stratégies - Accueil">
-                <img src="assets/logo BLUECOM_fond_blanc.png" alt="BLUECOM Logo" height="48">
-            </a>
-            <button id="menuToggle" class="menu-toggle" aria-label="Ouvrir le menu" aria-expanded="false">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <ul id="navLinks" class="nav-links">
-                <li><a href="about.html">Notre ADN</a></li>
-                <li><a href="services.html">Expertises</a></li>
-                <li><a href="methodology.html">Méthodologie</a></li>
-                <li><a href="portfolio.html">Réalisations</a></li>
-                <li><a href="blog.html" class="nav-cta">Blog</a></li>
-                <li><a href="index.html#contact" class="nav-cta">Prendre RDV</a></li>
+            <a href="index.html" class="logo"><img src="assets/logo BLUECOM_fond_blanc.png" alt="BLUECOM" height="48"></a>
+            <ul class="nav-links">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="about.html">L'Agence</a></li>
+                <li><a href="blog.html">Insights</a></li>
+                <li><a href="index.html#contact" class="nav-cta">Consultation</a></li>
             </ul>
         </div>
     </nav>
 
-    <!-- Contenu Principal -->
-    <main>
-        <!-- BLOG HERO -->
-        <section class="blog-hero">
-            <div class="container">
-                <div class="blog-meta-top">
-                    <span class="blog-cat-top">Stratégie</span>
-                    <span class="blog-date-top">15 mars 2026</span>
-                    <div class="blog-author-top">
-                        <div class="author-avatar-top">MR</div>
-                        <div class="author-info-top">
-                            <h4>Mamadou R.</h4>
-                            <p>Directeur de la Stratégie, BLUECOM</p>
-                        </div>
-                    </div>
-                </div>
-                <h1>Communication institutionnelle : les tendances 2026 pour le continent africain</h1>
+    <header class="article-hero">
+        <div id="hero-img-wrap"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <span class="cat-badge" id="post-category">Expertise</span>
+            <h1 class="article-title" id="post-title">Analyse en cours...</h1>
+            <div class="article-meta-header">
+                <span>PAR BLUECOM ADVISORY</span>
+                <span style="opacity:0.3">/</span>
+                <span id="post-date">...</span>
             </div>
-        </section>
+        </div>
+    </header>
 
-        <!-- BLOG CONTENT -->
-        <article class="blog-content">
-                    <li><strong>Récits inspirants</strong> — Raconter des histoires de réussite locale, d'innovation africaine et de leadership continental</li>
-                    <li><strong>Transparence et valeurs</strong> — Communiquer clairement sur les engagements sociaux, environnementaux et économiques de l'organisation</li>
-                </ol>
-
-                <h2>Le mobile-first n'est plus une option</h2>
-                <p>Avec <strong>plus de 600 millions d'utilisateurs de smartphones</strong> en Afrique (et une croissance moyenne de 20% par an), la communication doit être conçue d'abord pour mobile. Cela implique :</p>
-                <ul>
-                    <li>Des contenus verticaux optimisés pour TikTok, Instagram Reels et YouTube Shorts</li>
-                    <li>Des sites web extrêmement légers et rapides, adaptés aux connections parfois limitées</li>
-                    <li>Des expériences utilisateur simplifiées au maximum</li>
-                </ul>
-                <p>Les marques qui négligent l'expérience mobile perdent une opportunité massive de connexion avec leur audience.</p>
-
-                <h2>Influence africaine au cœur des stratégies</h2>
-                <p>Le marketing d'influence a explosé sur le continent, mais avec des particularités :</p>
-                <blockquote>"Les influenceurs africains ne sont pas des relais publicitaires, ils sont des <em>storytellers</em> qui incarnent l'aspiration de millions de jeunes. Leur authenticité est leur capital le plus précieux."</blockquote>
-                <p>Les marques qui travaillent le mieux avec les influenceurs africains adoptent :</p>
-                <ul>
-                    <li>Des collaborations long terme plutôt que des posts ponctuels</li>
-                    <li>Une sélection basée sur l'alignement des valeurs plutôt que le seul reach</li>
-                    <li>Un espace de créativité laissé aux créateurs de contenu</li>
-                </ul>
-
-                <h2>ESG et responsabilité : l'attente sociétale</h2>
-                <p>Les entreprises opérant en Afrique sont de plus en plus scrutées sur leur impact socio-économique. La communication doit intégrer et prouver :</p>
-                <ol>
-                    <li><strong>Contribution à l'emploi local</strong> — Chiffres clés, formation, développement des compétences</li>
-                    <li><strong>Intégration des communautés</strong> — Comment l'entreprise s'inscrit dans son écosystème local</li>
-                    <li><strong>Durabilité environnementale</strong> — Actions concrètes et mesures d'impact</li>
-                </ol>
-
-                <h2>Crise : l'ère de la transparence instantanée</h2>
-                <p>Avec la viralité des réseaux sociaux, une crise peut éclore et se propager en quelques heures. Les organisations doivent :</p>
-                <ul>
-                    <li>Mettre en place une <strong>veille 24/7</strong> des mentions et conversations</li>
-                    <li>Avoir des <strong>protocoles de réponse</strong> ultra-rapides, validés à l'avance</li>
-                    <li>Former leurs équipes à la communication de crise digitale</li>
-                    <li>Bâtir un <strong>capital sympathie</strong> en temps normal pour avoir une réserve de good will en cas de problème</li>
-                </ul>
-
-                <h2>Le contenu éducatif comme levier d'influence</h2>
-                <p>Le <strong>content marketing</strong> éducatif gagne du terrain en Afrique. Partager de la connaissance, des tutoriels, des analyses approfondies positionne une marque comme référente dans son domaine. Les formats qui fonctionnent le mieux :</p>
-                <ol>
-                    <li><strong>Webinaires et masterclass</strong> — Formats longs pour approfondir un sujet</li>
-                    <li><strong>Guides et livres blancs</strong> — Positionnement d'expertise tangible</li>
-                    <li><strong>Études de cas locales</strong> — Preuves concrètes d'expertise appliquée au contexte africain</li>
-                </ol>
-
-                <h2>Conclusion : l'adaptation comme compétence clé</h2>
-                <p>La communication en Afrique en 2026 ne suit plus les modèles internationaux. Elle s'invente localement, avec les insights des populations, la compréhension des contextes spécifiques et une appétence pour l'innovation.</p>
-                <p>Les organisations qui comprennent et embrassent cette évolution construiront une présence solide et durable. Celles qui persistent à appliquer des approches standardisées risquent de paraître déconnectées.</p>
-                <p>Chez BLUECOM Stratégies, nous accompagnons nos clients dans cette mutation en combinant <strong>expertise internationale</strong> et <strong>connaissance profonde du continent</strong>. C'est cette dualité qui fait la différence.</p>
+    <main class="article-container">
+        <article class="article-main-content">
+            <div id="post-body" class="editorial-body">
+                <p>Extraction des intelligences stratégiques...</p>
             </div>
         </article>
 
-        <!-- RELATED -->
-        <section style="background: var(--grey-light); padding: 80px 0;">
-            <div class="container">
-                <h3 style="font-family: var(--font-display); font-size: 28px; font-weight: 700; color: var(--anthracite); margin-bottom: 40px;">Articles similaires</h3>
-                <div class="blog-grid">
-                    <article class="blog-card" style="max-width: 350px;">
-                        <div class="blog-card-img">
-                            <div class="blog-card-img-inner">
-                                <span class="blog-img-text">02</span>
-                            </div>
-                        </div>
-                        <div class="blog-card-body">
-                            <div class="blog-meta">
-                                <span class="blog-cat">Crise</span>
-                                <span class="blog-date">8 mars 2026</span>
-                            </div>
-                            <h3 class="blog-title">Gestion de crise : anticiper plutôt que réagir</h3>
-                            <p class="blog-excerpt">Comment mettre en place une veille proactive et un plan de crise efficace pour protéger votre réputation.</p>
-                            <a href="blog-post.html" class="blog-read-more">Lire l'article →</a>
-                        </div>
-                    </article>
-                    <article class="blog-card" style="max-width: 350px;">
-                        <div class="blog-card-img">
-                            <div class="blog-card-img-inner">
-                                <span class="blog-img-text">03</span>
-                            </div>
-                        </div>
-                        <div class="blog-card-body">
-                            <div class="blog-meta">
-                                <span class="blog-cat">Media Training</span>
-                                <span class="blog-date">1er mars 2026</span>
-                            </div>
-                            <h3 class="blog-title">L'art de l'interview médiatique pour dirigeants</h3>
-                            <p class="blog-excerpt">Techniques et bonnes pratiques pour maîtriser son discours et véhiculer une image positive.</p>
-                            <a href="blog-post.html" class="blog-read-more">Lire l'article →</a>
-                        </div>
-                    </article>
-                </div>
+        <aside class="sidebar">
+            <div class="sidebar-title">Analyses Récentes</div>
+            <div id="recent-widget" class="recent-stack"></div>
+            
+            <div style="margin-top: 60px; padding: 40px; background: #f8f9fa; border-radius: 20px; text-align: center;">
+                <h4 style="color: var(--blue); margin-top: 0;">Besoin d'aller plus loin ?</h4>
+                <p style="font-size: 15px; color: var(--text-light);">Nos experts vous accompagnent dans votre transformation.</p>
+                <a href="index.html#contact" style="display: inline-block; margin-top: 20px; padding: 12px 25px; background: var(--blue); color: #fff; text-decoration: none; border-radius: 5px; font-weight: 700; font-size: 14px;">Contacter l'Agence</a>
             </div>
-        </section>
+        </aside>
     </main>
 
-    <!-- Footer -->
     <footer>
         <div class="container">
-            <div class="footer-grid">
+            <div class="footer-inner">
                 <div class="footer-brand">
-                    <a href="index.html" class="logo" aria-label="BLUECOM Stratégies - Accueil">
-                        <img src="assets/logo BLUECOM_fond_blanc.png" alt="BLUECOM Logo" height="48">
-                    </a>
-                    <p>BLUECOM Stratégies est votre partenaire de confiance pour la communication institutionnelle et le conseil aux dirigeants en Afrique. 30 ans d'expertise au service de votre réputation.</p>
+                    <img src="assets/logo BLUECOM_fond_blanc.png" alt="BLUECOM">
+                    <p>Le partenaire stratégique des leaders africains. Excellence, Influence et Vision.</p>
                 </div>
-                <div class="footer-col">
-                    <h4>Navigation</h4>
-                    <ul class="footer-links">
-                        <li><a href="index.html#services">Expertises</a></li>
-                        <li><a href="index.html#about">Notre ADN</a></li>
-                        <li><a href="index.html#methodology">Méthodologie</a></li>
-                        <li><a href="portfolio.html">Études de cas</a></li>
-                        <li><a href="index.html#contact">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Expertises</h4>
-                    <ul class="footer-links">
-                        <li><a href="services.html">Stratégie & Conseil</a></li>
-                        <li><a href="services.html">Media Training</a></li>
-                        <li><a href="services.html">Gestion de Crise</a></li>
-                        <li><a href="services.html">Webmarketing</a></li>
-                        <li><a href="services.html">Relations Publiques</a></li>
-                        <li><a href="services.html">Production Audiovisuelle</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
+                <div class="footer-links">
                     <h4>Ressources</h4>
-                    <ul class="footer-links">
-                        <li><a href="blog-post.html">Blog</a></li>
-                        <li><a href="portfolio.html">Portfolio</a></li>
-                        <li><a href="mentions-legales.html">Mentions légales</a></li>
-                        <li><a href="politique-confidentialite.html">Politique de confidentialité</a></li>
+                    <ul>
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="about.html">Expertises</a></li>
+                        <li><a href="blog.html">Insights</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="mailto:contact@bluecom.pro">contact@bluecom.pro</a></li>
+                        <li>Dakar, Sénégal</li>
                     </ul>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>© 2026 BLUECOM Stratégies. Tous droits réservés.</p>
-                <p>Conçu avec soin pour l'excellence africaine</p>
+            <div style="padding-top: 40px; font-size: 13px; opacity: 0.4; text-align: center;">
+                © 2026 BLUECOM Stratégies. Tous droits réservés.
             </div>
         </div>
     </footer>
 
-    <!-- Back to Top -->
-    <button id="back-top" aria-label="Retour en haut">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="12" y1="19" x2="12" y2="5"></line>
-            <polyline points="5 12 12 5 19 12"></polyline>
-        </svg>
-    </button>
-
-    <!-- Scripts -->
-    <script src="js/main.js"></script>
     <script src="js/sanity-client.js"></script>
-    <script src="https://unpkg.com/@sanity/block-content-to-html@latest/dist/block-content-to-html.min.js"></script>
-    
+    <script src="https://cdn.jsdelivr.net/npm/@sanity/block-content-to-html@3.1.1/dist/block-content-to-html.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', async () => {
-            const urlParams = new URLSearchParams(window.location.search);
-            const slug = urlParams.get('slug');
+            const currentSlug = window.location.hash.substring(1);
+            if (!currentSlug) return;
 
-            // 1. Charger TOUS les articles pour le widget latéral
+            // Reading Progress
+            window.addEventListener('scroll', () => {
+                const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+                const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrolled = (winScroll / height) * 100;
+                document.getElementById("progress-bar").style.width = scrolled + "%";
+            });
+
+            // Sidebar
             const allPosts = await fetchAllPosts();
-            const widgetContainer = document.getElementById('recent-posts-widget');
-            
-            if (allPosts && widgetContainer) {
-                widgetContainer.innerHTML = '';
-                // On affiche les 4 plus récents dans le widget
-                allPosts.slice(0, 4).forEach(p => {
-                    const item = `
-                        <article class="blog-card" style="max-width: 350px;">
-                            <div class="blog-card-body">
-                                <h3 class="blog-title">${p.title}</h3>
-                                <a href="blog-post.html?slug=${p.slug.current}" class="blog-read-more">Lire l'article →</a>
-                            </div>
-                        </article>
-                    `;
-                    widgetContainer.innerHTML += item;
-                });
+            if (allPosts && document.getElementById('recent-widget')) {
+                document.getElementById('recent-widget').innerHTML = allPosts.slice(0, 4).map(p => `
+                    <a href="blog-post.html#${p.slug.current}" class="recent-card" onclick="setTimeout(()=>location.reload(), 20)">
+                        <div class="recent-img-wrap"><img src="${urlFor(p.mainImage)}" class="recent-img"></div>
+                        <div class="recent-content">
+                            <h4>${p.title}</h4>
+                            <span>${new Date(p.publishedAt).toLocaleDateString()}</span>
+                        </div>
+                    </a>`).join('');
             }
 
-            // 2. Charger l'article principal
-            if (!slug) return;
-            const post = await fetchPostBySlug(slug);
-
+            // Load Content
+            const post = await fetchPostBySlug(currentSlug);
             if (post) {
-                document.title = `${post.title} | BLUECOM`;
-                document.querySelector('h1').textContent = post.title;
-                document.querySelector('.blog-cat-top').textContent = post.category || 'Article';
+                // VERIFICATION: Check if slug matches title to prevent cross-over
+                console.info(`Article Verifié: ${post.title} (#${currentSlug})`);
                 
-                const articleBody = document.querySelector('.article-body');
-                if (articleBody && post.body) {
-                    articleBody.innerHTML = ''; 
-                    const htmlContent = sanityBlockContentToHtml({
-                        blocks: post.body,
-                        projectId: SANITY_PROJECT_ID,
-                        dataset: SANITY_DATASET,
-                        serializers: {
-                            types: {
-                                image: props => `<figure><img src="${urlFor(props.node)}" style="width:100%; border-radius:8px; margin:20px 0;"/></figure>`
-                            }
-                        }
-                    });
-                    articleBody.innerHTML = htmlContent;
+                document.title = `${post.title} | BLUECOM`;
+                document.getElementById('post-title').textContent = post.title;
+                document.getElementById('post-category').textContent = post.category || 'Focus';
+                document.getElementById('post-date').textContent = new Date(post.publishedAt).toLocaleDateString('fr-FR', {day:'numeric', month:'long', year:'numeric'});
+                
+                if (post.mainImage) {
+                    document.getElementById('hero-img-wrap').innerHTML = `<img src="${urlFor(post.mainImage)}" class="hero-bg-img">`;
+                    setTimeout(() => document.querySelector('.hero-bg-img').style.transform = 'scale(1)', 100);
                 }
 
-                if (post.mainImage) {
-                    const hero = document.querySelector('.blog-hero');
-                    hero.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('${urlFor(post.mainImage)}')`;
+                if (post.body) {
+                    try {
+                        const renderer = window.sanityBlockContentToHtml || window.blockContentToHtml;
+                        const html = renderer({
+                            blocks: post.body,
+                            projectId: '0x8v5gxj',
+                            dataset: 'production',
+                            serializers: { 
+                                types: { 
+                                    image: props => `
+                                        <figure>
+                                            <img src="${urlFor(props.node)}"/>
+                                            ${props.node.caption ? `<figcaption>${props.node.caption}</figcaption>` : ''}
+                                        </figure>` 
+                                },
+                                marks: {
+                                    strong: ({children}) => `<strong>${children}</strong>`,
+                                    em: ({children}) => `<em>${children}</em>`
+                                }
+                            }
+                        });
+                        document.getElementById('post-body').innerHTML = html;
+                    } catch (e) {
+                        // Advanced fallback with basic structure preservation
+                        const fallbackText = post.body.map(b => {
+                            const text = b.children ? b.children.map(c => c.text).join('') : '';
+                            if (b.style === 'h2') return `<h2>${text}</h2>`;
+                            if (b.style === 'h3') return `<h3>${text}</h3>`;
+                            return `<p>${text}</p>`;
+                        }).join('');
+                        document.getElementById('post-body').innerHTML = fallbackText;
+                    }
                 }
             } else {
-                console.error("Article non trouvé dans Sanity pour le slug:", slug);
+                document.getElementById('post-body').innerHTML = "Désolé, cette analyse est introuvable.";
             }
         });
     </script>
