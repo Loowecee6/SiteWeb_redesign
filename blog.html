@@ -227,6 +227,56 @@
 
     <!-- Scripts -->
     <script src="js/main.js"></script>
-</body>
+    <script src="js/sanity-client.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const blogGrid = document.querySelector('.blog-grid');
+            if (!blogGrid) return;
+
+            // Afficher un loader si besoin
+            blogGrid.style.opacity = '0.5';
+
+            const posts = await fetchAllPosts();
+            
+            if (posts && posts.length > 0) {
+                blogGrid.innerHTML = ''; // On vide le statique
+                blogGrid.style.opacity = '1';
+
+                posts.forEach((post, index) => {
+                    const date = new Date(post.publishedAt).toLocaleDateString('fr-FR', {
+                        day: 'numeric',
+                        month: 'long',
+                        year: 'numeric'
+                    });
+
+                    const imageUrl = urlFor(post.mainImage);
+                    const postNumber = (index + 1).toString().padStart(2, '0');
+
+                    const articleCard = `
+                        <article class="blog-card ${index === 0 ? 'featured' : ''}">
+                            <div class="blog-card-img" style="background-image: url('${imageUrl}'); background-size: cover; background-position: center;">
+                                <div class="blog-card-img-inner">
+                                    <span class="blog-img-text">${postNumber}</span>
+                                </div>
+                            </div>
+                            <div class="blog-card-body">
+                                <div class="blog-meta">
+                                    <span class="blog-cat">${post.category || 'Article'}</span>
+                                    <span class="blog-date">${date}</span>
+                                </div>
+                                <h3 class="blog-title">${post.title}</h3>
+                                <p class="blog-excerpt">${post.excerpt || ''}</p>
+                                <a href="blog-post.html?slug=${post.slug.current}" class="blog-read-more">Lire l'article →</a>
+                            </div>
+                        </article>
+                    `;
+                    blogGrid.innerHTML += articleCard;
+                });
+            } else {
+                blogGrid.style.opacity = '1';
+                console.log("Aucun article trouvé dans Sanity, affichage du contenu statique.");
+            }
+        });
+    </script>
 
 </html>

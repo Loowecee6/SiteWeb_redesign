@@ -230,5 +230,60 @@
 
     <!-- Scripts -->
     <script src="js/main.js"></script>
+    <script src="js/sanity-client.js"></script>
+    <!-- Outil pour transformer le texte riche Sanity en HTML -->
+    <script src="https://unpkg.com/@sanity/block-content-to-html@latest/dist/block-content-to-html.min.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const slug = urlParams.get('slug');
+
+            if (!slug) {
+                console.error("Aucun slug trouvé dans l'URL");
+                return;
+            }
+
+            const post = await fetchPostBySlug(slug);
+
+            if (post) {
+                // 1. Mise à jour des textes simples
+                document.title = `${post.title} | BLUECOM Stratégies`;
+                document.querySelector('h1').textContent = post.title;
+                document.querySelector('.blog-cat-top').textContent = post.category || 'Article';
+                
+                const date = new Date(post.publishedAt).toLocaleDateString('fr-FR', {
+                    day: 'numeric',
+                    month: 'long',
+                    year: 'numeric'
+                });
+                document.querySelector('.blog-date-top').textContent = date;
+
+                // 2. Gestion du contenu riche (le corps de l'article)
+                const articleBody = document.querySelector('.article-body');
+                if (articleBody && post.body) {
+                    articleBody.innerHTML = ''; // On vide le texte de démo
+                    
+                    // Utilisation de la librairie blockContentToHtml
+                    const htmlContent = sanityBlockContentToHtml({
+                        blocks: post.body,
+                        projectId: SANITY_PROJECT_ID,
+                        dataset: SANITY_DATASET
+                    });
+                    
+                    articleBody.innerHTML = htmlContent;
+                }
+
+                // 3. Image (optionnel si vous voulez changer le hero background)
+                if (post.mainImage) {
+                    const hero = document.querySelector('.blog-hero');
+                    const imageUrl = urlFor(post.mainImage);
+                    hero.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('${imageUrl}')`;
+                    hero.style.backgroundSize = 'cover';
+                    hero.style.backgroundPosition = 'center';
+                }
+            }
+        });
+    </script>
 </body>
 </html>
