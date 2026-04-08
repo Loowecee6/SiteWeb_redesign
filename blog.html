@@ -228,41 +228,80 @@
     <!-- Scripts -->
     <script src="js/main.js"></script>
     <script src="js/sanity-client.js"></script>
+    <style>
+        .blog-card {
+            background: #fff;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            text-decoration: none !important;
+            color: inherit;
+            transition: transform 0.3s ease;
+            border: 1px solid #f0f0f0;
+        }
+        .blog-card:hover { transform: translateY(-5px); }
+        .blog-card-img {
+            width: 100%;
+            aspect-ratio: 16 / 10;
+            background-size: cover;
+            background-position: center;
+        }
+        .blog-card-body {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .blog-title {
+            font-size: 20px;
+            font-weight: 500;
+            color: var(--blue-deep);
+            margin-bottom: 15px;
+            line-height: 1.4;
+            text-decoration: none !important;
+        }
+        .blog-excerpt {
+            font-size: 15px;
+            color: var(--grey-mid);
+            margin-bottom: 20px;
+            line-height: 1.6;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .blog-read-more {
+            margin-top: auto;
+            font-weight: 700;
+            font-size: 13px;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+    </style>
     <script>
         document.addEventListener('DOMContentLoaded', async () => {
             const blogGrid = document.querySelector('.blog-grid');
             if (!blogGrid) return;
 
-            // Afficher un loader si besoin
-            blogGrid.style.opacity = '0.5';
-
             const posts = await fetchAllPosts();
             
             if (posts && posts.length > 0) {
-                blogGrid.innerHTML = ''; // On vide le statique
-                blogGrid.style.opacity = '1';
-
+                blogGrid.innerHTML = '';
                 posts.forEach((post, index) => {
                     const date = new Date(post.publishedAt).toLocaleDateString('fr-FR', {
-                        day: 'numeric',
-                        month: 'long',
-                        year: 'numeric'
+                        day: 'numeric', month: 'long', year: 'numeric'
                     });
-
                     const imageUrl = urlFor(post.mainImage);
-                    const postNumber = (index + 1).toString().padStart(2, '0');
 
                     const articleCard = `
-                        <a href="blog-post.html#${post.slug.current}" class="blog-card ${index === 0 ? 'featured' : ''}" style="text-decoration: none; color: inherit; display: flex; flex-direction: column;">
-                            <div class="blog-card-img" style="background-image: url('${imageUrl}'); background-size: cover; background-position: center;">
-                                <div class="blog-card-img-inner">
-                                    <span class="blog-img-text">${postNumber}</span>
-                                </div>
-                            </div>
+                        <a href="blog-post.html#${post.slug.current}" class="blog-card" style="text-decoration: none;">
+                            <div class="blog-card-img" style="background-image: url('${imageUrl}');"></div>
                             <div class="blog-card-body">
-                                <div class="blog-meta">
-                                    <span class="blog-cat">${post.category || 'Article'}</span>
-                                    <span class="blog-date">${date}</span>
+                                <div class="blog-meta" style="margin-bottom: 12px; font-size: 13px; display: flex; gap: 15px;">
+                                    <span style="color: var(--blue-deep); font-weight: 700; text-transform: uppercase;">${post.category || 'Focus'}</span>
+                                    <span style="color: #999;">${date}</span>
                                 </div>
                                 <h3 class="blog-title">${post.title}</h3>
                                 <p class="blog-excerpt">${post.excerpt || ''}</p>
@@ -272,9 +311,6 @@
                     `;
                     blogGrid.innerHTML += articleCard;
                 });
-            } else {
-                blogGrid.style.opacity = '1';
-                console.log("Aucun article trouvé dans Sanity, affichage du contenu statique.");
             }
         });
     </script>

@@ -539,10 +539,61 @@
                     </div>
                     <p class="section-sub">Restez informé des dernières évolutions en communication institutionnelle et leadership.</p>
                 </div>
-                <div class="blog-grid">
-                    <!-- Articles injectés par Sanity -->
-                    <div class="loading-state">Chargement des analyses...</div>
-                </div>
+                    <style>
+                        .blog-card {
+                            background: #fff;
+                            height: 100%;
+                            display: flex;
+                            flex-direction: column;
+                            text-decoration: none !important;
+                            color: inherit;
+                            transition: transform 0.3s ease;
+                            border: 1px solid #f0f0f0;
+                        }
+                        .blog-card:hover { transform: translateY(-5px); }
+                        .blog-card-img {
+                            width: 100%;
+                            aspect-ratio: 16 / 10;
+                            background-size: cover;
+                            background-position: center;
+                        }
+                        .blog-card-body {
+                            padding: 25px;
+                            flex-grow: 1;
+                            display: flex;
+                            flex-direction: column;
+                        }
+                        .blog-title {
+                            font-size: 20px;
+                            font-weight: 500; /* Medium weight */
+                            color: var(--blue-deep);
+                            margin-bottom: 15px;
+                            line-height: 1.4;
+                            text-decoration: none !important;
+                        }
+                        .blog-excerpt {
+                            font-size: 15px;
+                            color: var(--grey-mid);
+                            margin-bottom: 20px;
+                            line-height: 1.6;
+                            display: -webkit-box;
+                            -webkit-line-clamp: 3;
+                            -webkit-box-orient: vertical;
+                            overflow: hidden;
+                        }
+                        .blog-read-more {
+                            margin-top: auto;
+                            font-weight: 700;
+                            font-size: 13px;
+                            color: var(--gold);
+                            text-transform: uppercase;
+                            letter-spacing: 1px;
+                        }
+                        .blog-meta span { text-decoration: none !important; }
+                    </style>
+                    <div id="dynamic-blog-grid" class="blog-grid">
+                        <!-- Les articles seront injectés ici -->
+                    </div>
             </div>
         </section>
 
@@ -745,23 +796,16 @@
                         day: 'numeric', month: 'long', year: 'numeric'
                     });
                     const imageUrl = urlFor(post.mainImage);
-                    const postNumber = (index + 1).toString().padStart(2, '0');
-                    const slug = post.slug ? post.slug.current : '';
-
                     const articleCard = `
-                        <a href="blog-post.html#${slug}" class="blog-card ${index === 0 ? 'featured' : ''}">
-                            <div class="blog-card-img" style="background-image: url('${imageUrl}'); background-size: cover; background-position: center;">
-                                <div class="blog-card-img-inner">
-                                    <span class="blog-img-text">${postNumber}</span>
-                                </div>
-                            </div>
+                        <a href="blog-post.html#${post.slug.current}" class="blog-card" style="text-decoration: none;">
+                            <div class="blog-card-img" style="background-image: url('${imageUrl}');"></div>
                             <div class="blog-card-body">
-                                <div class="blog-meta">
-                                    <span class="blog-cat">${post.category || 'Expertise'}</span>
-                                    <span class="blog-date">${date}</span>
+                                <div class="blog-meta" style="margin-bottom: 12px; font-size: 13px; color: var(--grey-mid); display: flex; gap: 15px;">
+                                    <span style="color: var(--blue-deep); font-weight: 700; text-transform: uppercase;">${post.category || 'Focus'}</span>
+                                    <span>${date}</span>
                                 </div>
-                                <h3 class="blog-title">${post.title || 'Analyse Bluecom'}</h3>
-                                <p class="blog-excerpt">${post.excerpt || 'Découvrez notre dernière analyse stratégique pour le continent africain.'}</p>
+                                <h3 class="blog-title">${post.title}</h3>
+                                <p class="blog-excerpt">${post.excerpt || ''}</p>
                                 <span class="blog-read-more">Lire l'article →</span>
                             </div>
                         </a>

@@ -31,39 +31,47 @@
 
         /* HERO EDITORIAL */
         .article-hero {
-            position: relative; min-height: 70vh; display: flex; align-items: center; justify-content: center;
-            background: var(--blue); color: #fff; overflow: hidden; padding: 100px 20px;
+            position: relative; min-height: 85vh; display: flex; align-items: center; justify-content: center;
+            background: var(--blue); color: #fff; overflow: hidden; padding: 120px 20px;
         }
         .hero-bg-img {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            object-fit: cover; opacity: 0.4; transform: scale(1.05); transition: transform 2s var(--transition);
+            object-fit: cover; opacity: 0.3;
         }
         .hero-overlay {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(to bottom, rgba(0,33,71,0.95), rgba(0,33,71,0.7));
+            background: linear-gradient(to bottom, rgba(0,33,71,0.5), rgba(0,33,71,0.9));
         }
-        .hero-content { position: relative; z-index: 10; max-width: 900px; text-align: center; }
+        .hero-content { 
+            position: relative; z-index: 10; width: 100%; max-width: 1400px;
+            display: flex; flex-direction: column; align-items: center; text-align: center;
+        }
         
         .cat-badge {
-            display: inline-block; padding: 8px 20px; background: var(--gold); color: var(--blue);
+            display: block; width: fit-content; padding: 10px 24px; 
+            background: var(--gold); color: var(--blue);
             font-weight: 800; font-size: 11px; text-transform: uppercase; border-radius: 2px;
-            margin-bottom: 30px; letter-spacing: 2px; transform: translateY(20px); opacity: 0;
+            letter-spacing: 2px; margin-bottom: 40px;
+            transform: translateY(20px); opacity: 0;
             animation: slideIn 0.8s var(--transition) forwards;
         }
         
         .article-title {
-            font-size: clamp(34px, 6vw, 64px); line-height: 1.1; font-weight: 800;
-            margin-bottom: 40px; text-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            font-size: 64px; /* Équivalent à 48pt */
+            line-height: 1.1; font-weight: 800; color: #fff;
+            margin-bottom: 50px; text-shadow: 0 10px 40px rgba(0,0,0,0.4);
+            max-width: 1200px; width: 100%;
             transform: translateY(30px); opacity: 0;
             animation: slideIn 0.8s var(--transition) 0.2s forwards;
         }
         
         .article-meta-header {
-            display: flex; justify-content: center; align-items: center; gap: 30px;
+            display: flex; justify-content: center; align-items: center; gap: 20px;
             font-weight: 500; font-size: 14px; color: var(--gold);
             transform: translateY(20px); opacity: 0;
             animation: slideIn 0.8s var(--transition) 0.4s forwards;
         }
+        .meta-sep { width: 5px; height: 5px; background: var(--gold); border-radius: 50%; opacity: 0.6; }
 
         /* ARTICLE LAYOUT */
         .article-container { 
@@ -72,25 +80,31 @@
         }
 
         .article-main-content {
-            font-size: 21px; line-height: 1.8; color: #333;
+            font-size: 18px; /* Restauré de l'étape précédente */
+            line-height: 1.75;
+            color: #333;
             letter-spacing: -0.01em;
         }
         
         /* Typography Richness */
         .editorial-body h2 { 
-            font-size: 38px; color: var(--blue); margin: 80px 0 30px; font-weight: 800; 
-            letter-spacing: -1px; position: relative;
+            font-size: 30px;
+            color: var(--blue); margin: 60px 0 25px; font-weight: 800; 
+            letter-spacing: -0.5px; position: relative;
         }
         .editorial-body h2::before {
             content: ''; position: absolute; left: -40px; top: 50%; width: 20px; height: 2px; background: var(--gold);
         }
-        .editorial-body h3 { font-size: 28px; color: var(--blue); margin: 50px 0 20px; font-weight: 700; }
+        .editorial-body h3 { 
+            font-size: 24px;
+            color: var(--blue); margin: 40px 0 20px; font-weight: 700; 
+        }
         .editorial-body p { margin-bottom: 35px; }
         .editorial-body strong { color: #000; font-weight: 700; }
         
         .editorial-body blockquote {
-            margin: 60px 0; padding: 40px 60px; background: #f8f9fa;
-            border-left: 6px solid var(--gold); font-size: 26px; font-style: italic;
+            margin: 50px 0; padding: 40px 50px; background: #f8f9fa;
+            border-left: 6px solid var(--gold); font-size: 22px; font-style: italic;
             color: var(--blue); font-weight: 500; line-height: 1.5;
             position: relative;
         }
@@ -99,34 +113,23 @@
             color: var(--gold); opacity: 0.15; font-family: serif;
         }
 
-        .editorial-body figure { margin: 60px 0; text-align: center; }
-        .editorial-body figure img { width: 100%; border-radius: 20px; box-shadow: 0 40px 100px rgba(0,0,0,0.12); }
-        .editorial-body figcaption { margin-top: 15px; font-size: 14px; color: var(--text-light); font-style: italic; }
-
-        /* SIDEBAR PREMIUM */
-        .sidebar { position: sticky; top: 120px; align-self: start; }
+        /* SIDEBAR */
+        .sidebar { position: sticky; top: 120px; height: fit-content; }
         .sidebar-title { 
-            font-size: 14px; text-transform: uppercase; letter-spacing: 2px; font-weight: 800;
-            color: var(--gold); margin-bottom: 40px; display: flex; align-items: center; gap: 15px;
+            font-size: 14px; text-transform: uppercase; letter-spacing: 2px; border-bottom: 2px solid var(--gold);
+            display: inline-block; margin-bottom: 30px; font-weight: 700;
         }
-        .sidebar-title::after { content: ''; flex: 1; height: 1px; background: #eee; }
+        .recent-stack { display: flex; flex-direction: column; gap: 30px; }
+        .recent-card { display: flex; gap: 15px; text-decoration: none; align-items: center; }
+        .recent-img-wrap { width: 80px; height: 80px; flex-shrink: 0; border-radius: 4px; overflow: hidden; }
+        .recent-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s var(--transition); }
+        .recent-card:hover .recent-img { transform: scale(1.1); }
+        .recent-content h4 { font-size: 15px; color: var(--blue); line-height: 1.4; margin: 0 0 5px; }
+        .recent-content span { font-size: 12px; color: #999; }
 
-        .recent-card {
-            display: flex; gap: 20px; text-decoration: none; color: inherit; margin-bottom: 35px;
-            group:hover .card-img { transform: scale(1.05); }
-        }
-        .recent-img-wrap { width: 80px; height: 80px; overflow: hidden; border-radius: 12px; flex-shrink: 0; background: #eee; }
-        .recent-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s var(--transition); }
-        .recent-content h4 { font-size: 16px; margin: 0 0 8px 0; font-weight: 700; line-height: 1.4; color: var(--blue); }
-        .recent-content span { font-size: 12px; color: var(--text-light); }
-
-        /* FOOTER */
-        footer { background: var(--blue); color: #fff; padding: 120px 0 60px; }
-        .footer-inner { 
-            display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 100px;
-            padding-bottom: 80px; border-bottom: 1px solid rgba(255,255,255,0.08);
-        }
-        .footer-brand img { height: 50px; filter: brightness(0) invert(1); margin-bottom: 30px; }
+        /* FOOTER SIMPLIFIED */
+        footer { background: var(--blue); padding: 80px 0; color: #fff; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 60px; }
         .footer-brand p { opacity: 0.6; max-width: 400px; font-size: 16px; line-height: 1.8; }
         .footer-links h4 { color: var(--gold); text-transform: uppercase; letter-spacing: 2px; font-size: 13px; margin-bottom: 30px; }
         .footer-links ul { list-style: none; padding: 0; margin: 0; }
@@ -162,11 +165,9 @@
         <div id="hero-img-wrap"></div>
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <span class="cat-badge" id="post-category">Expertise</span>
+            <span class="cat-badge" id="post-category">Focus</span>
             <h1 class="article-title" id="post-title">Analyse en cours...</h1>
-            <div class="article-meta-header">
-                <span>PAR BLUECOM ADVISORY</span>
-                <span style="opacity:0.3">/</span>
+            <div class="article-meta-header" id="post-meta">
                 <span id="post-date">...</span>
             </div>
         </div>
@@ -182,40 +183,39 @@
         <aside class="sidebar">
             <div class="sidebar-title">Analyses Récentes</div>
             <div id="recent-widget" class="recent-stack"></div>
-            
-            <div style="margin-top: 60px; padding: 40px; background: #f8f9fa; border-radius: 20px; text-align: center;">
-                <h4 style="color: var(--blue); margin-top: 0;">Besoin d'aller plus loin ?</h4>
-                <p style="font-size: 15px; color: var(--text-light);">Nos experts vous accompagnent dans votre transformation.</p>
-                <a href="index.html#contact" style="display: inline-block; margin-top: 20px; padding: 12px 25px; background: var(--blue); color: #fff; text-decoration: none; border-radius: 5px; font-weight: 700; font-size: 14px;">Contacter l'Agence</a>
-            </div>
         </aside>
     </main>
 
     <footer>
         <div class="container">
-            <div class="footer-inner">
+            <div class="footer-grid">
                 <div class="footer-brand">
-                    <img src="assets/logo BLUECOM_fond_blanc.png" alt="BLUECOM">
-                    <p>Le partenaire stratégique des leaders africains. Excellence, Influence et Vision.</p>
+                    <img src="assets/logo BLUECOM_fond_blanc.png" alt="BLUECOM" height="40" style="filter: brightness(0) invert(1); margin-bottom: 30px;">
+                    <p>BLUECOM Stratégies est votre partenaire de confiance pour la communication institutionnelle et le conseil aux dirigeants en Afrique de l'Ouest.</p>
                 </div>
                 <div class="footer-links">
-                    <h4>Ressources</h4>
+                    <h4>Navigation</h4>
                     <ul>
                         <li><a href="index.html">Accueil</a></li>
-                        <li><a href="about.html">Expertises</a></li>
-                        <li><a href="blog.html">Insights</a></li>
+                        <li><a href="about.html">L'Agence</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Expertises</h4>
+                    <ul>
+                        <li><a href="services.html">Stratégie</a></li>
+                        <li><a href="services.html">Gestion de Crise</a></li>
+                        <li><a href="services.html">Média Training</a></li>
                     </ul>
                 </div>
                 <div class="footer-links">
                     <h4>Contact</h4>
                     <ul>
-                        <li><a href="mailto:contact@bluecom.pro">contact@bluecom.pro</a></li>
                         <li>Dakar, Sénégal</li>
+                        <li><a href="mailto:contact@bluecom.sn">contact@bluecom.sn</a></li>
                     </ul>
                 </div>
-            </div>
-            <div style="padding-top: 40px; font-size: 13px; opacity: 0.4; text-align: center;">
-                © 2026 BLUECOM Stratégies. Tous droits réservés.
             </div>
         </div>
     </footer>
@@ -251,17 +251,23 @@
             // Load Content
             const post = await fetchPostBySlug(currentSlug);
             if (post) {
-                // VERIFICATION: Check if slug matches title to prevent cross-over
-                console.info(`Article Verifié: ${post.title} (#${currentSlug})`);
+                const date = new Date(post.publishedAt).toLocaleDateString('fr-FR', {
+                    day: 'numeric', month: 'long', year: 'numeric'
+                });
                 
                 document.title = `${post.title} | BLUECOM`;
                 document.getElementById('post-title').textContent = post.title;
                 document.getElementById('post-category').textContent = post.category || 'Focus';
-                document.getElementById('post-date').textContent = new Date(post.publishedAt).toLocaleDateString('fr-FR', {day:'numeric', month:'long', year:'numeric'});
+                
+                // Article Meta - Consolidated row
+                document.getElementById('post-meta').innerHTML = `
+                    Par ${post.authorName || 'La Rédaction'} 
+                    <div class="meta-sep"></div> 
+                    ${date}
+                `;
                 
                 if (post.mainImage) {
                     document.getElementById('hero-img-wrap').innerHTML = `<img src="${urlFor(post.mainImage)}" class="hero-bg-img">`;
-                    setTimeout(() => document.querySelector('.hero-bg-img').style.transform = 'scale(1)', 100);
                 }
 
                 if (post.body) {
@@ -270,37 +276,18 @@
                         const html = renderer({
                             blocks: post.body,
                             projectId: '0x8v5gxj',
-                            dataset: 'production',
-                            serializers: { 
-                                types: { 
-                                    image: props => `
-                                        <figure>
-                                            <img src="${urlFor(props.node)}"/>
-                                            ${props.node.caption ? `<figcaption>${props.node.caption}</figcaption>` : ''}
-                                        </figure>` 
-                                },
-                                marks: {
-                                    strong: ({children}) => `<strong>${children}</strong>`,
-                                    em: ({children}) => `<em>${children}</em>`
-                                }
-                            }
+                            dataset: 'production'
                         });
                         document.getElementById('post-body').innerHTML = html;
                     } catch (e) {
-                        // Advanced fallback with basic structure preservation
-                        const fallbackText = post.body.map(b => {
-                            const text = b.children ? b.children.map(c => c.text).join('') : '';
-                            if (b.style === 'h2') return `<h2>${text}</h2>`;
-                            if (b.style === 'h3') return `<h3>${text}</h3>`;
-                            return `<p>${text}</p>`;
-                        }).join('');
-                        document.getElementById('post-body').innerHTML = fallbackText;
+                        // Fallback simple
+                        document.getElementById('post-body').innerHTML = post.body.map(b => `<p>${b.children ? b.children.map(c => c.text).join('') : ''}</p>`).join('');
                     }
                 }
-            } else {
-                document.getElementById('post-body').innerHTML = "Désolé, cette analyse est introuvable.";
             }
         });
+        
+        window.addEventListener('hashchange', () => location.reload());
     </script>
 </body>
 </html>
