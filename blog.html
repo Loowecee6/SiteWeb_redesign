@@ -20,6 +20,20 @@
     <link rel="icon" type="image/png" href="/assets/favicon.png">
     <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Blog",
+      "name": "Blog & Insights | BLUECOM Stratégies",
+      "url": "https://bluecom-strategies.sn/blog.html",
+      "publisher": {
+        "@type": "Organization",
+        "name": "BLUECOM Stratégies"
+      }
+    }
+    </script>
+
     <!-- Fontes - UNIFIED STACK (Cormorant + Outfit) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -58,6 +72,16 @@
 
     <!-- Contenu Principal -->
     <main id="main-content">
+        <!-- Breadcrumb -->
+        <div class="container">
+            <nav aria-label="Fil d'Ariane" class="breadcrumb">
+                <ol>
+                    <li><a href="index.html">Accueil</a></li>
+                    <li aria-current="page">Blog & Insights</li>
+                </ol>
+            </nav>
+        </div>
+
         <!-- BLOG HERO -->
         <section class="blog-hero">
             <div class="container">
@@ -242,7 +266,7 @@
     </button>
 
     <!-- Scripts -->
-    <script src="js/main.js"></script>
+    <script src="js/main.js" defer></script>
     <script src="js/sanity-client.js" defer></script>
 </body>
 

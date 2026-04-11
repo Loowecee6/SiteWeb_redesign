@@ -20,6 +20,17 @@
     <link rel="icon" type="image/png" href="/assets/favicon.png">
     <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "Portfolio | BLUECOM Stratégies",
+      "url": "https://bluecom-strategies.sn/portfolio.html",
+      "description": "Études de cas et réalisations en communication institutionnelle."
+    }
+    </script>
+
     <!-- Fontes - UNIFIED STACK (Cormorant + Outfit) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -58,6 +69,16 @@
 
     <!-- Contenu Principal -->
     <main id="main-content">
+        <!-- Breadcrumb -->
+        <div class="container">
+            <nav aria-label="Fil d'Ariane" class="breadcrumb">
+                <ol>
+                    <li><a href="index.html">Accueil</a></li>
+                    <li aria-current="page">Réalisations</li>
+                </ol>
+            </nav>
+        </div>
+
         <!-- PORTFOLIO HERO -->
         <section class="portfolio-hero">
             <div class="container">
@@ -239,6 +260,5 @@
     </button>
 
     <!-- Scripts -->
-    <script src="js/main.js"></script>
-</body>
+    <script src="js/main.js" defer></script>
 </html>

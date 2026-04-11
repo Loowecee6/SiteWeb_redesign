@@ -20,6 +20,26 @@
     <link rel="icon" type="image/png" href="/assets/favicon.png">
     <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Nos Expertises | BLUECOM Stratégies",
+      "url": "https://bluecom-strategies.sn/services.html",
+      "provider": {
+        "@type": "Organization",
+        "name": "BLUECOM Stratégies",
+        "url": "https://bluecom-strategies.sn"
+      },
+      "serviceType": "Communication institutionnelle",
+      "areaServed": {
+        "@type": "Country",
+        "name": "Sénégal"
+      }
+    }
+    </script>
+
     <!-- Fontes - UNIFIED STACK (Cormorant + Outfit) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -58,6 +78,16 @@
 
     <!-- Contenu Principal -->
     <main id="main-content">
+        <!-- Breadcrumb -->
+        <div class="container">
+            <nav aria-label="Fil d'Ariane" class="breadcrumb">
+                <ol>
+                    <li><a href="index.html">Accueil</a></li>
+                    <li aria-current="page">Expertises</li>
+                </ol>
+            </nav>
+        </div>
+
         <!-- CTA SERVICES -->
         <section class="services-cta reveal">
             <div class="container">
@@ -450,7 +480,7 @@
     </button>
 
     <!-- Scripts -->
-    <script src="js/main.js"></script>
+    <script src="js/main.js" defer></script>
 </body>
 
 </html>

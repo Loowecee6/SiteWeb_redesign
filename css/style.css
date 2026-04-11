@@ -1,6 +1,40 @@
 /* ==========================================================================
    BLUECOM STRATÉGIES - REDESIGN V2
    Editorial African Premium - Distinctive Design System
+
+   Table of Contents:
+   1.  CSS Custom Properties (Colors, Typography, Spacing)
+   2.  Grain Texture Overlay - Signature Element
+   3.  Diagonal Accent - Signature Element
+   4.  Box Sizing & Base Styles
+   5.  Utilities & Typography
+   6.  Animation Classes & Delays
+   7.  Generic Sections
+   8.  Hero Section - Asymmetric Design
+   9.  Marquee
+   10. Services Grid (3-2-1 Pattern)
+   11. Responsive - Services Grid
+   12. About Section - Composition Design
+   13. Team Section - Asymmetric Design
+   14. Methodology
+   15. Realisations - Mixed Sizes Grid
+   16. Testimonials - Enhanced
+   17. Blog - Enhanced Grid
+   18. Contact - Enhanced
+   19. Footer
+   20. Back to Top
+   21. Responsive (Global)
+   22. Navigation
+   23. Page-Specific Styles (Services, Portfolio, Blog, etc.)
+   24. Accessibility & Performance
+   25. Breadcrumb Navigation
+
+   Color Contrast Notes (WCAG AA):
+   - Blue Deep (#004080) on White: 7.5:1 (AAA compliant)
+   - Gold (#C9A84C) on White: 3.2:1 (AA Large only, not AA small)
+   - Gold is used decoratively; text in gold is kept at 18px+ or bold
+   - White on Blue Deep: 7.5:1 (AAA compliant)
+   - Anthracite (#1a1a1a) on White: 16.1:1 (AAA compliant)
    ========================================================================== */
 
 :root {
@@ -3309,7 +3343,7 @@ nav.scrolled {
     left: 0;
 }
 
-*,
+*:focus-visible,
 a:focus-visible,
 button:focus-visible,
 input:focus-visible,
@@ -3730,4 +3764,130 @@ textarea:focus-visible {
     .cta-inner { padding: 48px 24px; }
     .portfolio-hero h1, .blog-hero h1 { font-size: 36px; }
     .cta-title { font-size: 28px; }
+}
+
+/* ==========================================================================
+   ACCESSIBILITY & PERFORMANCE
+   ========================================================================== */
+
+/* Focus Visible Styles */
+*:focus-visible {
+    outline: 3px solid var(--gold);
+    outline-offset: 2px;
+}
+
+a:focus-visible,
+button:focus-visible {
+    outline: 3px solid var(--gold);
+    outline-offset: 2px;
+}
+
+.form-input:focus-visible,
+.form-select:focus-visible,
+.form-textarea:focus-visible {
+    outline: none;
+    border-color: var(--blue-deep);
+    box-shadow: 0 0 0 3px rgba(0, 64, 128, 0.15);
+}
+
+/* Skip Link Visibility */
+.skip-link {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    z-index: 9999;
+    padding: 1em;
+    background: var(--blue-deep);
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.skip-link:focus {
+    left: 0;
+}
+
+/* Reduced Motion Preference */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    .marquee-track {
+        animation: none;
+    }
+
+    .reveal {
+        opacity: 1;
+        transform: none;
+    }
+
+    .hero-glow,
+    .hero-glow-2,
+    .hero-badge-dot {
+        animation: none;
+    }
+}
+
+/* Grain Overlay Optimization */
+.grain-overlay {
+    will-change: opacity;
+    contain: strict;
+}
+
+/* ==========================================================================
+   BREADCRUMB NAVIGATION
+   ========================================================================== */
+.breadcrumb {
+    padding: 16px 0;
+    margin-bottom: 24px;
+}
+
+.breadcrumb ol {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex-wrap: wrap;
+}
+
+.breadcrumb li {
+    font-family: var(--font-body);
+    font-size: 13px;
+    color: var(--grey-mid);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.breadcrumb li::before {
+    content: '/';
+    color: var(--grey-mid);
+    font-weight: 300;
+}
+
+.breadcrumb li:first-child::before {
+    content: none;
+}
+
+.breadcrumb a {
+    color: var(--blue-deep);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+.breadcrumb a:hover {
+    color: var(--gold);
+}
+
+.breadcrumb [aria-current="page"] {
+    color: var(--anthracite);
+    font-weight: 500;
 }

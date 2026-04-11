@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page non trouvée | BLUECOM Stratégies</title>
+    <meta name="description" content="La page que vous recherchez n'existe pas ou a été déplacée. Retournez à l'accueil pour continuer votre navigation.">
+    <link rel="canonical" href="https://bluecom-strategies.sn/404.html">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Page non trouvée | BLUECOM Stratégies">
+    <meta property="og:description" content="La page que vous recherchez n'existe pas ou a été déplacée.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://bluecom-strategies.sn/404.html">
+    <meta property="og:image" content="https://bluecom-strategies.sn/assets/og-image.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/assets/favicon.png">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+
+    <!-- Fontes - UNIFIED STACK (Cormorant + Outfit) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .error-page {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--blue-dark);
+            text-align: center;
+            padding: 80px 24px;
+        }
+        .error-content {
+            max-width: 600px;
+        }
+        .error-code {
+            font-family: var(--font-display);
+            font-size: 140px;
+            font-weight: 700;
+            color: var(--gold);
+            line-height: 1;
+            margin-bottom: 20px;
+        }
+        .error-title {
+            font-family: var(--font-display);
+            font-size: 36px;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 20px;
+        }
+        .error-desc {
+            font-family: var(--font-body);
+            font-size: 17px;
+            color: rgba(255, 255, 255, 0.65);
+            line-height: 1.7;
+            margin-bottom: 40px;
+        }
+        .error-actions {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .error-actions .btn-primary {
+            background: var(--gold);
+            color: var(--blue-dark);
+            border-color: var(--gold);
+        }
+        .error-actions .btn-primary:hover {
+            background: var(--white);
+            color: var(--blue-dark);
+            border-color: var(--white);
+        }
+        .error-actions .btn-secondary {
+            color: var(--white);
+            border-color: rgba(255, 255, 255, 0.25);
+        }
+        .error-actions .btn-secondary:hover {
+            background: var(--white);
+            color: var(--blue-deep);
+            border-color: var(--white);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Skip Navigation Link -->
+    <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+
+    <!-- Grain Texture Overlay -->
+    <div class="grain-overlay"></div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-inner container">
+            <a href="index.html" class="logo" aria-label="BLUECOM Stratégies - Accueil">
+                <img src="assets/logo BLUECOM_fond_blanc.png" alt="BLUECOM Logo" width="180" height="48">
+            </a>
+            <button id="menuToggle" class="menu-toggle" aria-label="Ouvrir le menu de navigation" aria-expanded="false" aria-controls="navLinks">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul id="navLinks" class="nav-links">
+                <li><a href="about.html">L'Agence</a></li>
+                <li><a href="services.html">Expertises</a></li>
+                <li><a href="methodology.html">Méthodologie</a></li>
+                <li><a href="portfolio.html">Réalisations</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="index.html#contact" class="nav-cta">Prendre RDV</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Error Content -->
+    <main id="main-content" class="error-page">
+        <div class="error-content">
+            <div class="error-code">404</div>
+            <h1 class="error-title">Page non trouvée</h1>
+            <p class="error-desc">La page que vous recherchez n'existe pas ou a été déplacée. Vérifiez l'URL ou retournez à l'accueil pour continuer votre navigation.</p>
+            <div class="error-actions">
+                <a href="index.html" class="btn-primary">Retour à l'accueil <span class="btn-arrow">→</span></a>
+                <a href="services.html" class="btn-secondary">Nos Expertises</a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Scripts -->
+    <script src="js/main.js" defer></script>
+</body>
+
+</html>

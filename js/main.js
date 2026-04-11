@@ -15,6 +15,12 @@ document.addEventListener('DOMContentLoaded', () => {
             const open = navLinks.classList.toggle('open');
             toggle.setAttribute('aria-expanded', open);
         });
+        toggle.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                toggle.click();
+            }
+        });
         navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
             navLinks.classList.remove('open');
             toggle.setAttribute('aria-expanded', 'false');
@@ -52,11 +58,15 @@ document.addEventListener('DOMContentLoaded', () => {
             message: { el: document.getElementById('message'), err: document.getElementById('messageError'), validate: v => v.trim().length >= 20 },
             privacy: { el: document.getElementById('privacy'), err: document.getElementById('privacyError'), validate: v => v }
         };
+        const setFieldState = (el, err, isValid) => {
+            el.classList.toggle('error', !isValid);
+            err.classList.toggle('visible', !isValid);
+            el.setAttribute('aria-invalid', (!isValid).toString());
+        };
         Object.values(fields).forEach(({ el, err, validate }) => {
             el.addEventListener(el.type === 'checkbox' ? 'change' : 'blur', () => {
                 const val = el.type === 'checkbox' ? el.checked : el.value;
-                el.classList.toggle('error', !validate(val));
-                err.classList.toggle('visible', !validate(val));
+                setFieldState(el, err, validate(val));
             });
         });
         form.addEventListener('submit', e => {
@@ -65,8 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
             Object.values(fields).forEach(({ el, err, validate }) => {
                 const val = el.type === 'checkbox' ? el.checked : el.value;
                 const valid = validate(val);
-                el.classList.toggle('error', !valid);
-                err.classList.toggle('visible', !valid);
+                setFieldState(el, err, valid);
                 if (!valid) ok = false;
             });
             if (ok) {
@@ -83,6 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     Object.values(fields).forEach(({ el, err }) => {
                         el.classList.remove('error');
                         err.classList.remove('visible');
+                        el.setAttribute('aria-invalid', 'false');
                     });
                     setTimeout(() => { if (successMsg) successMsg.classList.remove('visible'); }, 6000);
                 }, 1500);
