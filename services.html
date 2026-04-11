@@ -5,15 +5,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nos Expertises | BLUECOM Stratégies</title>
-    <meta name="description"
-        content="Découvrez les 6 expertises de BLUECOM : Stratégie & Conseil, Media Training, Gestion de Crise, Webmarketing, Relations Publiques, Production Audiovisuelle.">
+    <meta name="description" content="Découvrez les 6 expertises de BLUECOM : Stratégie & Conseil, Media Training, Gestion de Crise, Webmarketing, Relations Publiques, Production Audiovisuelle.">
+    <link rel="canonical" href="https://bluecom-strategies.sn/services.html">
 
-    <!-- Fontes -->
+    <!-- Open Graph -->
+    <meta property="og:title" content="Nos Expertises | BLUECOM Stratégies">
+    <meta property="og:description" content="Découvrez les 6 expertises de BLUECOM Stratégies.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://bluecom-strategies.sn/services.html">
+    <meta property="og:image" content="https://bluecom-strategies.sn/assets/og-image.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/assets/favicon.png">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+
+    <!-- Fontes - UNIFIED STACK (Cormorant + Outfit) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Styles -->
     <link rel="stylesheet" href="css/style.css">
@@ -21,19 +31,22 @@
 
 <body>
 
+    <!-- Skip Navigation Link -->
+    <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+
     <!-- Navigation -->
     <nav id="navbar">
         <div class="nav-inner container">
             <a href="index.html" class="logo" aria-label="BLUECOM Stratégies - Accueil">
-                <img src="assets/logo BLUECOM_fond_blanc.png" alt="BLUECOM Logo" height="48">
+                <img src="assets/logo BLUECOM_fond_blanc.png" alt="BLUECOM Logo" width="180" height="48">
             </a>
-            <button id="menuToggle" class="menu-toggle" aria-label="Ouvrir le menu" aria-expanded="false">
+            <button id="menuToggle" class="menu-toggle" aria-label="Ouvrir le menu de navigation" aria-expanded="false" aria-controls="navLinks">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
             <ul id="navLinks" class="nav-links">
-                <li><a href="about.html">Notre ADN</a></li>
+                <li><a href="about.html">L'Agence</a></li>
                 <li><a href="services.html" class="nav-cta">Expertises</a></li>
                 <li><a href="methodology.html">Méthodologie</a></li>
                 <li><a href="portfolio.html">Réalisations</a></li>
@@ -44,21 +57,21 @@
     </nav>
 
     <!-- Contenu Principal -->
-    <main>
+    <main id="main-content">
         <!-- CTA SERVICES -->
-        <section class="services-cta reveal" style="background: var(--blue-deep); padding: 100px 0; position: relative; text-align: center;">
-            <div class="container" style="max-width: 900px; margin: 0 auto;">
-                <div class="section-label" style="justify-content: center; margin-bottom: 24px;">
+        <section class="services-cta reveal">
+            <div class="container">
+                <div class="section-label">
                     <div class="section-label-line"></div>
-                    <span style="color: var(--gold);">Expertises</span>
+                    <span>Expertises</span>
                 </div>
-                <h2 class="section-title" style="font-family: var(--font-display); font-size: 48px; font-weight: 600; color: var(--white); line-height: 1.2; margin-bottom: 24px;">
-                    6 piliers d'excellence<br>pour votre <em style="color: var(--gold);">leadership</em>
+                <h2 class="section-title">
+                    6 piliers d'excellence<br>pour votre <em>leadership</em>
                 </h2>
-                <p style="color: rgba(255, 255, 255, 0.8); font-family: var(--font-body); font-size: 17px; line-height: 1.7; margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto;">
+                <p class="section-sub">
                     Des solutions de communication sur mesure, de la stratégie à la mise en œuvre opérationnelle, pour renforcer votre influence et protéger votre réputation.
                 </p>
-                <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                <div class="services-cta-actions">
                     <a href="index.html#contact" class="btn-primary">Prendre rendez-vous <span class="btn-arrow">→</span></a>
                     <a href="#service-strategy" class="btn-secondary">Découvrir nos expertises</a>
                 </div>
@@ -75,7 +88,7 @@
                             <span>01 — Stratégie & Conseil</span>
                         </div>
                         <h2 class="section-title">Définir la vision<br>et le <em>positionnement</em></h2>
-                        <p style="color: var(--grey-mid); line-height: 1.8; margin-bottom: 32px; max-width: 540px;">
+                        <p class="service-detail-desc">
                             Nous accompagnons les dirigeants et organisations dans l'élaboration de leur plateforme stratégique de communication. De l'audit initial à la formulation de recommandations opérationnelles, nous construisons avec vous les fondations d'une communication impactante et cohérente.
                         </p>
                         <div class="service-features">
@@ -92,7 +105,7 @@
                                 <p>Élaboration d'une feuille de route détaillée alignée sur vos objectifs business.</p>
                             </div>
                             <div class="feature-item">
-                                <h4>Benchmark et study de marché</h4>
+                                <h4>Benchmark et étude de marché</h4>
                                 <p>Analyse comparative de votre positionnement face à la concurrence et aux tendances du secteur.</p>
                             </div>
                         </div>
@@ -115,7 +128,7 @@
         </section>
 
         <!-- MEDIA TRAINING -->
-        <section id="service-media" class="service-detail reveal" style="background: var(--grey-light);">
+        <section id="service-media" class="service-detail reveal">
             <div class="container">
                 <div class="service-detail-grid">
                     <div class="service-detail-visual">
@@ -138,7 +151,7 @@
                             <span>02 — Media Training</span>
                         </div>
                         <h2 class="section-title">Maîtriser l'art<br>de la <em>médiatisation</em></h2>
-                        <p style="color: var(--grey-mid); line-height: 1.8; margin-bottom: 32px; max-width: 540px;">
+                        <p class="service-detail-desc">
                             Interviewez en toute confiance, que ce soit en presse écrite, à la radio, à la télévision ou dans les médias digitaux. Nos sessions de media training sont conçues sur mesure pour les dirigeants et porte-paroles d'entreprise.
                         </p>
                         <div class="service-features">
@@ -148,7 +161,7 @@
                             </div>
                             <div class="feature-item">
                                 <h4>Messages clés et structure narrative</h4>
-                                <p>Apprenez à formuler des messages percutants et àstructurer votre pensée pour un impact maximal.</p>
+                                <p>Apprenez à formuler des messages percutants et à structurer votre pensée pour un impact maximal.</p>
                             </div>
                             <div class="feature-item">
                                 <h4>Gestion du stress et de la posture</h4>
@@ -174,7 +187,7 @@
                             <span>03 — Gestion de Crise</span>
                         </div>
                         <h2 class="section-title">Protéger votre réputation<br>en période <em>sensible</em></h2>
-                        <p style="color: var(--grey-mid); line-height: 1.8; margin-bottom: 32px; max-width: 540px;">
+                        <p class="service-detail-desc">
                             Face à une crise médiatique, chaque minute compte. Nous vous accompagnons en amont pour anticiper les risques et en phase aiguë pour piloter la communication et restaurer la confiance.
                         </p>
                         <div class="service-features">
@@ -216,7 +229,7 @@
         </section>
 
         <!-- WEBMARKETING -->
-        <section id="service-digital" class="service-detail reveal" style="background: var(--grey-light);">
+        <section id="service-digital" class="service-detail reveal">
             <div class="container">
                 <div class="service-detail-grid">
                     <div class="service-detail-visual">
@@ -240,7 +253,7 @@
                             <span>04 — Webmarketing</span>
                         </div>
                         <h2 class="section-title">Renforcer votre présence<br>digitale et <em>sociale</em></h2>
-                        <p style="color: var(--grey-mid); line-height: 1.8; margin-bottom: 32px; max-width: 540px;">
+                        <p class="service-detail-desc">
                             Dans un monde de plus en plus digital, votre présence en ligne est cruciale. Nous vous aidons à construire une expérience digitale cohérente, performante et optimisée pour convertir.
                         </p>
                         <div class="service-features">
@@ -276,13 +289,13 @@
                             <span>05 — Relations Publiques</span>
                         </div>
                         <h2 class="section-title">Influencer et convaincre<br>vos <em>parties prenantes</em></h2>
-                        <p style="color: var(--grey-mid); line-height: 1.8; margin-bottom: 32px; max-width: 540px;">
-                            Développez votre réseau d'influence et your relations avec les décideurs, médias et leaders d'opinion. Nos consultants vous aident à construire et activer des stratégies de relations publiques win-win.
+                        <p class="service-detail-desc">
+                            Développez votre réseau d'influence et vos relations avec les décideurs, médias et leaders d'opinion. Nos consultants vous aident à construire et activer des stratégies de relations publiques win-win.
                         </p>
                         <div class="service-features">
                             <div class="feature-item">
                                 <h4>Cartographie d'influence</h4>
-                                <p>Identification des acteurs clés qui comptent dans votre écosystème et leurs relat ions.</p>
+                                <p>Identification des acteurs clés qui comptent dans votre écosystème et leurs relations.</p>
                             </div>
                             <div class="feature-item">
                                 <h4>Lobbying institutionnel</h4>
@@ -319,7 +332,7 @@
         </section>
 
         <!-- PRODUCTION AUDIOVISUELLE -->
-        <section id="service-video" class="service-detail reveal" style="background: var(--grey-light);">
+        <section id="service-video" class="service-detail reveal">
             <div class="container">
                 <div class="service-detail-grid">
                     <div class="service-detail-visual">
@@ -342,7 +355,7 @@
                             <span>06 — Production Audiovisuelle</span>
                         </div>
                         <h2 class="section-title">Raconter votre histoire<br>en <em>images</em></h2>
-                        <p style="color: var(--grey-mid); line-height: 1.8; margin-bottom: 32px; max-width: 540px;">
+                        <p class="service-detail-desc">
                             Des contenus vidéo professionnels qui captivent et inspirent. De l'interview du dirigeant au documentaire institutionnel, nous créons des productions qui marquent les esprits et renforcent votre image.
                         </p>
                         <div class="service-features">
@@ -352,7 +365,7 @@
                             </div>
                             <div class="feature-item">
                                 <h4>Interviews et témoignages</h4>
-                                <p>Mise en scène et réalisation d'interviews per cutantes de dirigeants et experts.</p>
+                                <p>Mise en scène et réalisation d'interviews percutantes de dirigeants et experts.</p>
                             </div>
                             <div class="feature-item">
                                 <h4>Reportages et documentaires</h4>
@@ -371,12 +384,12 @@
         <!-- CTA FINAL -->
         <section class="service-cta reveal">
             <div class="container">
-                <div class="cta-inner" style="background: var(--blue-deep); padding: 80px; text-align: center; border-radius: 8px;">
-                    <h2 style="font-family: var(--font-display); font-size: 36px; font-weight: 700; color: white; margin-bottom: 24px;">Prêt à transformer votre communication ?</h2>
-                    <p style="color: rgba(255,255,255,0.8); font-size: 16px; margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto;">
+                <div class="cta-inner">
+                    <h2 class="cta-title">Prêt à transformer votre communication ?</h2>
+                    <p class="cta-desc">
                         Discutons de vos objectifs et voyons comment BLUECOM peut vous accompagner vers l'excellence.
                     </p>
-                    <a href="index.html#contact" class="btn-primary" style="background: white; color: var(--blue-deep); border-color: white;">Prendre rendez-vous <span class="btn-arrow">→</span></a>
+                    <a href="index.html#contact" class="btn-primary cta-btn">Prendre rendez-vous <span class="btn-arrow">→</span></a>
                 </div>
             </div>
         </section>
@@ -388,7 +401,7 @@
             <div class="footer-grid">
                 <div class="footer-brand">
                     <a href="index.html" class="logo" aria-label="BLUECOM Stratégies - Accueil">
-                        <img src="assets/logo BLUECOM_fond_blanc.png" alt="BLUECOM Logo" height="48">
+                        <img src="assets/logo BLUECOM_fond_blanc.png" alt="BLUECOM Logo" width="180" height="48">
                     </a>
                     <p>BLUECOM Stratégies est votre partenaire de confiance pour la communication institutionnelle et le conseil aux dirigeants au Sénégal et en Afrique de l'Ouest. 10 ans d'expertise au service de votre réputation.</p>
                 </div>
@@ -405,19 +418,17 @@
                 <div class="footer-col">
                     <h4>Expertises</h4>
                     <ul class="footer-links">
-                        <li><a href="#service-strategy">Stratégie & Conseil</a></li>
-                        <li><a href="#service-media">Media Training</a></li>
-                        <li><a href="#service-crisis">Gestion de Crise</a></li>
-                        <li><a href="#service-digital">Webmarketing</a></li>
-                        <li><a href="#service-pr">Relations Publiques</a></li>
-                        <li><a href="#service-video">Production Audiovisuelle</a></li>
+                        <li><a href="services.html">Stratégie & Conseil</a></li>
+                        <li><a href="services.html">Media Training</a></li>
+                        <li><a href="services.html">Gestion de Crise</a></li>
+                        <li><a href="services.html">Webmarketing</a></li>
+                        <li><a href="services.html">Relations Publiques</a></li>
+                        <li><a href="services.html">Production Audiovisuelle</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
-                    <h4>Ressources</h4>
+                    <h4>Légal</h4>
                     <ul class="footer-links">
-                        <li><a href="blog-post.html">Blog</a></li>
-                        <li><a href="portfolio.html">Portfolio</a></li>
                         <li><a href="mentions-legales.html">Mentions légales</a></li>
                         <li><a href="politique-confidentialite.html">Politique de confidentialité</a></li>
                     </ul>
@@ -441,4 +452,5 @@
     <!-- Scripts -->
     <script src="js/main.js"></script>
 </body>
+
 </html>

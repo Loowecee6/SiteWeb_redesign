@@ -6,11 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Méthodologie | BLUECOM Stratégies</title>
     <meta name="description" content="Découvrez notre méthodologie en 4 étapes : diagnostic, stratégie, mise en œuvre et évaluation pour des résultats mesurables.">
+    <link rel="canonical" href="https://bluecom-strategies.sn/methodology.html">
 
-    <!-- Fontes -->
+    <!-- Open Graph -->
+    <meta property="og:title" content="Méthodologie | BLUECOM Stratégies">
+    <meta property="og:description" content="Découvrez notre méthodologie en 4 étapes pour des résultats mesurables.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://bluecom-strategies.sn/methodology.html">
+    <meta property="og:image" content="https://bluecom-strategies.sn/assets/og-image.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/assets/favicon.png">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+
+    <!-- Fontes - UNIFIED STACK (Cormorant + Outfit) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Styles -->
     <link rel="stylesheet" href="css/style.css">
@@ -18,19 +31,22 @@
 
 <body>
 
+    <!-- Skip Navigation Link -->
+    <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+
     <!-- Navigation -->
     <nav id="navbar">
         <div class="nav-inner container">
             <a href="index.html" class="logo" aria-label="BLUECOM Stratégies - Accueil">
-                <img src="assets/logo BLUECOM_fond_blanc.png" alt="BLUECOM Logo">
+                <img src="assets/logo BLUECOM_fond_blanc.png" alt="BLUECOM Logo" width="180" height="48">
             </a>
-            <button id="menuToggle" class="menu-toggle" aria-label="Ouvrir le menu" aria-expanded="false">
+            <button id="menuToggle" class="menu-toggle" aria-label="Ouvrir le menu de navigation" aria-expanded="false" aria-controls="navLinks">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
             <ul id="navLinks" class="nav-links">
-                <li><a href="about.html">Notre ADN</a></li>
+                <li><a href="about.html">L'Agence</a></li>
                 <li><a href="services.html">Expertises</a></li>
                 <li><a href="methodology.html" class="nav-cta">Méthodologie</a></li>
                 <li><a href="portfolio.html">Réalisations</a></li>
@@ -41,27 +57,26 @@
     </nav>
 
     <!-- Contenu Principal -->
-    <main>
+    <main id="main-content">
         <!-- CTA METHODOLOGY -->
-        <section id="methodology" class="methodology-cta reveal" style="background: var(--blue-deep); padding: 120px 0; position: relative; overflow: hidden;">
-            <div class="container" style="max-width: 900px; margin: 0 auto; text-align: center; position: relative; z-index: 2;">
-                <div class="section-label" style="justify-content: center; margin-bottom: 24px;">
+        <section class="methodology-hero reveal">
+            <div class="container">
+                <div class="section-label">
                     <div class="section-label-line"></div>
-                    <span style="color: var(--gold);">Méthodologie</span>
+                    <span>Méthodologie</span>
                 </div>
-                <h2 class="section-title" style="font-family: var(--font-display); font-size: 56px; font-weight: 600; color: var(--white); line-height: 1.15; margin-bottom: 24px;">
-                    Notre processus structuré<br>pour des <em style="color: var(--gold);">résultats</em>
+                <h2 class="section-title">
+                    Notre processus structuré<br>pour des <em>résultats</em>
                 </h2>
-                <p style="color: rgba(255, 255, 255, 0.8); font-family: var(--font-body); font-size: 18px; line-height: 1.7; max-width: 680px; margin: 0 auto 40px;">
+                <p class="section-sub">
                     Une approche méthodique qui garantit la cohérence et l'efficacité de chaque intervention.
                 </p>
-                <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+                <div class="methodology-hero-actions">
                     <a href="#method-details" class="btn-primary">Voir les étapes <span class="btn-arrow">→</span></a>
                 </div>
             </div>
-            <!-- Placeholder background pattern with gradient overlay -->
-            <div style="position: absolute; inset: 0; background: repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(255,255,255,0.015) 40px, rgba(255,255,255,0.015) 80px); pointer-events: none;"></div>
-            <div style="position: absolute; inset: 0; background: linear-gradient(135deg, rgba(0,102,204,0.1) 0%, transparent 50%, rgba(201,168,76,0.05) 100%); pointer-events: none;"></div>
+            <div class="methodology-bg-pattern"></div>
+            <div class="methodology-bg-gradient"></div>
         </section>
 
         <!-- METHODOLOGY DETAILS -->
@@ -111,7 +126,7 @@
         </section>
 
         <!-- DETAILS METHODOLOGY -->
-        <section class="reveal" style="background: var(--grey-light); padding: 100px 0;">
+        <section class="details-methodology reveal">
             <div class="container">
                 <div class="services-grid">
                     <div class="service-card">
@@ -122,30 +137,30 @@
                     <div class="service-card">
                         <div class="service-number">02</div>
                         <h3 class="service-name">Stratégie</h3>
-                        <p class="service-desc">Sur la base du diagnostic, nous élaborons une plateforme stratégique complète : positionnement, messages clés,plan de communication et recommandations opérationnelles adaptées à votre contexte.</p>
+                        <p class="service-desc">Sur la base du diagnostic, nous élaborons une plateforme stratégique complète : positionnement, messages clés, plan de communication et recommandations opérationnelles adaptées à votre contexte.</p>
                     </div>
                     <div class="service-card">
                         <div class="service-number">03</div>
                         <h3 class="service-name">Mise en œuvre</h3>
-                        <p class="service-desc">Nous déployons le plan avec rigueur, encoordonnant les actions, en produisant les supports et enpilotant les prestataires pour garantir une exécution optimale dans les délais impartis.</p>
+                        <p class="service-desc">Nous déployons le plan avec rigueur, en coordonnant les actions, en produisant les supports et en pilotant les prestataires pour garantir une exécution optimale dans les délais impartis.</p>
                     </div>
                     <div class="service-card">
                         <div class="service-number">04</div>
                         <h3 class="service-name">Évaluation</h3>
-                        <p class="service-desc">Nous mesurons les résultats grâce à des indicateurs de performance claire, analysons les écarts et optimisons en continu pour garantir un retour sur investissement maximal.</p>
+                        <p class="service-desc">Nous mesurons les résultats grâce à des indicateurs de performance clairs, analysons les écarts et optimisons en continu pour garantir un retour sur investissement maximal.</p>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- CTA -->
-        <section class="reveal" style="background: var(--blue-deep); padding: 80px 0; text-align: center;">
+        <section class="cta-section">
             <div class="container">
-                <h2 style="font-family: var(--font-display); font-size: 36px; font-weight: 700; color: white; margin-bottom: 24px;">Découvrez notre approche en action</h2>
-                <p style="color: rgba(255,255,255,0.8); font-size: 16px; margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto;">
+                <h2 class="cta-title">Découvrez notre approche en action</h2>
+                <p class="cta-desc">
                     Consultez nos réalisations pour voir comment notre méthodologie a produit des résultats concrets.
                 </p>
-                <a href="portfolio.html" class="btn-primary" style="background: white; color: var(--blue-deep); border-color: white;">Nos réalisations <span class="btn-arrow">→</span></a>
+                <a href="portfolio.html" class="btn-primary cta-btn">Nos réalisations <span class="btn-arrow">→</span></a>
             </div>
         </section>
     </main>
@@ -156,7 +171,7 @@
             <div class="footer-grid">
                 <div class="footer-brand">
                     <a href="index.html" class="logo" aria-label="BLUECOM Stratégies - Accueil">
-                        <img src="assets/logo BLUECOM_fond_blanc.png" alt="BLUECOM Logo">
+                        <img src="assets/logo BLUECOM_fond_blanc.png" alt="BLUECOM Logo" width="180" height="48">
                     </a>
                     <p>BLUECOM Stratégies est votre partenaire de confiance pour la communication institutionnelle et le conseil aux dirigeants au Sénégal et en Afrique de l'Ouest. 10 ans d'expertise au service de votre réputation.</p>
                 </div>

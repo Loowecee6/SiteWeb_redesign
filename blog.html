@@ -6,11 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog & Insights | BLUECOM Stratégies</title>
     <meta name="description" content="Découvrez nos analyses et tendances sur la communication institutionnelle, le leadership et les stratégies médiatiques en Afrique.">
+    <link rel="canonical" href="https://bluecom-strategies.sn/blog.html">
 
-    <!-- Fontes -->
+    <!-- Open Graph -->
+    <meta property="og:title" content="Blog & Insights | BLUECOM Stratégies">
+    <meta property="og:description" content="Découvrez nos analyses et tendances sur la communication institutionnelle en Afrique.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://bluecom-strategies.sn/blog.html">
+    <meta property="og:image" content="https://bluecom-strategies.sn/assets/og-image.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/assets/favicon.png">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+
+    <!-- Fontes - UNIFIED STACK (Cormorant + Outfit) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Styles -->
     <link rel="stylesheet" href="css/style.css">
@@ -18,13 +31,16 @@
 
 <body>
 
+    <!-- Skip Navigation Link -->
+    <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+
     <!-- Navigation -->
     <nav id="navbar">
         <div class="nav-inner container">
             <a href="index.html" class="logo" aria-label="BLUECOM Stratégies - Accueil">
-                <img src="assets/logo BLUECOM_fond_blanc.png" alt="BLUECOM Logo">
+                <img src="assets/logo BLUECOM_fond_blanc.png" alt="BLUECOM Logo" width="180" height="48">
             </a>
-            <button id="menuToggle" class="menu-toggle" aria-label="Ouvrir le menu" aria-expanded="false">
+            <button id="menuToggle" class="menu-toggle" aria-label="Ouvrir le menu de navigation" aria-expanded="false" aria-controls="navLinks">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -41,7 +57,7 @@
     </nav>
 
     <!-- Contenu Principal -->
-    <main>
+    <main id="main-content">
         <!-- BLOG HERO -->
         <section class="blog-hero">
             <div class="container">
@@ -55,7 +71,7 @@
         </section>
 
         <!-- BLOG GRID -->
-        <section class="reveal" style="padding: 80px 0;">
+        <section class="reveal blog-section">
             <div class="container">
                 <div class="blog-grid">
                     <article class="blog-card featured">
@@ -107,7 +123,7 @@
                         </div>
                     </article>
                     <article class="blog-card">
-                        <div class="blog-card-img" style="background: linear-gradient(135deg, #001a2e, #002a4a);">
+                        <div class="blog-card-img blog-card-img-3">
                             <div class="blog-card-img-inner">
                                 <span class="blog-img-text">04</span>
                             </div>
@@ -123,7 +139,7 @@
                         </div>
                     </article>
                     <article class="blog-card">
-                        <div class="blog-card-img" style="background: linear-gradient(135deg, #002200, #004400);">
+                        <div class="blog-card-img blog-card-img-4">
                             <div class="blog-card-img-inner">
                                 <span class="blog-img-text">05</span>
                             </div>
@@ -139,7 +155,7 @@
                         </div>
                     </article>
                     <article class="blog-card">
-                        <div class="blog-card-img" style="background: linear-gradient(135deg, #1a0033, #330066);">
+                        <div class="blog-card-img blog-card-img-5">
                             <div class="blog-card-img-inner">
                                 <span class="blog-img-text">06</span>
                             </div>
@@ -150,7 +166,7 @@
                                 <span class="blog-date">8 février 2026</span>
                             </div>
                             <h3 class="blog-title">La vidéo corporate : outil stratégique de communication</h3>
-                            <p class="blog-excerpt">Comment créer des contenus vidéo qui renforcent votre image de marque et，您的engagent vos parties prenantes.</p>
+                            <p class="blog-excerpt">Comment créer des contenus vidéo qui renforcent votre image de marque et engagent vos parties prenantes.</p>
                             <a href="blog-post.html#video-corporate-outil-strategique" class="blog-read-more">Lire l'article →</a>
                         </div>
                     </article>
@@ -159,13 +175,13 @@
         </section>
 
         <!-- NEWSLETTER CTA -->
-        <section class="reveal" style="background: var(--blue-deep); padding: 80px 0; text-align: center;">
+        <section class="reveal newsletter-section">
             <div class="container">
-                <h2 style="font-family: var(--font-display); font-size: 36px; font-weight: 700; color: white; margin-bottom: 24px;">Restez informé de nos insights</h2>
-                <p style="color: rgba(255,255,255,0.8); font-size: 16px; margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto;">
+                <h2 class="newsletter-title">Restez informé de nos insights</h2>
+                <p class="newsletter-desc">
                     Abonnez-vous à notre newsletter pour recevoir nos analyses et tendances en communication.
                 </p>
-                <a href="index.html#contact" class="btn-primary" style="background: white; color: var(--blue-deep); border-color: white;">Nous contacter <span class="btn-arrow">→</span></a>
+                <a href="index.html#contact" class="btn-primary cta-btn">Nous contacter <span class="btn-arrow">→</span></a>
             </div>
         </section>
     </main>
@@ -176,7 +192,7 @@
             <div class="footer-grid">
                 <div class="footer-brand">
                     <a href="index.html" class="logo" aria-label="BLUECOM Stratégies - Accueil">
-                        <img src="assets/logo BLUECOM_fond_blanc.png" alt="BLUECOM Logo">
+                        <img src="assets/logo BLUECOM_fond_blanc.png" alt="BLUECOM Logo" width="180" height="48">
                     </a>
                     <p>BLUECOM Stratégies est votre partenaire de confiance pour la communication institutionnelle et le conseil aux dirigeants au Sénégal et en Afrique de l'Ouest. 10 ans d'expertise au service de votre réputation.</p>
                 </div>
@@ -227,92 +243,7 @@
 
     <!-- Scripts -->
     <script src="js/main.js"></script>
-    <script src="js/sanity-client.js"></script>
-    <style>
-        .blog-card {
-            background: #fff;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            text-decoration: none !important;
-            color: inherit;
-            transition: transform 0.3s ease;
-            border: 1px solid #f0f0f0;
-        }
-        .blog-card:hover { transform: translateY(-5px); }
-        .blog-card-img {
-            width: 100%;
-            aspect-ratio: 16 / 10;
-            background-size: cover;
-            background-position: center;
-        }
-        .blog-card-body {
-            padding: 25px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-        .blog-title {
-            font-size: 20px;
-            font-weight: 500;
-            color: var(--blue-deep);
-            margin-bottom: 15px;
-            line-height: 1.4;
-            text-decoration: none !important;
-        }
-        .blog-excerpt {
-            font-size: 15px;
-            color: var(--grey-mid);
-            margin-bottom: 20px;
-            line-height: 1.6;
-            display: -webkit-box;
-            -webkit-line-clamp: 3;
-            line-clamp: 3;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-        .blog-read-more {
-            margin-top: auto;
-            font-weight: 700;
-            font-size: 13px;
-            color: var(--gold);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-    </style>
-    <script>
-        document.addEventListener('DOMContentLoaded', async () => {
-            const blogGrid = document.querySelector('.blog-grid');
-            if (!blogGrid) return;
-
-            const posts = await fetchAllPosts();
-            
-            if (posts && posts.length > 0) {
-                blogGrid.innerHTML = '';
-                posts.forEach((post, index) => {
-                    const date = new Date(post.publishedAt).toLocaleDateString('fr-FR', {
-                        day: 'numeric', month: 'long', year: 'numeric'
-                    });
-                    const imageUrl = urlFor(post.mainImage);
-
-                    const articleCard = `
-                        <a href="blog-post.html#${post.slug.current}" class="blog-card" style="text-decoration: none;">
-                            <div class="blog-card-img" style="background-image: url('${imageUrl}');"></div>
-                            <div class="blog-card-body">
-                                <div class="blog-meta" style="margin-bottom: 12px; font-size: 13px; display: flex; gap: 15px;">
-                                    <span style="color: var(--blue-deep); font-weight: 700; text-transform: uppercase;">${post.category || 'Focus'}</span>
-                                    <span style="color: #999;">${date}</span>
-                                </div>
-                                <h3 class="blog-title">${post.title}</h3>
-                                <p class="blog-excerpt">${post.excerpt || ''}</p>
-                                <span class="blog-read-more">Lire l'article →</span>
-                            </div>
-                        </a>
-                    `;
-                    blogGrid.innerHTML += articleCard;
-                });
-            }
-        });
-    </script>
+    <script src="js/sanity-client.js" defer></script>
+</body>
 
 </html>
