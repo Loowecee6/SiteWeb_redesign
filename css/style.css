@@ -1628,6 +1628,97 @@ section {
     color: rgba(255, 255, 255, 0.5);
 }
 
+.logo-marquee {
+    width: 100%;
+    overflow: hidden;
+    padding: 40px 0;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.logo-track {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.logo-row {
+    display: flex;
+    gap: 60px;
+    animation: scroll-left 40s linear infinite;
+    width: max-content;
+}
+
+.logo-row:nth-child(2) {
+    animation: scroll-left 40s linear infinite;
+    animation-delay: -20s;
+}
+
+.logo-item {
+    flex-shrink: 0;
+    width: 180px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    transition: all var(--transition-normal);
+}
+
+.logo-item:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: var(--gold);
+}
+
+.logo-item img {
+    max-width: 140px;
+    max-height: 50px;
+    object-fit: contain;
+    filter: grayscale(100%) brightness(0.8);
+    opacity: 0.7;
+    transition: all var(--transition-normal);
+}
+
+.logo-item:hover img {
+    filter: grayscale(0%) brightness(1);
+    opacity: 1;
+}
+
+@keyframes scroll-left {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+@media (max-width: 768px) {
+    .logo-marquee {
+        padding: 20px 0;
+    }
+
+    .logo-track {
+        gap: 20px;
+    }
+
+    .logo-row {
+        gap: 30px;
+        animation-duration: 60s;
+    }
+
+    .logo-item {
+        width: 120px;
+        height: 60px;
+    }
+
+    .logo-item img {
+        max-width: 90px;
+        max-height: 35px;
+    }
+}
+
 /* ==========================================================================
    BLOG - ENHANCED GRID
    ========================================================================== */

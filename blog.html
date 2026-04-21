@@ -71,7 +71,7 @@
                             </div>
                             <h3 class="blog-title">Communication institutionnelle : les tendances 2026 pour le continent africain</h3>
                             <p class="blog-excerpt">Analyse des nouvelles approches qui redéfinissent la communication des entreprises et institutions africaines sur la scène internationale.</p>
-                            <a href="blog-post.html#communication-institutionnelle-tendances-2026-afrique" class="blog-read-more">Lire l'article →</a>
+                            <a href="outputs/article_communication-tendances-2026.html" class="blog-read-more">Lire l'article →</a>
                         </div>
                     </article>
                     <article class="blog-card">
@@ -87,7 +87,7 @@
                             </div>
                             <h3 class="blog-title">Gestion de crise : anticiper plutôt que réagir</h3>
                             <p class="blog-excerpt">Comment mettre en place une veille proactive et un plan de crise efficace pour protéger votre réputation.</p>
-                            <a href="blog-post.html#gestion-de-crise-anticiper-plutot-que-reagir" class="blog-read-more">Lire l'article →</a>
+                            <a href="outputs/article_gestion-crise-anticiper.html" class="blog-read-more">Lire l'article →</a>
                         </div>
                     </article>
                     <article class="blog-card">
@@ -103,7 +103,7 @@
                             </div>
                             <h3 class="blog-title">L'art de l'interview médiatique pour dirigeants</h3>
                             <p class="blog-excerpt">Techniques et bonnes pratiques pour maîtriser son discours et véhiculer une image positive.</p>
-                            <a href="blog-post.html#art-interview-mediatique-dirigeants" class="blog-read-more">Lire l'article →</a>
+                            <a href="outputs/article_interview-mediatique.html" class="blog-read-more">Lire l'article →</a>
                         </div>
                     </article>
                     <article class="blog-card">
@@ -119,7 +119,7 @@
                             </div>
                             <h3 class="blog-title">Stratégie digitale : comment engager vos audiences en Afrique</h3>
                             <p class="blog-excerpt">Les clés pour réussir votre présence en ligne sur le marché africain : réseaux sociaux, contenu et influence.</p>
-                            <a href="blog-post.html#strategie-digitale-engager-audiences-afrique" class="blog-read-more">Lire l'article →</a>
+                            <a href="outputs/article_strategie-digitale.html" class="blog-read-more">Lire l'article →</a>
                         </div>
                     </article>
                     <article class="blog-card">
@@ -135,7 +135,7 @@
                             </div>
                             <h3 class="blog-title">Lobbying et affaires publiques : les fondamentaux pour l'Afrique</h3>
                             <p class="blog-excerpt">Guide pratique pour construire une stratégie de relations institutionnelles efficace en Afrique de l'Ouest.</p>
-                            <a href="blog-post.html#lobbying-affaires-publiques-afrique" class="blog-read-more">Lire l'article →</a>
+                            <a href="outputs/article_lobbying-affaires-publiques.html" class="blog-read-more">Lire l'article →</a>
                         </div>
                     </article>
                     <article class="blog-card">
@@ -151,7 +151,7 @@
                             </div>
                             <h3 class="blog-title">La vidéo corporate : outil stratégique de communication</h3>
                             <p class="blog-excerpt">Comment créer des contenus vidéo qui renforcent votre image de marque et，您的engagent vos parties prenantes.</p>
-                            <a href="blog-post.html#video-corporate-outil-strategique" class="blog-read-more">Lire l'article →</a>
+                            <a href="outputs/article_video-corporate.html" class="blog-read-more">Lire l'article →</a>
                         </div>
                     </article>
                 </div>
@@ -229,42 +229,102 @@
     <script src="js/main.js"></script>
     <script src="js/sanity-client.js"></script>
     <style>
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 40px;
+        }
         .blog-card {
-            background: #fff;
+            background: var(--blue-deep);
             height: 100%;
             display: flex;
             flex-direction: column;
             text-decoration: none !important;
             color: inherit;
-            transition: transform 0.3s ease;
-            border: 1px solid #f0f0f0;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
         }
-        .blog-card:hover { transform: translateY(-5px); }
+        .blog-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(196,146,42,0.1) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        .blog-card:hover { 
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+        }
+        .blog-card:hover::before { opacity: 1; }
         .blog-card-img {
             width: 100%;
             aspect-ratio: 16 / 10;
             background-size: cover;
             background-position: center;
+            position: relative;
+        }
+        .blog-card-img::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 80px;
+            background: linear-gradient(to top, var(--blue-deep), transparent);
         }
         .blog-card-body {
-            padding: 25px;
+            padding: 30px;
             flex-grow: 1;
             display: flex;
             flex-direction: column;
+            position: relative;
+            z-index: 1;
+        }
+        .blog-meta {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+        .blog-cat {
+            background: var(--gold);
+            color: var(--blue-deep);
+            padding: 4px 12px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+        .blog-date {
+            color: rgba(255,255,255,0.5);
+            font-size: 13px;
+        }
+        .blog-number {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-family: var(--font-display);
+            font-size: 64px;
+            font-weight: 900;
+            color: rgba(255,255,255,0.06);
+            line-height: 1;
         }
         .blog-title {
-            font-size: 20px;
-            font-weight: 500;
-            color: var(--blue-deep);
-            margin-bottom: 15px;
-            line-height: 1.4;
+            font-family: var(--font-display);
+            font-size: 24px;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 16px;
+            line-height: 1.3;
             text-decoration: none !important;
         }
         .blog-excerpt {
             font-size: 15px;
-            color: var(--grey-mid);
-            margin-bottom: 20px;
-            line-height: 1.6;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 24px;
+            line-height: 1.7;
             display: -webkit-box;
             -webkit-line-clamp: 3;
             line-clamp: 3;
@@ -273,11 +333,24 @@
         }
         .blog-read-more {
             margin-top: auto;
-            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
             font-size: 13px;
             color: var(--gold);
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
+        }
+        .blog-read-more::after {
+            content: '→';
+            transition: transform 0.3s ease;
+        }
+        .blog-card:hover .blog-read-more::after {
+            transform: translateX(5px);
+        }
+        @media (max-width: 768px) {
+            .blog-grid { grid-template-columns: 1fr; }
         }
     </style>
     <script>

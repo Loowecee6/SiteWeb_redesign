@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gestion de crise : anticiper plutôt que réagir — BLUECOM Stratégies</title>
+<link rel="stylesheet" href="css/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+body { font-family: var(--font-sans); background: var(--sand); color: var(--ink); margin: 0; }
+
+.hero-compact { background: var(--deep); padding: 60px 0 50px; position: relative; overflow: hidden; }
+.hero-compact::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(-55deg, transparent 0, transparent 40px, rgba(196,136,42,.03) 40px, rgba(196,136,42,.03) 41px); }
+.hero-compact .container { max-width: 1200px; margin: 0 auto; padding: 0 40px; position: relative; z-index: 1; }
+.category-tag { display: inline-flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+.category-tag .line { width: 28px; height: 1px; background: var(--accent); }
+.category-tag span { font-size: .68rem; font-weight: 700; color: var(--accent); letter-spacing: .2em; text-transform: uppercase; }
+.hero-compact h1 { font-family: var(--font-display); font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 700; color: #fff; line-height: 1.2; margin-bottom: 16px; }
+.hero-compact .intro { font-size: 1rem; color: rgba(255,255,255,.75); line-height: 1.6; margin-bottom: 20px; max-width: 560px; }
+.hero-meta { display: flex; gap: 24px; font-size: .78rem; color: rgba(255,255,255,.5); }
+.hero-meta span { display: flex; align-items: center; gap: 5px; }
+
+.article-layout { max-width: 1200px; margin: 0 auto; padding: 56px 40px; display: grid; grid-template-columns: 1fr 320px; gap: 56px; }
+.article-main { max-width: 720px; }
+
+.opening-statement { font-family: var(--font-serif); font-size: 1.08rem; font-style: italic; color: var(--muted); line-height: 1.8; margin-bottom: 40px; padding-bottom: 32px; border-bottom: 1px solid var(--rule); }
+
+.section { margin-bottom: 42px; }
+.section-label { display: inline-flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+.section-label .num { font-size: .68rem; font-weight: 700; color: var(--accent); letter-spacing: .2em; }
+.section-label .line { width: 24px; height: 1px; background: var(--accent); opacity: .5; }
+.section h2 { font-family: var(--font-display); font-size: clamp(1.3rem, 2vw, 1.7rem); font-weight: 700; color: var(--deep); line-height: 1.25; margin-bottom: 14px; }
+.section p { font-size: .95rem; color: #3a3228; line-height: 1.85; margin-bottom: 14px; }
+
+.mid-quote { margin: 38px 0; padding: 32px 38px; background: var(--warm); border-top: 3px solid var(--accent); border-bottom: 3px solid var(--accent); text-align: center; }
+.mid-quote p { font-family: var(--font-serif); font-size: clamp(1.05rem, 1.8vw, 1.35rem); font-style: italic; color: var(--deep); line-height: 1.55; }
+.mid-quote p em { color: var(--accent); font-style: normal; font-weight: 600; }
+
+.narrative-list { list-style: none; margin: 22px 0 32px; counter-reset: nlist; }
+.narrative-list li { counter-increment: nlist; position: relative; padding: 14px 0 14px 48px; border-bottom: 1px solid var(--rule); font-size: .9rem; color: #3a3228; line-height: 1.7; }
+.narrative-list li:last-child { border-bottom: none; }
+.narrative-list li::before { content: counter(nlist, decimal-leading-zero); position: absolute; left: 0; top: 14px; font-family: var(--font-display); font-size: 1.35rem; font-weight: 700; color: var(--accent); }
+.narrative-list li strong { display: block; font-weight: 600; color: var(--deep); margin-bottom: 2px; font-size: .95rem; }
+
+.bluecom-box { border: 1.5px solid var(--accent); background: #f0f5fa; padding: 24px 28px; margin: 32px 0; position: relative; }
+.bluecom-box::before { content: 'NOTE BLUECOM'; position: absolute; top: -10px; left: 18px; background: var(--sand); padding: 0 6px; font-size: .6rem; font-weight: 700; letter-spacing: .16em; color: var(--accent); }
+.bluecom-box p { font-size: .88rem; color: #1a2e3b; line-height: 1.7; margin-bottom: 0; }
+.bluecom-box strong { color: var(--accent); }
+
+.ornamental-div { display: flex; align-items: center; gap: 14px; margin: 38px 0; }
+.ornamental-div::before, .ornamental-div::after { content: ''; flex: 1; height: 1px; background: var(--rule); }
+.ornamental-div span { color: var(--accent); font-size: .8rem; letter-spacing: 5px; }
+
+.conclusion-block { background: var(--deep); padding: 32px 36px; margin-top: 38px; }
+.concl-label { font-size: .66rem; font-weight: 700; color: var(--accent); letter-spacing: .2em; text-transform: uppercase; margin-bottom: 12px; }
+.conclusion-block p { color: rgba(255,255,255,.8); font-size: .92rem; line-height: 1.75; margin-bottom: 12px; }
+.conclusion-block p:last-of-type { color: var(--gold); font-weight: 600; }
+
+.sidebar { position: sticky; top: 90px; height: fit-content; }
+.sidebar-title { font-size: .7rem; font-weight: 700; color: var(--deep); letter-spacing: .2em; text-transform: uppercase; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid var(--gold); }
+.sidebar-list { display: flex; flex-direction: column; gap: 18px; }
+.sidebar-card { display: block; text-decoration: none; color: inherit; padding-bottom: 18px; border-bottom: 1px solid var(--rule); transition: opacity .2s; }
+.sidebar-card:hover { opacity: .75; }
+.sidebar-card:last-child { border-bottom: none; }
+.sidebar-card .cat { display: block; font-size: .64rem; color: var(--accent); font-weight: 600; letter-spacing: .1em; margin-bottom: 4px; }
+.sidebar-card h4 { font-size: .95rem; font-weight: 600; color: var(--deep); line-height: 1.4; margin: 0 0 4px; }
+.sidebar-card .meta { font-size: .72rem; color: var(--muted); }
+
+.cta-strip { background: var(--deep); padding: 52px 40px; text-align: center; border-top: 3px solid var(--gold); }
+.cta-strip h3 { font-family: var(--font-display); font-size: clamp(1.3rem, 2.2vw, 1.8rem); color: #fff; margin-bottom: 12px; font-weight: 700; }
+.cta-strip p { color: rgba(255,255,255,.55); font-size: .88rem; max-width: 380px; margin: 0 auto 24px; }
+.cta-btn { display: inline-block; background: var(--gold); color: var(--deep); padding: 12px 32px; font-size: .72rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; text-decoration: none; transition: background .2s; }
+.cta-btn:hover { background: var(--gold-light); }
+
+@media (max-width: 900px) {
+  .article-layout { grid-template-columns: 1fr; }
+  .sidebar { position: static; margin-top: 40px; }
+  .sidebar-list { flex-direction: row; overflow-x: auto; padding-bottom: 12px; }
+  .sidebar-card { min-width: 220px; }
+  .hero-compact { padding: 50px 0 40px; }
+  .hero-compact .container, .article-layout { padding-left: 24px; padding-right: 24px; }
+  .hero-meta { flex-wrap: wrap; gap: 16px; }
+  .mid-quote { margin: 32px -16px; padding: 24px 20px; }
+}
+</style>
+</head>
+<body>
+<nav id="navbar">
+  <div class="nav-inner container">
+    <a href="index.html" class="logo" aria-label="BLUECOM Stratégies"><img src="assets/logo BLUECOM_fond_blanc.png" alt="BLUECOM Logo" height="48"></a>
+    <button id="menuToggle" class="menu-toggle" aria-label="Ouvrir le menu"><span></span><span></span><span></span></button>
+    <ul id="navLinks" class="nav-links">
+      <li><a href="about.html">L'Agence</a></li>
+      <li><a href="services.html">Expertises</a></li>
+      <li><a href="methodology.html">Méthodologie</a></li>
+      <li><a href="portfolio.html">Réalisations</a></li>
+      <li><a href="blog.html" class="active">Blog</a></li>
+      <li><a href="index.html#contact" class="nav-cta">Prendre RDV</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="hero-compact">
+  <div class="container">
+    <div class="category-tag"><span class="line"></span><span>Crise · Preparation</span></div>
+    <h1>Gestion de crise : anticiper plutôt que réagir</h1>
+    <p class="intro">La résilience organisationnelle se bâtit en temps de paix. Voici comment structurer une veille proactive et un plan de crise efficace.</p>
+    <div class="hero-meta">
+      <span>🗓 Avril 2026</span>
+      <span>⏱ 8 min</span>
+      <span>📍 Dakar</span>
+    </div>
+  </div>
+</section>
+
+<div class="article-layout">
+  <article class="article-main">
+    <p class="opening-statement">Dans l'imaginaire collectif, la crise surgit de nulle part — un tweet viral, un article d'investigation, un incident industriel. Mais pour le communicant aguerri, la crise laisse toujours des signes avant-coureurs.</p>
+
+    <div class="section">
+      <div class="section-label"><span class="num">01</span><span class="line"></span></div>
+      <h2>L'audit de vulnérabilité</h2>
+      <p>Toute stratégie anti-crise sérieuse commence par un diagnostic honnête des zones de fragilité de l'organisation. Cet audit cartographie les risques : opérationnels, réputationnels, exogènes, numériques.</p>
+      <p>Pour chaque risque identifié, on évalue la probabilité d'occurrence et l'impact potentiel sur les parties prenantes.</p>
+    </div>
+
+    <div class="section">
+      <div class="section-label"><span class="num">02</span><span class="line"></span></div>
+      <h2>La cellule de crise</h2>
+      <p>Une cellule de crise efficace ne s'improvise pas le jour J. Elle est constituée, formée et rodée en amont. Elle comprend : décideur, responsable communication, juriste, expert technique.</p>
+    </div>
+
+    <ol class="narrative-list">
+      <li><strong>Définir clairement</strong> qui décide, qui parle, qui coordonne</li>
+      <li><strong>Disposer d'une liste</strong> de contacts médias actualisée</li>
+      <li><strong>Établir des protocoles</strong> d'escalade selon la gravité</li>
+      <li><strong>Prévoir des espaces</strong> de réunion sécurisés</li>
+    </ol>
+
+    <div class="mid-quote">
+      <p>Une organisation qui ne gère que les crises déclarées travaille avec un temps de retard. <em>La veille est la première ligne de défense.</em></p>
+    </div>
+
+    <div class="section">
+      <div class="section-label"><span class="num">03</span><span class="line"></span></div>
+      <h2>Les messages-clés préparés</h2>
+      <p>L'une des erreurs les plus coûteuses est de rédiger les premiers messages sous la pression. Les organisations préparées disposent de messages-clés rédigés à froid, validés juridiquement.</p>
+      <p>En 24 à 48 heures, une organisation doit être capable de publier une déclaration officielle.</p>
+    </div>
+
+    <div class="section">
+      <div class="section-label"><span class="num">04</span><span class="line"></span></div>
+      <h2>La veille en temps réel</h2>
+      <p>La détection précoce est le pilier souvent négligé. En Afrique, cela implique une veille multicanale : presse, radio, réseaux sociaux, mais aussi les "capteurs terrain".</p>
+      <p>Une anomalie détectée 72 heures avant qu'elle ne devienne virale laisse le temps d'agir.</p>
+    </div>
+
+    <div class="ornamental-div"><span>✦ ✦ ✦</span></div>
+
+    <div class="bluecom-box">
+      <p><strong>Notre approche :</strong> Nous préconisons des "War Rooms" annuelles où les dirigeants sont confrontés à des scénarios de crise hybrides. C'est dans ce chaos contrôlé que l'on teste la rapidité de la chaîne de décision.</p>
+    </div>
+
+    <div class="conclusion-block">
+      <p class="concl-label">Pour conclure</p>
+      <p>Les organisations qui traversent une crise avec intégrité et transparence en ressortent souvent renforcées.</p>
+      <p>Dans la tempête, la clarté est votre seule boussole.</p>
+    </div>
+  </article>
+
+  <aside class="sidebar">
+    <div class="sidebar-title">Articles Recents</div>
+    <div class="sidebar-list">
+      <a href="article_communication-tendances-2026.html" class="sidebar-card">
+        <span class="cat">Strategy</span>
+        <h4>Communication : les tendances 2026</h4>
+        <span class="meta">15 Avril 2026</span>
+      </a>
+      <a href="article_interview-mediatique.html" class="sidebar-card">
+        <span class="cat">Media Training</span>
+        <h4>L'interview médiatique</h4>
+        <span class="meta">1er Mars 2026</span>
+      </a>
+      <a href="article_strategie-digitale.html" class="sidebar-card">
+        <span class="cat">Digital</span>
+        <h4>Strategie digitale en Afrique</h4>
+        <span class="meta">22 Fevrier 2026</span>
+      </a>
+    </div>
+  </aside>
+</div>
+
+<div class="cta-strip">
+  <h3>Preparons votre organisation aux crises</h3>
+  <p>Un audit de préparation aux crises peut vous sauver des mois de gestion réactive.</p>
+  <a href="index.html#contact" class="cta-btn">Realiser mon audit</a>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html"><img src="assets/logo BLUECOM_fond_blanc.png" alt="BLUECOM" height="40"></a>
+        <p>BLUECOM Stratégies — Agence conseil en communication institutionnelle · Dakar, Senegal · 2026</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <ul><li><a href="about.html">L'Agence</a></li><li><a href="services.html">Expertises</a></li><li><a href="methodology.html">Méthodologie</a></li><li><a href="portfolio.html">Réalisations</a></li><li><a href="blog.html">Blog</a></li></ul>
+      </div>
+      <div class="footer-col">
+        <h4>Expertises</h4>
+        <ul><li><a href="services.html">Strategie</a></li><li><a href="services.html">Media Training</a></li><li><a href="services.html">Gestion de Crise</a></li><li><a href="services.html">Relations Publiques</a></li></ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul><li>Dakar, Senegal</li><li><a href="mailto:contact@bluecom.sn">contact@bluecom.sn</a></li></ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 BLUECOM Strategies. Tous droits réservés.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

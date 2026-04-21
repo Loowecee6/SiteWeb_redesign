@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La vidéo corporate : outil stratégique — BLUECOM Stratégies</title>
+<link rel="stylesheet" href="css/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+body { font-family: var(--font-sans); background: var(--sand); color: var(--ink); margin: 0; }
+:root { --accent: #e07b2a; --accent-light: #f0a855; }
+
+.hero-compact { background: var(--deep); padding: 60px 0 50px; position: relative; overflow: hidden; }
+.hero-compact::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(-55deg, transparent 0, transparent 40px, rgba(224,123,42,.03) 40px, rgba(224,123,42,.03) 41px); }
+.hero-compact .container { max-width: 1200px; margin: 0 auto; padding: 0 40px; position: relative; z-index: 1; }
+.category-tag { display: inline-flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+.category-tag .line { width: 28px; height: 1px; background: var(--accent); }
+.category-tag span { font-size: .68rem; font-weight: 700; color: var(--accent); letter-spacing: .2em; text-transform: uppercase; }
+.hero-compact h1 { font-family: var(--font-display); font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 700; color: #fff; line-height: 1.2; margin-bottom: 16px; }
+.hero-compact .intro { font-size: 1rem; color: rgba(255,255,255,.75); line-height: 1.6; margin-bottom: 20px; max-width: 560px; }
+.hero-meta { display: flex; gap: 24px; font-size: .78rem; color: rgba(255,255,255,.5); }
+
+.article-layout { max-width: 1200px; margin: 0 auto; padding: 56px 40px; display: grid; grid-template-columns: 1fr 320px; gap: 56px; }
+.article-main { max-width: 720px; }
+
+.opening-statement { font-family: var(--font-serif); font-size: 1.08rem; font-style: italic; color: var(--muted); line-height: 1.8; margin-bottom: 40px; padding-bottom: 32px; border-bottom: 1px solid var(--rule); }
+
+.section { margin-bottom: 42px; }
+.section-label { display: inline-flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+.section-label .num { font-size: .68rem; font-weight: 700; color: var(--accent); letter-spacing: .2em; }
+.section-label .line { width: 24px; height: 1px; background: var(--accent); opacity: .5; }
+.section h2 { font-family: var(--font-display); font-size: clamp(1.3rem, 2vw, 1.7rem); font-weight: 700; color: var(--deep); line-height: 1.25; margin-bottom: 14px; }
+.section p { font-size: .95rem; color: #3a3228; line-height: 1.85; margin-bottom: 14px; }
+
+.mid-quote { margin: 38px 0; padding: 32px 38px; background: var(--warm); border-top: 3px solid var(--accent); border-bottom: 3px solid var(--accent); text-align: center; }
+.mid-quote p { font-family: var(--font-serif); font-size: clamp(1.05rem, 1.8vw, 1.35rem); font-style: italic; color: var(--deep); line-height: 1.55; }
+.mid-quote p em { color: var(--accent); font-style: normal; font-weight: 600; }
+
+.narrative-list { list-style: none; margin: 22px 0 32px; counter-reset: nlist; }
+.narrative-list li { counter-increment: nlist; position: relative; padding: 14px 0 14px 48px; border-bottom: 1px solid var(--rule); font-size: .9rem; color: #3a3228; line-height: 1.7; }
+.narrative-list li:last-child { border-bottom: none; }
+.narrative-list li::before { content: counter(nlist, decimal-leading-zero); position: absolute; left: 0; top: 14px; font-family: var(--font-display); font-size: 1.35rem; font-weight: 700; color: var(--accent); }
+.narrative-list li strong { display: block; font-weight: 600; color: var(--deep); margin-bottom: 2px; font-size: .95rem; }
+
+.bluecom-box { border: 1.5px solid var(--accent); background: #f0f5fa; padding: 24px 28px; margin: 32px 0; position: relative; }
+.bluecom-box::before { content: 'NOTE BLUECOM'; position: absolute; top: -10px; left: 18px; background: var(--sand); padding: 0 6px; font-size: .6rem; font-weight: 700; letter-spacing: .16em; color: var(--accent); }
+.bluecom-box p { font-size: .88rem; color: #1a2e3b; line-height: 1.7; margin-bottom: 0; }
+
+.conclusion-block { background: var(--deep); padding: 32px 36px; margin-top: 38px; }
+.concl-label { font-size: .66rem; font-weight: 700; color: var(--accent-light); letter-spacing: .2em; text-transform: uppercase; margin-bottom: 12px; }
+.conclusion-block p { color: rgba(255,255,255,.8); font-size: .92rem; line-height: 1.75; margin-bottom: 12px; }
+.conclusion-block p:last-of-type { color: var(--accent-light); font-weight: 600; }
+
+.sidebar { position: sticky; top: 90px; height: fit-content; }
+.sidebar-title { font-size: .7rem; font-weight: 700; color: var(--deep); letter-spacing: .2em; text-transform: uppercase; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid var(--accent); }
+.sidebar-card { display: block; text-decoration: none; color: inherit; padding-bottom: 18px; border-bottom: 1px solid var(--rule); transition: opacity .2s; }
+.sidebar-card:hover { opacity: .75; }
+.sidebar-card .cat { display: block; font-size: .64rem; color: var(--accent); font-weight: 600; letter-spacing: .1em; margin-bottom: 4px; }
+.sidebar-card h4 { font-size: .95rem; font-weight: 600; color: var(--deep); line-height: 1.4; margin: 0 0 4px; }
+.sidebar-card .meta { font-size: .72rem; color: var(--muted); }
+
+.cta-strip { background: var(--deep); padding: 52px 40px; text-align: center; border-top: 3px solid var(--accent); }
+.cta-strip h3 { font-family: var(--font-display); font-size: clamp(1.3rem, 2.2vw, 1.8rem); color: #fff; margin-bottom: 12px; font-weight: 700; }
+.cta-strip p { color: rgba(255,255,255,.55); font-size: .88rem; max-width: 380px; margin: 0 auto 24px; }
+.cta-btn { display: inline-block; background: var(--accent); color: var(--deep); padding: 12px 32px; font-size: .72rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; text-decoration: none; transition: background .2s; }
+.cta-btn:hover { background: var(--accent-light); }
+
+@media (max-width: 900px) {
+  .article-layout { grid-template-columns: 1fr; }
+  .sidebar { position: static; margin-top: 40px; }
+}
+</style>
+</head>
+<body>
+<nav id="navbar">
+  <div class="nav-inner container">
+    <a href="index.html" class="logo"><img src="assets/logo BLUECOM_fond_blanc.png" alt="BLUECOM" height="48"></a>
+    <ul class="nav-links">
+      <li><a href="blog.html" class="active">Blog</a></li>
+      <li><a href="index.html#contact" class="nav-cta">RDV</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="hero-compact">
+  <div class="container">
+    <div class="category-tag"><span class="line"></span><span>Audiovisuel</span></div>
+    <h1>La vidéo corporate : outil stratégique de communication</h1>
+    <p class="intro">Dans un univers de l'attention fragmentée, la vidéo corporate bien conçue est l'investissement à plus fort retour.</p>
+    <div class="hero-meta">
+      <span>🗓 Avril 2026</span>
+      <span>⏱ 6 min</span>
+      <span>📍 Dakar</span>
+    </div>
+  </div>
+</section>
+
+<div class="article-layout">
+  <article class="article-main">
+    <p class="opening-statement">Une vidéo d'entreprise bien produite génère jusqu'à 80% de mémorisation supplémentaire. Sur les réseaux sociaux africains, le contenu vidéo obtient un taux d'engagement 3 à 5 fois supérieur aux posts statiques.</p>
+
+    <div class="section">
+      <div class="section-label"><span class="num">01</span><span class="line"></span></div>
+      <h2>Les formats qui performent</h2>
+      <p>Le film institutionnel long format (3-5 min) reste pertinent pour les présentations formelles. Mais il doit coexister avec des capsules de 60-90 secondes pour les réseaux sociaux.</p>
+    </div>
+
+    <ol class="narrative-list">
+      <li><strong>Film institutionnel</strong> Ancre l'identité et les valeurs</li>
+      <li><strong>Capsule sociale</strong> Taux d'engagement élevé, vertical</li>
+      <li><strong>Témoignage client</strong> Crédibilité maximale</li>
+      <li><strong>Reportage terrain</strong> Authentique, montre l'action</li>
+      <li><strong>Interview dirigeant</strong> Humanise l'institution</li>
+    </ol>
+
+    <div class="mid-quote">
+      <p>Une vidéo qui ne raconte pas d'histoire ne laisse pas de trace. <em>Le spectateur oublie les chiffres. Il retient les émotions.</em></p>
+    </div>
+
+    <div class="section">
+      <div class="section-label"><span class="num">02</span><span class="line"></span></div>
+      <h2>Production : excellence et authenticité</h2>
+      <p>La qualité technique est nécessaire mais non suffisante. Une vidéo sans histoire, sans personnage mémorable, restera invisible dans le flux de contenus.</p>
+      <p>Le brief créatif est l'étape la plus stratégique. Il définit l'objectif, la cible, le message central et le ton.</p>
+    </div>
+
+    <div class="section">
+      <div class="section-label"><span class="num">03</span><span class="line"></span></div>
+      <h2>Distribution et mesure</h2>
+      <p>Une vidéo qui reste sur un serveur est un investissement perdu. La distribution inclut : optimisation SEO, programmation aux heures de forte audience, activation des réseaux d'amplification.</p>
+      <p>Les métriques essentielles : taux de complétion, taux d'engagement, partages.</p>
+    </div>
+
+    <div class="bluecom-box">
+      <p><strong>Stratégie "Snack Content" :</strong> Recycler une seule journée de tournage en centaines de capsules TikTok, Stories Instagram et teasers LinkedIn. Transformer chaque collaborateur en ambassadeur visuel.</p>
+    </div>
+
+    <div class="conclusion-block">
+      <p class="concl-label">Pour conclure</p>
+      <p>En 2026, la vidéo n'est plus un luxe de prestige. C'est le battement de cœur régulier de votre communication.</p>
+    </div>
+  </article>
+
+  <aside class="sidebar">
+    <div class="sidebar-title">Articles Recents</div>
+    <div class="sidebar-list">
+      <a href="article_communication-tendances-2026.html" class="sidebar-card">
+        <span class="cat">Strategy</span>
+        <h4>Communication : tendances 2026</h4>
+        <span class="meta">Avril 2026</span>
+      </a>
+      <a href="article_gestion-crise-anticiper.html" class="sidebar-card">
+        <span class="cat">Crise</span>
+        <h4>Gestion de crise</h4>
+        <span class="meta">Avril 2026</span>
+      </a>
+      <a href="article_interview-mediatique.html" class="sidebar-card">
+        <span class="cat">Media Training</span>
+        <h4>L'interview médiatique</h4>
+        <span class="meta">Mars 2026</span>
+      </a>
+    </div>
+  </aside>
+</div>
+
+<div class="cta-strip">
+  <h3>Donnons vie à votre histoire en vidéo</h3>
+  <p>Produisons ensemble une vidéo qui marque les esprits.</p>
+  <a href="index.html#contact" class="cta-btn">Lancer notre projet</a>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="footer-brand">
+      <a href="index.html"><img src="assets/logo BLUECOM_fond_blanc.png" alt="BLUECOM" height="40"></a>
+      <p>BLUECOM Stratégies — Dakar · 2026</p>
+    </div>
+  </div>
+</footer>
+<script src="js/main.js"></script>
+</body>
+</html>
