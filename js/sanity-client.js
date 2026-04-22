@@ -8,10 +8,40 @@ const SANITY_DATASET = 'production';
  * Fonction pour construire l'URL de l'image Sanity
  */
 function urlFor(source) {
-    if (!source || !source.asset || !source.asset._ref) return 'assets/placeholder-blog.jpg';
-    const ref = source.asset._ref;
-    const [_file, id, dimensions, extension] = ref.split('-');
-    return `https://cdn.sanity.io/images/${SANITY_PROJECT_ID}/${SANITY_DATASET}/${id}-${dimensions}.${extension}`;
+    if (!source) {
+        console.log('urlFor: source is null/undefined');
+        return '';
+    }
+    
+    // Si c'est une chaîne directe (URL déjà formée)
+    if (typeof source === 'string') {
+        console.log('urlFor: source is string:', source);
+        return source;
+    }
+    
+    // Si l'image a un asset avec url directement
+    if (source.asset && source.asset.url) {
+        console.log('urlFor: got asset URL:', source.asset.url);
+        return source.asset.url;
+    }
+    
+    // Si on a une _ref
+    if (source.asset && source.asset._ref) {
+        const ref = source.asset._ref;
+        // Format: image-abc123-def456-w200h200.jpg
+        const parts = ref.split('-');
+        if (parts.length >= 2) {
+            const id = parts[1];
+            // Different formats depending on the image size requested
+            const dimensions = parts.slice(2).join('-').replace(/\.[^.]+$/, '');
+            const url = `https://cdn.sanity.io/images/${SANITY_PROJECT_ID}/${SANITY_DATASET}/${id}-${dimensions}`;
+            console.log('urlFor: constructed URL:', url);
+            return url;
+        }
+    }
+    
+    console.log('urlFor: no valid image found in source', source);
+    return '';
 }
 
 /**

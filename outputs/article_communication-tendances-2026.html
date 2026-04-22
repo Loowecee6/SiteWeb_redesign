@@ -5,191 +5,285 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Communication institutionnelle : tendances 2026 — BLUECOM Stratégies</title>
 <link rel="stylesheet" href="css/style.css">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-body { font-family: var(--font-sans); background: var(--sand); color: var(--ink); margin: 0; }
-:root { --accent: #c4882a; --accent-light: #e8c26a; }
+:root {
+    --ink: #0f0e0d;
+    --sand: #f5f0e8;
+    --gold: #c4922a;
+    --gold-light: #e8b84b;
+    --deep: #1a2e3b;
+    --muted: #6b6460;
+    --rule: #d4c9b8;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'DM Sans', sans-serif; background: var(--sand); color: var(--ink); line-height: 1.7; }
 
-.hero-compact { background: var(--deep); padding: 60px 0 50px; position: relative; overflow: hidden; }
-.hero-compact::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(-55deg, transparent 0, transparent 40px, rgba(196,136,42,.03) 40px, rgba(196,136,42,.03) 41px); }
-.hero-compact .container { max-width: 1200px; margin: 0 auto; padding: 0 40px; position: relative; z-index: 1; }
-.category-tag { display: inline-flex; align-items: center; gap: 12px; margin-bottom: 16px; }
-.category-tag .line { width: 28px; height: 1px; background: var(--accent); }
-.category-tag span { font-size: .68rem; font-weight: 700; color: var(--accent); letter-spacing: .2em; text-transform: uppercase; }
-.hero-compact h1 { font-family: var(--font-display); font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 700; color: #fff; line-height: 1.2; margin-bottom: 16px; }
-.hero-compact .intro { font-size: 1rem; color: rgba(255,255,255,.75); line-height: 1.6; margin-bottom: 20px; max-width: 560px; }
-.hero-meta { display: flex; gap: 24px; font-size: .78rem; color: rgba(255,255,255,.5); }
+.article-hero {
+    background: var(--deep);
+    padding: 48px 40px;
+    position: relative;
+    overflow: hidden;
+}
+.article-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(196,146,42,.04) 40px, rgba(196,146,42,.04) 41px);
+}
+.article-hero .container { max-width: 1100px; margin: 0 auto; position: relative; z-index: 1; }
 
-.article-layout { max-width: 1200px; margin: 0 auto; padding: 56px 40px; display: grid; grid-template-columns: 1fr 320px; gap: 56px; }
-.article-main { max-width: 720px; }
+.theme-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+.theme-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--gold);
+}
+.theme-label {
+    font-size: .72rem;
+    font-weight: 600;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--gold);
+}
+.article-hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3vw, 2.8rem);
+    font-weight: 700;
+    color: #fff;
+    max-width: 800px;
+    margin-bottom: 16px;
+    line-height: 1.25;
+}
+.article-hero .article-meta {
+    display: flex;
+    gap: 20px;
+    font-size: .75rem;
+    color: rgba(255,255,255,.6);
+    letter-spacing: .04em;
+}
 
-.opening-statement { font-family: var(--font-serif); font-size: 1.08rem; font-style: italic; color: var(--muted); line-height: 1.8; margin-bottom: 40px; padding-bottom: 32px; border-bottom: 1px solid var(--rule); }
+.article-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 56px 40px;
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 48px;
+}
 
-.section { margin-bottom: 42px; }
-.section-label { display: inline-flex; align-items: center; gap: 10px; margin-bottom: 10px; }
-.section-label .num { font-size: .68rem; font-weight: 700; color: var(--accent); letter-spacing: .2em; }
-.section-label .line { width: 24px; height: 1px; background: var(--accent); opacity: .5; }
-.section h2 { font-family: var(--font-display); font-size: clamp(1.3rem, 2vw, 1.7rem); font-weight: 700; color: var(--deep); line-height: 1.25; margin-bottom: 14px; }
-.section p { font-size: .95rem; color: #3a3228; line-height: 1.85; margin-bottom: 14px; }
+.article-content { max-width: 720px; }
+.article-lead {
+    font-size: 1.1rem;
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: 36px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid var(--rule);
+    font-style: italic;
+}
 
-.mid-quote { margin: 38px 0; padding: 32px 38px; background: var(--warm); border-top: 3px solid var(--accent); border-bottom: 3px solid var(--accent); text-align: center; }
-.mid-quote p { font-family: var(--font-serif); font-size: clamp(1.05rem, 1.8vw, 1.35rem); font-style: italic; color: var(--deep); line-height: 1.55; }
-.mid-quote p em { color: var(--accent); font-style: normal; font-weight: 600; }
+.article-content h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    color: var(--deep);
+    margin: 36px 0 14px;
+    font-weight: 700;
+}
+.article-content h2:first-of-type { margin-top: 0; }
+.article-content p {
+    font-size: .95rem;
+    color: #3a3530;
+    margin-bottom: 16px;
+    line-height: 1.8;
+}
+.article-content ul {
+    list-style: none;
+    margin: 20px 0;
+}
+.article-content ul li {
+    font-size: .9rem;
+    color: #3a3530;
+    line-height: 1.7;
+    padding-left: 20px;
+    position: relative;
+    margin-bottom: 8px;
+}
+.article-content ul li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-weight: 700;
+}
+.pull-quote {
+    border-left: 4px solid var(--gold);
+    padding: 24px 28px;
+    margin: 32px 0;
+    background: var(--sand);
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    font-style: italic;
+    color: var(--deep);
+    line-height: 1.5;
+}
 
-.bluecom-box { border: 1.5px solid var(--accent); background: #f0f5fa; padding: 24px 28px; margin: 32px 0; position: relative; }
-.bluecom-box::before { content: 'NOTE BLUECOM'; position: absolute; top: -10px; left: 18px; background: var(--sand); padding: 0 6px; font-size: .6rem; font-weight: 700; letter-spacing: .16em; color: var(--accent); }
-.bluecom-box p { font-size: .88rem; color: #1a2e3b; line-height: 1.7; margin-bottom: 0; }
+.sidebar-title {
+    font-size: .7rem;
+    font-weight: 700;
+    color: var(--deep);
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--gold);
+}
+.sidebar-list { display: flex; flex-direction: column; gap: 0; }
+.sidebar-card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--rule);
+    transition: opacity .2s;
+}
+.sidebar-card:hover { opacity: .7; }
+.sidebar-card .cat {
+    display: block;
+    font-size: .6rem;
+    color: var(--gold);
+    font-weight: 700;
+    letter-spacing: .1em;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+}
+.sidebar-card h4 {
+    font-size: .88rem;
+    font-weight: 600;
+    color: var(--deep);
+    line-height: 1.4;
+    margin: 0 0 4px;
+}
+.sidebar-card .meta {
+    font-size: .7rem;
+    color: var(--muted);
+}
 
-.conclusion-block { background: var(--deep); padding: 32px 36px; margin-top: 38px; }
-.concl-label { font-size: .66rem; font-weight: 700; color: var(--gold); letter-spacing: .2em; text-transform: uppercase; margin-bottom: 12px; }
-.conclusion-block p { color: rgba(255,255,255,.8); font-size: .92rem; line-height: 1.75; margin-bottom: 12px; }
-.conclusion-block p:last-of-type { color: var(--gold); font-weight: 600; }
-
-.sidebar { position: sticky; top: 90px; height: fit-content; }
-.sidebar-title { font-size: .7rem; font-weight: 700; color: var(--deep); letter-spacing: .2em; text-transform: uppercase; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid var(--gold); }
-.sidebar-list { display: flex; flex-direction: column; gap: 18px; }
-.sidebar-card { display: block; text-decoration: none; color: inherit; padding-bottom: 18px; border-bottom: 1px solid var(--rule); transition: opacity .2s; }
-.sidebar-card:hover { opacity: .75; }
-.sidebar-card .cat { display: block; font-size: .64rem; color: var(--accent); font-weight: 600; letter-spacing: .1em; margin-bottom: 4px; }
-.sidebar-card h4 { font-size: .95rem; font-weight: 600; color: var(--deep); line-height: 1.4; margin: 0 0 4px; }
-.sidebar-card .meta { font-size: .72rem; color: var(--muted); }
-
-.cta-strip { background: var(--deep); padding: 52px 40px; text-align: center; border-top: 3px solid var(--gold); }
-.cta-strip h3 { font-family: var(--font-display); font-size: clamp(1.3rem, 2.2vw, 1.8rem); color: #fff; margin-bottom: 12px; font-weight: 700; }
-.cta-strip p { color: rgba(255,255,255,.55); font-size: .88rem; max-width: 380px; margin: 0 auto 24px; }
-.cta-btn { display: inline-block; background: var(--gold); color: var(--deep); padding: 12px 32px; font-size: .72rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; text-decoration: none; transition: background .2s; }
-.cta-btn:hover { background: var(--gold-light); }
+.site-footer {
+    background: #0a1820;
+    color: rgba(255,255,255,.4);
+    text-align: center;
+    padding: 32px;
+    font-size: .78rem;
+    letter-spacing: .06em;
+    border-top: 2px solid var(--gold);
+}
+.site-footer strong { color: var(--gold-light); }
 
 @media (max-width: 900px) {
-  .article-layout { grid-template-columns: 1fr; }
-  .sidebar { position: static; margin-top: 40px; }
-  .hero-compact { padding: 50px 0 40px; }
-  .hero-compact .container, .article-layout { padding-left: 24px; padding-right: 24px; }
+    .article-container { grid-template-columns: 1fr; padding: 40px 24px; }
+    .article-sidebar { margin-top: 48px; }
+    .article-hero { padding: 36px 24px; }
 }
 </style>
 </head>
 <body>
+
 <nav id="navbar">
-  <div class="nav-inner container">
-    <a href="index.html" class="logo" aria-label="BLUECOM Stratégies"><img src="assets/logo BLUECOM_fond_blanc.png" alt="BLUECOM Logo" height="48"></a>
-    <button id="menuToggle" class="menu-toggle" aria-label="Ouvrir le menu"><span></span><span></span><span></span></button>
-    <ul id="navLinks" class="nav-links">
-      <li><a href="about.html">L'Agence</a></li>
-      <li><a href="services.html">Expertises</a></li>
-      <li><a href="methodology.html">Méthodologie</a></li>
-      <li><a href="portfolio.html">Réalisations</a></li>
-      <li><a href="blog.html" class="active">Blog</a></li>
-      <li><a href="index.html#contact" class="nav-cta">Prendre RDV</a></li>
-    </ul>
-  </div>
+    <div class="nav-inner container">
+        <a href="index.html" class="logo"><img src="assets/logo BLUECOM_fond_blanc.png" alt="BLUECOM" height="48"></a>
+        <ul class="nav-links">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="about.html">L'Agence</a></li>
+            <li><a href="services.html">Expertises</a></li>
+            <li><a href="methodology.html">Méthodologie</a></li>
+            <li><a href="portfolio.html">Réalisations</a></li>
+            <li><a href="blog.html" class="active">Blog</a></li>
+            <li><a href="index.html#contact" class="nav-cta">Prendre RDV</a></li>
+        </ul>
+    </div>
 </nav>
 
-<section class="hero-compact">
-  <div class="container">
-    <div class="category-tag"><span class="line"></span><span>Strategy · Tendances</span></div>
-    <h1>Communication institutionnelle : tendances 2026 pour l'Afrique</h1>
-    <p class="intro">L'Afrique entre dans une ère de maturité communicationnelle. Ce qui fonctionnait hier ne suffit plus.</p>
-    <div class="hero-meta">
-      <span>🗓 Avril 2026</span>
-      <span>⏱ 7 min</span>
-      <span>📍 Dakar</span>
+<header class="article-hero">
+    <div class="container">
+        <div class="theme-badge">
+            <span class="theme-dot"></span>
+            <span class="theme-label">Stratégie</span>
+        </div>
+        <h1>Communication institutionnelle : les tendances 2026 pour le continent africain</h1>
+        <div class="article-meta">
+            <span>🗓 Avril 2026</span>
+            <span>⏱ 7 min de lecture</span>
+            <span>📍 Dakar, Sénégal</span>
+        </div>
     </div>
-  </div>
-</section>
+</header>
 
-<div class="article-layout">
-  <article class="article-main">
-    <p class="opening-statement">En 2026, l'Afrique ne reçoit plus les tendances mondiales avec un temps de retard : elle les co-génère. Le continent produit désormais ses propres codes, ses propios narratifs.</p>
+<main class="article-container">
+    <div class="article-content">
+        <p class="article-lead">L'Afrique entre dans une ère de maturité communicationnelle. Ce qui fonctionnait hier ne suffit plus. Décryptage des nouvelles dynamiques.</p>
 
-    <div class="section">
-      <div class="section-label"><span class="num">01</span><span class="line"></span></div>
-      <h2>La localisation radicale des messages</h2>
-      <p>La traduction ne suffit plus. Les institutions performantes investissent dans la création de contenus originaux en langues nationales — wolof, haoussa, swahili, bambara. Cette localisation va bien au-delà des mots.</p>
-      <p>Une marque qui s'adresse à un public sénégalais en mobilisant les codes du storytelling wolof obtient un taux d'engagement jusqu'à trois fois supérieur.</p>
-    </div>
+        <h2>Un continent en pleine transformation communicationnelle</h2>
+        <p>En 2026, l'Afrique ne reçoit plus les tendances mondiales avec un temps de retard : elle les co-génère. Des rédactions numériques de Lagos aux studios de production de Dakar, en passant par les think tanks d'Abidjan et de Nairobi, le continent produit désormais ses propres codes, ses propres formats, ses propres narratifs.</p>
+        <p>La communication institutionnelle africaine entre dans l'ère de la souveraineté narrative. Fini le temps où une institution se contentait d'adapter des messages conçus ailleurs. Les publics africains, jeunes, connectés, plurilingues, attendent des prises de parole authentiques, ancrées dans leurs réalités, délivrées dans leurs langues et portées par des visages qui leur ressemblent.</p>
 
-    <div class="section">
-      <div class="section-label"><span class="num">02</span><span class="line"></span></div>
-      <h2>La transparence comme capital réputationnel</h2>
-      <p>Dans un contexte de défiance généralisée envers les institutions, la transparence est devenue un actif stratégique. Les organisations qui publient leurs données construisent une crédibilité durable.</p>
-      <p>Ce mouvement s'accompagne d'une demande croissante de reporting d'impact : toutes sont désormais attendues sur la preuve tangible de leur contribution au développement.</p>
-    </div>
+        <div class="pull-quote">"L'Afrique ne reçoit plus les tendances : elle les fabrique. Les institutions qui l'ignorent parlent dans le vide."</div>
 
-    <div class="mid-quote">
-      <p>L'Afrique ne reçoit plus les tendances : elle les fabrique. <em>Les institutions qui l'ignorent parlent dans le vide.</em></p>
-    </div>
+        <h2>Tendance n°1 — La localisation radicale des messages</h2>
+        <p>La traduction ne suffit plus. Les institutions performantes en 2026 investissent dans la création de contenus originaux en langues nationales — wolof, haoussa, amharique, swahili, bambara. Cette localisation va bien au-delà des mots : elle touche les références culturelles, les codes visuels, les formats narratifs.</p>
+        <p>Les agences de communication avant-gardistes constituent désormais des équipes éditoriales multilingues capables de produire simultanément dans plusieurs langues du continent, sans que la version française ou anglaise reste la "version originale".</p>
 
-    <div class="section">
-      <div class="section-label"><span class="num">03</span><span class="line"></span></div>
-      <h2>L'influence par les pairs</h2>
-      <p>Le modèle top-down de la communication institutionnelle s'érode. Les décideurs africains font davantage confiance aux pairs — autres dirigeants, académiciens, journalistes — qu'aux communiqués officiels.</p>
-    </div>
+        <h2>Tendance n°2 — La transparence comme capital réputationnel</h2>
+        <p>Dans un contexte de défiance généralisée envers les institutions — alimentée par les scandales de gouvernance, la désinformation et la montée de la conscience citoyenne — la transparence est devenue un actif stratégique. Les organisations qui publient leurs données, rendent compte de leurs actions et exposent leurs processus de décision construisent une crédibilité durable.</p>
+        <p>Ce mouvement s'accompagne d'une demande croissante de reporting d'impact : ONG, institutions financières, entreprises cotées ou non — toutes sont désormais attendues sur la preuve tangible de leur contribution au développement.</p>
 
-    <div class="section">
-      <div class="section-label"><span class="num">04</span><span class="line"></span></div>
-      <h2>La communication de données et preuves</h2>
-      <p>L'ère de l'affirmation sans preuve est révolue. Les institutions crédibles communiquent avec des données — infographies, tableaux de bord accessibles, rapports vérifiables.</p>
-      <p>Les data journalists et spécialistes de visualisation sont devenus des profils très recherchés.</p>
-    </div>
+        <h2>Tendance n°3 — L'influence par les pairs</h2>
+        <p>Le modèle top-down de la communication institutionnelle s'érode. Les décideurs africains font davantage confiance aux pairs — autres dirigeants, académiciens reconnus, journalistes d'investigation respectés — qu'aux communiqués officiels.</p>
+        <ul>
+            <li>Identification des relais d'opinion sectoriels et géographiques</li>
+            <li>Co-construction de contenus avec des voix légitimes locales</li>
+            <li>Engagement des communautés diasporiques comme amplificateurs</li>
+            <li>Investissement dans les plateformes d'opinion africaines (The Africa Report, Jeune Afrique, presse locale indépendante)</li>
+        </ul>
 
-    <div class="bluecom-box">
-      <p><strong>Perspective :</strong> Pour les agences, 2026 marque un tournant. La communication africainene doit être pensée depuis le continent, pour le continent. Cela implique des investissements dans la formation, la production de contenus originaux.</p>
+        <h2>Tendance n°4 — La communication de données et de preuves</h2>
+        <p>L'ère de l'affirmation sans preuve est révolue. En 2026, les institutions crédibles communiquent avec des données — des infographies, des tableaux de bord accessibles au public, des rapports vérifiables.</p>
+        <p>Les data journalists et les spécialistes de la visualisation de données sont devenus des profils très recherchés dans les équipes de communication institutionnelle. Savoir transformer une donnée brute en récit visuel percutant est une compétence stratégique à part entière.</p>
+
+        <h2>Perspectives pour les agences conseil</h2>
+        <p>Pour les agences comme pour leurs clients, 2026 marque un tournant : la communication institutionnelle africaine doit être pensée depuis le continent, pour le continent, avec les outils du continent. Cela implique des investissements dans la formation, dans la production de contenus originaux et dans la construction de réseaux d'influence authentiques.</p>
     </div>
 
-    <div class="conclusion-block">
-      <p class="concl-label">Pour conclure</p>
-      <p>La technologie doit servir le récit, et non l'inverse. Si votre message ne résonne pas dans la langue du cœur de votre audience, aucune innovation ne pourra compenser ce silence.</p>
-    </div>
-  </article>
+    <aside class="article-sidebar">
+        <div class="sidebar-title">Articles récents</div>
+        <div class="sidebar-list">
+            <a href="article_gestion-crise-anticiper.html" class="sidebar-card">
+                <span class="cat">Gestion de Crise</span>
+                <h4>Gestion de crise : anticiper plutôt que réagir</h4>
+                <span class="meta">Avril 2026 · 8 min</span>
+            </a>
+            <a href="article_interview-mediatique.html" class="sidebar-card">
+                <span class="cat">Media Training</span>
+                <h4>L'art de l'interview médiatique pour dirigeants</h4>
+                <span class="meta">Avril 2026 · 6 min</span>
+            </a>
+            <a href="article_strategie-digitale.html" class="sidebar-card">
+                <span class="cat">Digital</span>
+                <h4>Stratégie digitale : comment engager vos audiences</h4>
+                <span class="meta">Avril 2026 · 7 min</span>
+            </a>
+        </div>
+    </aside>
+</main>
 
-  <aside class="sidebar">
-    <div class="sidebar-title">Articles Recents</div>
-    <div class="sidebar-list">
-      <a href="article_gestion-crise-anticiper.html" class="sidebar-card">
-        <span class="cat">Crise</span>
-        <h4>Gestion de crise : anticiper</h4>
-        <span class="meta">Avril 2026</span>
-      </a>
-      <a href="article_interview-mediatique.html" class="sidebar-card">
-        <span class="cat">Media Training</span>
-        <h4>L'interview médiatique</h4>
-        <span class="meta">Mars 2026</span>
-      </a>
-      <a href="article_strategie-digitale.html" class="sidebar-card">
-        <span class="cat">Digital</span>
-        <h4>Strategie digitale</h4>
-        <span class="meta">Fevrier 2026</span>
-      </a>
-    </div>
-  </aside>
-</div>
-
-<div class="cta-strip">
-  <h3>Construisons votre stratégie de communication</h3>
-  <p>Parlez-nous de vos enjeux pour une communication qui résonne en Afrique.</p>
-  <a href="index.html#contact" class="cta-btn">Parlons de votre projet</a>
-</div>
-
-<footer>
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <a href="index.html"><img src="assets/logo BLUECOM_fond_blanc.png" alt="BLUECOM" height="40"></a>
-        <p>BLUECOM Stratégies — Agence conseil en communication institutionnelle · Dakar, Senegal · 2026</p>
-      </div>
-      <div class="footer-col">
-        <h4>Navigation</h4>
-        <ul><li><a href="about.html">L'Agence</a></li><li><a href="services.html">Expertises</a></li><li><a href="blog.html">Blog</a></li></ul>
-      </div>
-      <div class="footer-col">
-        <h4>Contact</h4>
-        <ul><li>Dakar, Senegal</li><li><a href="mailto:contact@bluecom.sn">contact@bluecom.sn</a></li></ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>© 2026 BLUECOM Strategies. Tous droits réservés.</p>
-    </div>
-  </div>
+<footer class="site-footer">
+    <strong>BLUECOM Stratégies</strong> — Agence conseil en communication · Dakar, Sénégal · 2026
 </footer>
 
 <script src="js/main.js"></script>

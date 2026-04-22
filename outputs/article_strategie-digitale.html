@@ -3,182 +3,286 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Stratégie digitale : engager vos audiences en Afrique — BLUECOM</title>
+<title>Stratégie digitale : comment engager vos audiences en Afrique — BLUECOM Stratégies</title>
 <link rel="stylesheet" href="css/style.css">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-body { font-family: var(--font-sans); background: var(--sand); color: var(--ink); margin: 0; }
-:root { --accent: #3d9970; --accent-light: #5cb89a; }
+:root {
+    --ink: #0f0e0d;
+    --sand: #f5f0e8;
+    --gold: #c4922a;
+    --gold-light: #e8b84b;
+    --green: #3d9970;
+    --green-light: #5cb89a;
+    --deep: #1a2e3b;
+    --muted: #6b6460;
+    --rule: #d4c9b8;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'DM Sans', sans-serif; background: var(--sand); color: var(--ink); line-height: 1.7; }
 
-.hero-compact { background: var(--deep); padding: 60px 0 50px; position: relative; overflow: hidden; }
-.hero-compact::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(-55deg, transparent 0, transparent 40px, rgba(61,153,112,.03) 40px, rgba(61,153,112,.03) 41px); }
-.hero-compact .container { max-width: 1200px; margin: 0 auto; padding: 0 40px; position: relative; z-index: 1; }
-.category-tag { display: inline-flex; align-items: center; gap: 12px; margin-bottom: 16px; }
-.category-tag .line { width: 28px; height: 1px; background: var(--accent); }
-.category-tag span { font-size: .68rem; font-weight: 700; color: var(--accent); letter-spacing: .2em; text-transform: uppercase; }
-.hero-compact h1 { font-family: var(--font-display); font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 700; color: #fff; line-height: 1.2; margin-bottom: 16px; }
-.hero-compact .intro { font-size: 1rem; color: rgba(255,255,255,.75); line-height: 1.6; margin-bottom: 20px; max-width: 560px; }
-.hero-meta { display: flex; gap: 24px; font-size: .78rem; color: rgba(255,255,255,.5); }
+.article-hero {
+    background: var(--deep);
+    padding: 48px 40px;
+    position: relative;
+    overflow: hidden;
+}
+.article-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(61,153,112,.04) 40px, rgba(61,153,112,.04) 41px);
+}
+.article-hero .container { max-width: 1100px; margin: 0 auto; position: relative; z-index: 1; }
 
-.article-layout { max-width: 1200px; margin: 0 auto; padding: 56px 40px; display: grid; grid-template-columns: 1fr 320px; gap: 56px; }
-.article-main { max-width: 720px; }
+.theme-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+.theme-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--green);
+}
+.theme-label {
+    font-size: .72rem;
+    font-weight: 600;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--green);
+}
+.article-hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3vw, 2.8rem);
+    font-weight: 700;
+    color: #fff;
+    max-width: 800px;
+    margin-bottom: 16px;
+    line-height: 1.25;
+}
+.article-hero .article-meta {
+    display: flex;
+    gap: 20px;
+    font-size: .75rem;
+    color: rgba(255,255,255,.6);
+    letter-spacing: .04em;
+}
 
-.opening-statement { font-family: var(--font-serif); font-size: 1.08rem; font-style: italic; color: var(--muted); line-height: 1.8; margin-bottom: 40px; padding-bottom: 32px; border-bottom: 1px solid var(--rule); }
+.article-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 56px 40px;
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 48px;
+}
 
-.section { margin-bottom: 42px; }
-.section-label { display: inline-flex; align-items: center; gap: 10px; margin-bottom: 10px; }
-.section-label .num { font-size: .68rem; font-weight: 700; color: var(--accent); letter-spacing: .2em; }
-.section-label .line { width: 24px; height: 1px; background: var(--accent); opacity: .5; }
-.section h2 { font-family: var(--font-display); font-size: clamp(1.3rem, 2vw, 1.7rem); font-weight: 700; color: var(--deep); line-height: 1.25; margin-bottom: 14px; }
-.section p { font-size: .95rem; color: #3a3228; line-height: 1.85; margin-bottom: 14px; }
+.article-content { max-width: 720px; }
+.article-lead {
+    font-size: 1.1rem;
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: 36px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid var(--rule);
+    font-style: italic;
+}
 
-.mid-quote { margin: 38px 0; padding: 32px 38px; background: var(--warm); border-top: 3px solid var(--accent); border-bottom: 3px solid var(--accent); text-align: center; }
-.mid-quote p { font-family: var(--font-serif); font-size: clamp(1.05rem, 1.8vw, 1.35rem); font-style: italic; color: var(--deep); line-height: 1.55; }
-.mid-quote p em { color: var(--accent); font-style: normal; font-weight: 600; }
+.article-content h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    color: var(--deep);
+    margin: 36px 0 14px;
+    font-weight: 700;
+}
+.article-content h2:first-of-type { margin-top: 0; }
+.article-content p {
+    font-size: .95rem;
+    color: #3a3530;
+    margin-bottom: 16px;
+    line-height: 1.8;
+}
+.article-content ul {
+    list-style: none;
+    margin: 20px 0;
+}
+.article-content ul li {
+    font-size: .9rem;
+    color: #3a3530;
+    line-height: 1.7;
+    padding-left: 20px;
+    position: relative;
+    margin-bottom: 8px;
+}
+.article-content ul li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--green);
+    font-weight: 700;
+}
+.pull-quote {
+    border-left: 4px solid var(--green);
+    padding: 24px 28px;
+    margin: 32px 0;
+    background: var(--sand);
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    font-style: italic;
+    color: var(--deep);
+    line-height: 1.5;
+}
 
-.narrative-list { list-style: none; margin: 22px 0 32px; counter-reset: nlist; }
-.narrative-list li { counter-increment: nlist; position: relative; padding: 14px 0 14px 48px; border-bottom: 1px solid var(--rule); font-size: .9rem; color: #3a3228; line-height: 1.7; }
-.narrative-list li:last-child { border-bottom: none; }
-.narrative-list li::before { content: counter(nlist, decimal-leading-zero); position: absolute; left: 0; top: 14px; font-family: var(--font-display); font-size: 1.35rem; font-weight: 700; color: var(--accent); }
-.narrative-list li strong { display: block; font-weight: 600; color: var(--deep); margin-bottom: 2px; font-size: .95rem; }
+.sidebar-title {
+    font-size: .7rem;
+    font-weight: 700;
+    color: var(--deep);
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--green);
+}
+.sidebar-list { display: flex; flex-direction: column; gap: 0; }
+.sidebar-card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--rule);
+    transition: opacity .2s;
+}
+.sidebar-card:hover { opacity: .7; }
+.sidebar-card .cat {
+    display: block;
+    font-size: .6rem;
+    color: var(--green);
+    font-weight: 700;
+    letter-spacing: .1em;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+}
+.sidebar-card h4 {
+    font-size: .88rem;
+    font-weight: 600;
+    color: var(--deep);
+    line-height: 1.4;
+    margin: 0 0 4px;
+}
+.sidebar-card .meta {
+    font-size: .7rem;
+    color: var(--muted);
+}
 
-.bluecom-box { border: 1.5px solid var(--accent); background: #f0f5fa; padding: 24px 28px; margin: 32px 0; position: relative; }
-.bluecom-box::before { content: 'NOTE BLUECOM'; position: absolute; top: -10px; left: 18px; background: var(--sand); padding: 0 6px; font-size: .6rem; font-weight: 700; letter-spacing: .16em; color: var(--accent); }
-.bluecom-box p { font-size: .88rem; color: #1a2e3b; line-height: 1.7; margin-bottom: 0; }
-
-.conclusion-block { background: var(--deep); padding: 32px 36px; margin-top: 38px; }
-.concl-label { font-size: .66rem; font-weight: 700; color: var(--accent-light); letter-spacing: .2em; text-transform: uppercase; margin-bottom: 12px; }
-.conclusion-block p { color: rgba(255,255,255,.8); font-size: .92rem; line-height: 1.75; margin-bottom: 12px; }
-.conclusion-block p:last-of-type { color: var(--accent-light); font-weight: 600; }
-
-.sidebar { position: sticky; top: 90px; height: fit-content; }
-.sidebar-title { font-size: .7rem; font-weight: 700; color: var(--deep); letter-spacing: .2em; text-transform: uppercase; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid var(--accent); }
-.sidebar-card { display: block; text-decoration: none; color: inherit; padding-bottom: 18px; border-bottom: 1px solid var(--rule); transition: opacity .2s; }
-.sidebar-card:hover { opacity: .75; }
-.sidebar-card .cat { display: block; font-size: .64rem; color: var(--accent); font-weight: 600; letter-spacing: .1em; margin-bottom: 4px; }
-.sidebar-card h4 { font-size: .95rem; font-weight: 600; color: var(--deep); line-height: 1.4; margin: 0 0 4px; }
-.sidebar-card .meta { font-size: .72rem; color: var(--muted); }
-
-.cta-strip { background: var(--deep); padding: 52px 40px; text-align: center; border-top: 3px solid var(--accent); }
-.cta-strip h3 { font-family: var(--font-display); font-size: clamp(1.3rem, 2.2vw, 1.8rem); color: #fff; margin-bottom: 12px; font-weight: 700; }
-.cta-strip p { color: rgba(255,255,255,.55); font-size: .88rem; max-width: 380px; margin: 0 auto 24px; }
-.cta-btn { display: inline-block; background: var(--accent); color: #fff; padding: 12px 32px; font-size: .72rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; text-decoration: none; transition: background .2s; }
-.cta-btn:hover { background: var(--accent-light); }
+.site-footer {
+    background: #0a1820;
+    color: rgba(255,255,255,.4);
+    text-align: center;
+    padding: 32px;
+    font-size: .78rem;
+    letter-spacing: .06em;
+    border-top: 2px solid var(--gold);
+}
+.site-footer strong { color: var(--gold-light); }
 
 @media (max-width: 900px) {
-  .article-layout { grid-template-columns: 1fr; }
-  .sidebar { position: static; margin-top: 40px; }
+    .article-container { grid-template-columns: 1fr; padding: 40px 24px; }
+    .article-sidebar { margin-top: 48px; }
+    .article-hero { padding: 36px 24px; }
 }
 </style>
 </head>
 <body>
+
 <nav id="navbar">
-  <div class="nav-inner container">
-    <a href="index.html" class="logo"><img src="assets/logo BLUECOM_fond_blanc.png" alt="BLUECOM" height="48"></a>
-    <ul class="nav-links">
-      <li><a href="blog.html" class="active">Blog</a></li>
-      <li><a href="index.html#contact" class="nav-cta">RDV</a></li>
-    </ul>
-  </div>
+    <div class="nav-inner container">
+        <a href="index.html" class="logo"><img src="assets/logo BLUECOM_fond_blanc.png" alt="BLUECOM" height="48"></a>
+        <ul class="nav-links">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="about.html">L'Agence</a></li>
+            <li><a href="services.html">Expertises</a></li>
+            <li><a href="methodology.html">Méthodologie</a></li>
+            <li><a href="portfolio.html">Réalisations</a></li>
+            <li><a href="blog.html" class="active">Blog</a></li>
+            <li><a href="index.html#contact" class="nav-cta">Prendre RDV</a></li>
+        </ul>
+    </div>
 </nav>
 
-<section class="hero-compact">
-  <div class="container">
-    <div class="category-tag"><span class="line"></span><span>Digital</span></div>
-    <h1>Stratégie digitale : engager vos audiences en Afrique</h1>
-    <p class="intro">Le digital africain n'est pas un marché uniforme. C'est un archipel de cultures, de plateformes et d'usages.</p>
-    <div class="hero-meta">
-      <span>🗓 Avril 2026</span>
-      <span>⏱ 7 min</span>
-      <span>📍 Dakar</span>
+<header class="article-hero">
+    <div class="container">
+        <div class="theme-badge">
+            <span class="theme-dot"></span>
+            <span class="theme-label">Digital</span>
+        </div>
+        <h1>Stratégie digitale : comment engager vos audiences en Afrique</h1>
+        <div class="article-meta">
+            <span>🗓 Avril 2026</span>
+            <span>⏱ 7 min de lecture</span>
+            <span>📍 Dakar, Sénégal</span>
+        </div>
     </div>
-  </div>
-</section>
+</header>
 
-<div class="article-layout">
-  <article class="article-main">
-    <p class="opening-statement">Il n'existe pas un marché digital africain — il en existe cinquante-quatre, avec leurs propres plateformes dominantes et leurs propres rythmes de consommation.</p>
+<main class="article-container">
+    <div class="article-content">
+        <p class="article-lead">Le digital africain n'est pas un marché uniforme. C'est un archipel de cultures, de plateformes et d'usages que seule une stratégie sur-mesure peut conquérir.</p>
 
-    <div class="section">
-      <div class="section-label"><span class="num">01</span><span class="line"></span></div>
-      <h2>Mobile-first, mobile-only</h2>
-      <p>Plus de 85% des internautes africains accèdent au web exclusivement via leur smartphone. Chaque pixel de votre stratégie doit être validé sur un téléphone d'entrée de gamme avec une connexion 3G.</p>
-      <p>Les vidéos doivent être pensées en format vertical, les sites ultra-légers, les textes courts et lisibles sur petit écran.</p>
-    </div>
+        <h2>Le mythe du "marché digital africain"</h2>
+        <p>Il n'existe pas un marché digital africain — il en existe cinquante-quatre, avec leurs propres écosystèmes, leurs propres plateformes dominantes, leurs propres rythmes de consommation. Une stratégie digitale pensée pour le Nigéria ne fonctionnera pas telle quelle au Sénégal.</p>
+        <p>En 2026, avec plus de 700 millions d'utilisateurs internet sur le continent et des taux de pénétration mobile qui continuent de progresser, l'Afrique représente l'un des espaces digitaux à la croissance la plus dynamique au monde.</p>
 
-    <div class="section">
-      <div class="section-label"><span class="num">02</span><span class="line"></span></div>
-      <h2>Les plateformes par marché</h2>
-      <p>Facebook reste à la plus large audience globale. TikTok a explosé chez les 15-35 ans. WhatsApp est le canal numéro un — encore sous-exploité par les institutions.</p>
-    </div>
+        <div class="pull-quote">"En Afrique, le digital se consomme principalement sur téléphone, dans les transports, par petites doses. Votre contenu a 3 secondes pour convaincre."</div>
 
-    <ol class="narrative-list">
-      <li><strong>Afrique de l'Ouest</strong> Facebook, WhatsApp, TikTok, YouTube</li>
-      <li><strong>Afrique de l'Est</strong> Twitter/X fort, Instagram croissant</li>
-      <li><strong>Afrique du Nord</strong> TikTok en explosion, Snapchat</li>
-      <li><strong>Afrique australe</strong> Facebook, WhatsApp, LinkedIn</li>
-    </ol>
+        <h2>Mobile-first, mobile-only</h2>
+        <p>Plus de 85% des internautes africains accèdent au web exclusivement via leur smartphone. Cette réalité devrait bouleverser chaque décision de production de contenu : les vidéos doivent être pensées en format vertical, les sites doivent être ultra-légers.</p>
 
-    <div class="mid-quote">
-      <p>Votre contenu a 3 secondes pour convaincre. <em>L'authenticité est votre meilleur investissement.</em></p>
-    </div>
+        <h2>Les plateformes qui comptent, marché par marché</h2>
+        <p>Facebook reste la plateforme à la plus large audience globale sur le continent, mais TikTok a explosé chez les 15-35 ans dans toutes les capitales africaines. WhatsApp est le canal de communication inter-personnel numéro un.</p>
+        <ul>
+            <li>Sénégal/Afrique de l'Ouest : Facebook, WhatsApp, TikTok, YouTube</li>
+            <li>Afrique de l'Est : Twitter/X fort, Instagram croissant</li>
+            <li>Afrique du Nord : TikTok en explosion, Snapchat présent</li>
+            <li>Afrique australe : Facebook, WhatsApp, Instagram, LinkedIn actif</li>
+        </ul>
 
-    <div class="section">
-      <div class="section-label"><span class="num">03</span><span class="line"></span></div>
-      <h2>L'engagement authentique</h2>
-      <p>Les audiences africaines ont un radar très fin pour détecter l'inauthenticité. Une marque qui essaie de "faire africain" sans ancrage réel sera sanctionnée.</p>
-      <p>La micro-influence ciblée surpasse régulièrement la macro-influence généraliste.</p>
+        <h2>L'engagement authentique comme moteur</h2>
+        <p>Les audiences africaines ont un radar très fin pour détecter l'inauthenticité. Une marque qui essaie de "faire africain" sans ancrage culturel réel sera sanctionnée. À l'inverse, une organisation qui investit dans la création de contenu ancré génère un capital d'engagement extraordinaire.</p>
+        <p>La micro-influence ciblée surpasse régulièrement la macro-influence généraliste.</p>
+
+        <h2>Mesurer pour optimiser</h2>
+        <p>Une stratégie digitale sans mesure est une intuition, pas une stratégie. Les indicateurs à suivre varient selon les objectifs, mais l'engagement rate et le reach organique méritent autant d'attention que les métriques de conversion habituelles.</p>
     </div>
 
-    <div class="bluecom-box">
-      <p><strong>Prochaine frontière :</strong> L'automatisation intelligente via WhatsApp avec des agents IA capable de comprendre les nuances linguistiques locales.</p>
-    </div>
+    <aside class="article-sidebar">
+        <div class="sidebar-title">Articles récents</div>
+        <div class="sidebar-list">
+            <a href="article_communication-tendances-2026.html" class="sidebar-card">
+                <span class="cat">Stratégie</span>
+                <h4>Communication institutionnelle : les tendances 2026</h4>
+                <span class="meta">Avril 2026 · 7 min</span>
+            </a>
+            <a href="article_gestion-crise-anticiper.html" class="sidebar-card">
+                <span class="cat">Gestion de Crise</span>
+                <h4>Gestion de crise : anticiper plutôt que réagir</h4>
+                <span class="meta">Avril 2026 · 8 min</span>
+            </a>
+            <a href="article_lobbying-affaires-publiques.html" class="sidebar-card">
+                <span class="cat">Relations Publiques</span>
+                <h4>Lobbying et affaires publiques en Afrique</h4>
+                <span class="meta">Avril 2026 · 8 min</span>
+            </a>
+        </div>
+    </aside>
+</main>
 
-    <div class="conclusion-block">
-      <p class="concl-label">Pour conclure</p>
-      <p>La stratégie de demain ne consiste plus à diffuser un message à des millions de personnes, mais à tenir des millions de conversations individuelles.</p>
-    </div>
-  </article>
-
-  <aside class="sidebar">
-    <div class="sidebar-title">Articles Recents</div>
-    <div class="sidebar-list">
-      <a href="article_communication-tendances-2026.html" class="sidebar-card">
-        <span class="cat">Strategy</span>
-        <h4>Communication : tendances 2026</h4>
-        <span class="meta">Avril 2026</span>
-      </a>
-      <a href="article_gestion-crise-anticiper.html" class="sidebar-card">
-        <span class="cat">Crise</span>
-        <h4>Gestion de crise</h4>
-        <span class="meta">Avril 2026</span>
-      </a>
-      <a href="article_interview-mediatique.html" class="sidebar-card">
-        <span class="cat">Media Training</span>
-        <h4>L'interview médiatique</h4>
-        <span class="meta">Mars 2026</span>
-      </a>
-    </div>
-  </aside>
-</div>
-
-<div class="cta-strip">
-  <h3> Parlons de votre visibilité digitale</h3>
-  <p>Contactez-nous pour une stratégie sur-mesure.</p>
-  <a href="index.html#contact" class="cta-btn">Démarrer</a>
-</div>
-
-<footer>
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <a href="index.html"><img src="assets/logo BLUECOM_fond_blanc.png" alt="BLUECOM" height="40"></a>
-        <p>BLUECOM Stratégies — Dakar · 2026</p>
-      </div>
-    </div>
-    <div class="footer-bottom"><p>© 2026 BLUECOM</p></div>
-  </div>
+<footer class="site-footer">
+    <strong>BLUECOM Stratégies</strong> — Agence conseil en communication · Dakar, Sénégal · 2026
 </footer>
+
 <script src="js/main.js"></script>
 </body>
 </html>

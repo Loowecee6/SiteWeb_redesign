@@ -359,6 +359,7 @@
             if (!blogGrid) return;
 
             const posts = await fetchAllPosts();
+            console.log('Posts loaded:', posts);
             
             if (posts && posts.length > 0) {
                 blogGrid.innerHTML = '';
@@ -366,11 +367,20 @@
                     const date = new Date(post.publishedAt).toLocaleDateString('fr-FR', {
                         day: 'numeric', month: 'long', year: 'numeric'
                     });
+                    
                     const imageUrl = urlFor(post.mainImage);
+                    console.log(`Post ${index + 1}: ${post.title}`);
+                    console.log('  mainImage:', post.mainImage);
+                    console.log('  imageUrl:', imageUrl);
+
+                    // Fallback si pas d'image
+                    const bgStyle = imageUrl 
+                        ? `background-image: url('${imageUrl}');` 
+                        : `background: linear-gradient(135deg, #001a2e, #002a4a);`;
 
                     const articleCard = `
                         <a href="blog-post.html#${post.slug.current}" class="blog-card" style="text-decoration: none;">
-                            <div class="blog-card-img" style="background-image: url('${imageUrl}');"></div>
+                            <div class="blog-card-img" style="${bgStyle}"></div>
                             <div class="blog-card-body">
                                 <div class="blog-meta" style="margin-bottom: 12px; font-size: 13px; display: flex; gap: 15px;">
                                     <span style="color: var(--blue-deep); font-weight: 700; text-transform: uppercase;">${post.category || 'Focus'}</span>
