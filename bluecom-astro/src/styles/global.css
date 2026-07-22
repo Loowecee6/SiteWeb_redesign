@@ -22,7 +22,6 @@ body {
   font-family: var(--font-body);
   color: var(--anthracite);
   background: var(--white);
-  overflow-x: hidden;
   line-height: 1.6;
 }
 
@@ -45,10 +44,16 @@ ul, ol {
 .container {
   max-width: var(--container-max);
   margin: 0 auto;
-  padding: 0 48px;
+  padding: 0 64px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 992px) {
+  .container {
+    padding: 0 40px;
+  }
+}
+
+@media (max-width: 576px) {
   .container {
     padding: 0 24px;
   }
