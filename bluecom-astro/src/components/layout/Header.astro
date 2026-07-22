@@ -1,8 +1,14 @@
 ---
 import Navigation from './Navigation.astro';
+
+interface Props {
+  scrolled?: boolean;
+}
+
+const { scrolled = true } = Astro.props;
 ---
 
-<header id="navbar">
+<header id="navbar" class:list={{ scrolled }}>
   <div class="nav-inner container">
     <a href="/" class="logo" aria-label="BLUECOM Stratégies - Accueil">
       <img src="/images/logo.png" alt="BLUECOM Logo" width="180" height="48">
