@@ -1,0 +1,158 @@
+---
+const navItems = [
+  { label: "L'Agence", href: "/about/" },
+  { label: "Expertises", href: "/services/" },
+  { label: "Méthodologie", href: "/methodology/" },
+  { label: "Réalisations", href: "/portfolio/" },
+  { label: "Blog", href: "/blog/" },
+];
+
+const ctaItem = { label: "Prendre RDV", href: "/#contact" };
+---
+
+<button class="menu-toggle" aria-label="Ouvrir le menu de navigation" aria-expanded="false" aria-controls="navLinks">
+  <span></span>
+  <span></span>
+  <span></span>
+</button>
+
+<ul id="navLinks" class="nav-links">
+  {navItems.map((item) => (
+    <li>
+      <a href={item.href}>{item.label}</a>
+    </li>
+  ))}
+  <li>
+    <a href={ctaItem.href} class="nav-cta">{ctaItem.label}</a>
+  </li>
+</ul>
+
+<style>
+  .menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    z-index: 1001;
+  }
+
+  .menu-toggle span {
+    width: 24px;
+    height: 2px;
+    background: var(--white);
+    border-radius: 2px;
+    transition: all var(--transition-normal);
+  }
+
+  .menu-toggle[aria-expanded="true"] span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+  .menu-toggle[aria-expanded="true"] span:nth-child(2) {
+    opacity: 0;
+  }
+  .menu-toggle[aria-expanded="true"] span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+
+  .nav-links a {
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.8);
+    letter-spacing: 0.3px;
+    transition: color var(--transition-normal);
+    position: relative;
+  }
+
+  .nav-links a:hover,
+  .nav-links a[aria-current="page"] {
+    color: var(--white);
+  }
+
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--gold);
+    transition: width var(--transition-normal);
+  }
+
+  .nav-links a:hover::after {
+    width: 100%;
+  }
+
+  .nav-cta {
+    padding: 10px 20px !important;
+    background: var(--gold) !important;
+    color: var(--blue-dark) !important;
+    font-weight: 600 !important;
+    border-radius: 4px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    font-size: 12px !important;
+  }
+
+  .nav-cta::after {
+    display: none !important;
+  }
+
+  .nav-cta:hover {
+    background: var(--white) !important;
+  }
+
+  @media (max-width: 992px) {
+    .menu-toggle {
+      display: flex;
+    }
+
+    .nav-links {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 300px;
+      height: 100vh;
+      background: var(--blue-dark);
+      flex-direction: column;
+      justify-content: center;
+      gap: 24px;
+      padding: 32px;
+      transition: right var(--transition-normal);
+      box-shadow: -10px 0 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .nav-links.open {
+      right: 0;
+    }
+
+    .nav-links a {
+      font-size: 18px;
+    }
+  }
+</style>
+
+<script>
+  const toggle = document.getElementById('menuToggle');
+  const navLinks = document.getElementById('navLinks');
+  if (toggle && navLinks) {
+    toggle.addEventListener('click', () => {
+      const open = navLinks.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', String(open));
+    });
+    navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+    }));
+  }
+</script>

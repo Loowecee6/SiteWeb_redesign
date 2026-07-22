@@ -1,0 +1,58 @@
+---
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog'))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 2);
+
+function formatDate(date: Date): string {
+  return date.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
+}
+---
+
+<section id="blog" class="reveal">
+  <div class="container">
+    <div class="section-header">
+      <div>
+        <div class="section-label">
+          <div class="section-label-line"></div>
+          <span>Insights</span>
+        </div>
+        <h2 class="section-title">Nos <em>analyses</em> et tendances</h2>
+      </div>
+      <p class="section-sub">Restez informé des dernières évolutions en communication institutionnelle et leadership.</p>
+    </div>
+    <div class="blog-grid">
+      {posts.map((post) => (
+        <a href={`/blog/${post.slug}/`} class="blog-card">
+          {post.data.image && (<div class="blog-card-img" style={`background-image: url('${post.data.image}');`}></div>)}
+          <div class="blog-card-body">
+            <div class="blog-meta">
+              <span class="blog-category">{post.data.category}</span>
+              <span>{formatDate(post.data.pubDate)}</span>
+            </div>
+            <h3 class="blog-title">{post.data.title}</h3>
+            <p class="blog-excerpt">{post.data.description}</p>
+            <span class="blog-read-more">Lire l'article →</span>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  #blog { padding: var(--section-padding) 0; background: var(--white); }
+  .blog-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; }
+  .blog-card { background: var(--white); height: 100%; display: flex; flex-direction: column; text-decoration: none; color: inherit; transition: transform 0.3s ease; border: 1px solid #f0f0f0; border-radius: 8px; overflow: hidden; }
+  .blog-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); }
+  .blog-card-img { width: 100%; aspect-ratio: 16 / 10; background-size: cover; background-position: center; }
+  .blog-card-body { padding: 25px; flex-grow: 1; display: flex; flex-direction: column; }
+  .blog-meta { margin-bottom: 12px; font-size: 13px; color: var(--grey-mid); display: flex; gap: 15px; }
+  .blog-category { color: var(--blue-deep); font-weight: 700; text-transform: uppercase; }
+  .blog-title { font-family: var(--font-display); font-size: 20px; font-weight: 500; color: var(--blue-deep); margin-bottom: 15px; line-height: 1.4; text-decoration: none; }
+  .blog-excerpt { font-size: 15px; color: var(--grey-mid); margin-bottom: 20px; line-height: 1.6; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+  .blog-read-more { margin-top: auto; font-weight: 700; font-size: 13px; color: var(--gold); text-transform: uppercase; letter-spacing: 1px; }
+
+  @media (max-width: 768px) { .blog-grid { grid-template-columns: 1fr; } }
+</style>

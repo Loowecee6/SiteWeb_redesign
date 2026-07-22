@@ -1,0 +1,99 @@
+---
+---
+<section id="about" class="reveal">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-visual">
+        <div class="about-img-frame">
+          <div class="about-img-overlay"></div>
+          <div class="about-img-content">
+            <div class="about-quote-mark">"</div>
+            <div class="about-quote-text">Notre mission est d'accompagner les leaders africains dans leur quête d'excellence et d'influence.</div>
+            <div class="about-quote-author">- Fondateur BLUECOM</div>
+          </div>
+          <div class="about-badge">
+            <div class="about-badge-num">10</div>
+            <div class="about-badge-text">Années<br>d'Expertise</div>
+          </div>
+        </div>
+      </div>
+      <div class="about-content">
+        <div class="section-header" style="margin-bottom: 20px;">
+          <div>
+            <div class="section-label">
+              <div class="section-label-line"></div>
+              <span>Notre ADN</span>
+            </div>
+            <h2 class="section-title">L'excellence au service<br>de votre <em>leadership</em></h2>
+          </div>
+        </div>
+        <p class="about-text">
+          Fondée en 2015 à Dakar, BLUECOM Stratégies est une SARL spécialisée dans le conseil en communication. Installée au cœur de Dakar, l'agence s'est imposée en dix ans comme un acteur de référence dans l'accompagnement des organisations, entreprises et institutions sénégalaises et ouest-africaines.
+        </p>
+        <div class="about-values">
+          <div class="value-item">
+            <div class="value-square"></div>
+            <div>
+              <div class="value-name">Expertise sur mesure</div>
+              <div class="value-desc">Chaque client est unique. Nous développons des stratégies personnalisées qui correspondent à vos objectifs spécifiques.</div>
+            </div>
+          </div>
+          <div class="value-item">
+            <div class="value-square"></div>
+            <div>
+              <div class="value-name">Approche africaine</div>
+              <div class="value-desc">Notre connaissance profonde du contexte africain nous permet de créer des communications culturellement pertinentes.</div>
+            </div>
+          </div>
+          <div class="value-item">
+            <div class="value-square"></div>
+            <div>
+              <div class="value-name">Résultats mesurables</div>
+              <div class="value-desc">Nous nous engageons sur des indicateurs de performance clairs et transparents pour démontrer notre impact.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  #about { padding: var(--section-padding) 0; background: var(--white); }
+
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+
+  .about-img-frame {
+    position: relative;
+    aspect-ratio: 4 / 5;
+    background: linear-gradient(135deg, var(--blue-deep) 0%, var(--blue-dark) 100%);
+    border-radius: 16px;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+  }
+
+  .about-img-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, transparent 30%, rgba(0, 26, 51, 0.9) 100%); }
+
+  .about-img-content { position: relative; z-index: 1; padding: 40px; color: var(--white); }
+  .about-quote-mark { font-family: var(--font-display); font-size: 72px; color: var(--gold); line-height: 1; margin-bottom: 8px; }
+  .about-quote-text { font-family: var(--font-display); font-size: 20px; font-style: italic; line-height: 1.5; margin-bottom: 16px; }
+  .about-quote-author { font-size: 13px; color: var(--gold); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+
+  .about-badge { position: absolute; top: 24px; right: 24px; background: var(--gold); color: var(--blue-dark); padding: 20px; border-radius: 12px; text-align: center; z-index: 1; }
+  .about-badge-num { font-family: var(--font-display); font-size: 48px; font-weight: 700; line-height: 1; }
+  .about-badge-text { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; line-height: 1.4; }
+
+  .about-text { color: var(--grey-mid); line-height: 1.8; margin-bottom: 32px; }
+
+  .about-values { display: flex; flex-direction: column; gap: 24px; }
+  .value-item { display: flex; gap: 16px; align-items: flex-start; }
+  .value-square { width: 6px; height: 6px; background: var(--gold); border-radius: 2px; margin-top: 8px; flex-shrink: 0; }
+  .value-name { font-weight: 600; font-size: 15px; color: var(--anthracite); margin-bottom: 4px; }
+  .value-desc { font-size: 14px; color: var(--grey-dark); line-height: 1.6; }
+
+  @media (max-width: 992px) {
+    .about-grid { grid-template-columns: 1fr; gap: 48px; }
+    .about-img-frame { aspect-ratio: 16 / 9; }
+  }
+</style>

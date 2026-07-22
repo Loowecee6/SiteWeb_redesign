@@ -1,0 +1,76 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import SkipLink from '@/components/ui/SkipLink.astro';
+import GrainOverlay from '@/components/ui/GrainOverlay.astro';
+import Header from '@/components/layout/Header.astro';
+import Footer from '@/components/layout/Footer.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  pubDate: Date;
+  author: string;
+  category: string;
+  image?: string;
+}
+
+const { title, description, pubDate, author, category, image } = Astro.props;
+
+function formatDate(date: Date): string {
+  return date.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
+}
+---
+
+<BaseLayout title={`${title} | BLUECOM Stratégies`} description={description} ogImage={image}>
+  <Fragment slot="skip"><SkipLink /></Fragment>
+  <Fragment slot="grain"><GrainOverlay /></Fragment>
+  <Header />
+
+  <main id="main-content" class="blog-post-page">
+    <article class="blog-article container">
+      <header class="article-header">
+        <div class="article-meta">
+          <a href="/blog/" class="article-back">← Retour au blog</a>
+          <span class="article-category">{category}</span>
+          <time datetime={pubDate.toISOString()}>{formatDate(pubDate)}</time>
+          <span class="article-author">par {author}</span>
+        </div>
+        <h1 class="article-title">{title}</h1>
+        <p class="article-description">{description}</p>
+        {image && (
+          <div class="article-hero-image">
+            <img src={image} alt={title} width="1200" height="630" loading="eager" />
+          </div>
+        )}
+      </header>
+      <div class="article-content">
+        <slot />
+      </div>
+    </article>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .blog-post-page { padding-top: 120px; padding-bottom: var(--section-padding); }
+  .article-header { max-width: 800px; margin: 0 auto 64px; text-align: center; }
+  .article-meta { display: flex; align-items: center; justify-content: center; gap: 16px; margin-bottom: 24px; font-size: 13px; color: var(--grey-mid); flex-wrap: wrap; }
+  .article-back { color: var(--blue-deep); font-weight: 600; text-decoration: none; }
+  .article-back:hover { text-decoration: underline; }
+  .article-category { padding: 4px 12px; background: var(--blue-light-bg); color: var(--blue-deep); border-radius: 100px; font-weight: 600; text-transform: uppercase; font-size: 11px; letter-spacing: 1px; }
+  .article-title { font-family: var(--font-display); font-size: 48px; font-weight: 600; color: var(--anthracite); line-height: 1.15; margin-bottom: 20px; letter-spacing: -0.02em; }
+  .article-description { font-size: 18px; color: var(--grey-dark); line-height: 1.6; max-width: 640px; margin: 0 auto 40px; }
+  .article-hero-image { border-radius: 12px; overflow: hidden; margin-top: 32px; }
+  .article-hero-image img { width: 100%; height: auto; }
+  .article-content { max-width: 800px; margin: 0 auto; font-size: 17px; line-height: 1.8; color: var(--anthracite); }
+  .article-content :global(h2) { font-family: var(--font-display); font-size: 32px; font-weight: 600; color: var(--anthracite); margin: 48px 0 20px; line-height: 1.2; }
+  .article-content :global(h3) { font-family: var(--font-display); font-size: 24px; font-weight: 600; color: var(--anthracite); margin: 36px 0 16px; line-height: 1.3; }
+  .article-content :global(p) { margin-bottom: 24px; }
+  .article-content :global(ul), .article-content :global(ol) { margin-bottom: 24px; padding-left: 24px; }
+  .article-content :global(li) { margin-bottom: 8px; line-height: 1.7; list-style: disc; }
+  .article-content :global(blockquote) { border-left: 3px solid var(--gold); padding-left: 24px; margin: 32px 0; font-style: italic; color: var(--grey-dark); }
+  .article-content :global(strong) { font-weight: 600; color: var(--anthracite); }
+
+  @media (max-width: 768px) { .article-title { font-size: 32px; } .article-content { font-size: 16px; } }
+</style>

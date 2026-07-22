@@ -1,0 +1,63 @@
+---
+const cases = [
+  { category: "Stratégie", title: "Rebranding d'un géant minier", result: "+45% de notoriété positive en 18 mois", bgClass: "case-bg-1" },
+  { category: "Crise", title: "Gestion de crise multinationale", result: "Réputation restaurée en 3 mois", bgClass: "case-bg-2" },
+  { category: "Digital", title: "Campagne présidentielle digitale", result: "2M+ d'impressions organiques", bgClass: "case-bg-3" },
+  { category: "Institutionnel", title: "Lancement ministériel", result: "Couverture médiatique record", bgClass: "case-bg-4" },
+  { category: "Formation", title: "Media training PDG", result: "100% de réussite aux interviews", bgClass: "case-bg-5" },
+  { category: "Relations Publiques", title: "Sommet économique régional", result: "150+ médias accrédités", bgClass: "case-bg-6" },
+];
+---
+
+<section id="realisations" class="reveal">
+  <div class="container">
+    <div class="section-header">
+      <div>
+        <div class="section-label">
+          <div class="section-label-line"></div>
+          <span>Réalisations</span>
+        </div>
+        <h2 class="section-title">Nos <em>réalisations</em> parlent d'elles-mêmes</h2>
+      </div>
+      <p class="section-sub">Découvrez comment nous avons aidé des organisations à atteindre leurs objectifs de communication.</p>
+    </div>
+    <div class="cases-grid">
+      {cases.map((item) => (
+        <a href="/portfolio/" class="case-card">
+          <div class={`case-card-bg ${item.bgClass}`}></div>
+          <div class="case-pattern"></div>
+          <div class="case-overlay"></div>
+          <div class="case-content">
+            <div class="case-category">{item.category}</div>
+            <h3 class="case-title">{item.title}</h3>
+            <div class="case-result">{item.result}</div>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  #realisations { padding: var(--section-padding) 0; background: var(--white); }
+  .cases-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .case-card { position: relative; aspect-ratio: 4 / 3; border-radius: 12px; overflow: hidden; display: flex; align-items: flex-end; cursor: pointer; text-decoration: none; color: var(--white); }
+  .case-card-bg { position: absolute; inset: 0; }
+  .case-bg-1 { background: linear-gradient(135deg, #1a3a5c, #2d5a87); }
+  .case-bg-2 { background: linear-gradient(135deg, #8b2c2c, #c44040); }
+  .case-bg-3 { background: linear-gradient(135deg, #1a4a3a, #2d7a5a); }
+  .case-bg-4 { background: linear-gradient(135deg, #3a1a5c, #5a2d87); }
+  .case-bg-5 { background: linear-gradient(135deg, #5c3a1a, #87652d); }
+  .case-bg-6 { background: linear-gradient(135deg, #1a3a5c, #004080); }
+  .case-pattern { position: absolute; inset: 0; opacity: 0.1; background: repeating-linear-gradient(65deg, transparent, transparent 30px, rgba(255,255,255,0.15) 30px, rgba(255,255,255,0.15) 31px); }
+  .case-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, transparent 40%, rgba(0,0,0,0.7) 100%); }
+  .case-content { position: relative; z-index: 1; padding: 32px; }
+  .case-category { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; color: var(--gold); margin-bottom: 12px; }
+  .case-title { font-family: var(--font-display); font-size: 22px; font-weight: 600; margin-bottom: 8px; line-height: 1.3; }
+  .case-result { font-size: 14px; color: rgba(255,255,255,0.8); }
+  .case-card:hover .case-overlay { background: linear-gradient(180deg, rgba(0,64,128,0.3) 0%, rgba(0,26,51,0.85) 100%); }
+  .case-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
+
+  @media (max-width: 992px) { .cases-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 576px) { .cases-grid { grid-template-columns: 1fr; } }
+</style>

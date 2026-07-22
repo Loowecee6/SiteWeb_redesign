@@ -1,0 +1,13 @@
+---
+interface Props {
+  text: string;
+  align?: 'left' | 'center';
+}
+
+const { text, align = 'left' } = Astro.props;
+---
+
+<div class="section-label" style={`justify-content: ${align === 'center' ? 'center' : 'flex-start'};`}>
+  <div class="section-label-line"></div>
+  <span>{text}</span>
+</div>

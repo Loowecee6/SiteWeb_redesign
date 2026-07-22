@@ -1,0 +1,56 @@
+---
+const testimonials = [
+  { text: "BLUECOM a complètement transformé notre manière de communiquer. Leur expertise stratégique et leur compréhension du marché africain sont inégalées.", name: "Mariam Konaré", role: "PDG, Africatinum Group", initials: "MK" },
+  { text: "Une équipe professionnelle qui a su nous accompagner dans une période de crise intense. Leur réactivité et leur pragmatisme nous ont sauvés.", name: "Drissa Traoré", role: "Directeur Général, Banque Sahéliste", initials: "DT" },
+  { text: "Le media training dispensé par BLUECOM a été décisif pour notre président. Aujourd'hui, il maîtrise parfaitement les interviews et les débats publics.", name: "Nadia Ouedraogo", role: "Directrice Communication, Caisse Nationale", initials: "NO" },
+];
+---
+
+<section id="testimonials" class="reveal">
+  <div class="container">
+    <div class="section-header">
+      <div>
+        <div class="section-label">
+          <div class="section-label-line"></div>
+          <span>Témoignages</span>
+        </div>
+        <h2 class="section-title">Ils nous ont fait <em>confiance</em></h2>
+      </div>
+      <p class="section-sub">Recommandations de dirigeants qui ont transformé leur communication.</p>
+    </div>
+    <div class="testimonials-grid">
+      {testimonials.map((t) => (
+        <div class="testimonial-card">
+          <div class="testimonial-stars">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+          </div>
+          <p class="testimonial-text">"{t.text}"</p>
+          <div class="testimonial-author">
+            <div class="author-avatar"><span>{t.initials}</span></div>
+            <div>
+              <div class="author-name">{t.name}</div>
+              <div class="author-role">{t.role}</div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  #testimonials { padding: var(--section-padding) 0; background: var(--grey-light); }
+  .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .testimonial-card { background: var(--white); padding: 40px 32px; border-radius: 12px; border: 1px solid #f0f0f0; transition: all var(--transition-normal); }
+  .testimonial-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); }
+  .testimonial-stars { margin-bottom: 20px; }
+  .star { color: var(--gold); font-size: 16px; }
+  .testimonial-text { font-family: var(--font-display); font-size: 17px; font-style: italic; line-height: 1.6; color: var(--anthracite); margin-bottom: 24px; }
+  .testimonial-author { display: flex; align-items: center; gap: 12px; }
+  .author-avatar { width: 44px; height: 44px; border-radius: 50%; background: var(--blue-deep); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .author-avatar span { font-size: 14px; font-weight: 600; color: var(--white); }
+  .author-name { font-weight: 600; font-size: 14px; color: var(--anthracite); }
+  .author-role { font-size: 13px; color: var(--grey-mid); }
+
+  @media (max-width: 992px) { .testimonials-grid { grid-template-columns: 1fr; max-width: 600px; } }
+</style>

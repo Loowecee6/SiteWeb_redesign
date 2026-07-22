@@ -1,0 +1,80 @@
+---
+import { marqueeItems } from '@/data/marquee';
+---
+
+<section class="marquee-section">
+  <div class="marquee-track">
+    <div class="marquee-item">
+      {marqueeItems.map((item) => (
+        <>
+          <span>{item}</span>
+          <div class="marquee-dot"></div>
+        </>
+      ))}
+    </div>
+    <div class="marquee-item" aria-hidden="true">
+      {marqueeItems.map((item) => (
+        <>
+          <span>{item}</span>
+          <div class="marquee-dot"></div>
+        </>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .marquee-section {
+    padding: 24px 0;
+    background: var(--blue-dark);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    overflow: hidden;
+  }
+
+  .marquee-track {
+    display: flex;
+    animation: marquee 30s linear infinite;
+    width: max-content;
+  }
+
+  .marquee-section:hover .marquee-track {
+    animation-play-state: paused;
+  }
+
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .marquee-item {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    padding: 0 16px;
+  }
+
+  .marquee-item span {
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.5);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .marquee-dot {
+    width: 4px;
+    height: 4px;
+    background: var(--gold);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-track {
+      animation: none;
+    }
+  }
+</style>

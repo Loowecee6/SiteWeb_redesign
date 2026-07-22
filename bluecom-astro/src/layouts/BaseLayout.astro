@@ -1,0 +1,74 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+  ogImage?: string;
+  canonical?: string;
+  schema?: Record<string, unknown>;
+}
+
+const {
+  title,
+  description = "Agence de conseil en communication institutionnelle dédiée aux dirigeants, entreprises et collectivités.",
+  ogImage = "/images/og-image.jpg",
+  canonical,
+  schema,
+} = Astro.props;
+
+const siteUrl = 'https://bluecom-strategies.sn';
+const currentCanonical = canonical || `${siteUrl}${Astro.url.pathname}`;
+const schemaJson = schema || {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "BLUECOM Stratégies",
+  "url": siteUrl,
+  "logo": `${siteUrl}/images/logo.png`,
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Résidence Adja Farma GUEYE, 4ème étage",
+    "addressLocality": "Dakar",
+    "addressCountry": "SN"
+  },
+  "telephone": "+221338277788",
+  "email": "Bluecom@orange.sn",
+  "description": "Agence de conseil en communication institutionnelle avec 10 ans d'expertise au Sénégal et en Afrique de l'Ouest."
+};
+---
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{title}</title>
+  <meta name="description" content={description}>
+  <meta property="og:title" content={title}>
+  <meta property="og:description" content={description}>
+  <meta property="og:type" content="website">
+  <meta property="og:url" content={currentCanonical}>
+  <meta property="og:image" content={`${siteUrl}${ogImage}`}>
+  <meta property="og:locale" content="fr_SN">
+  <meta property="og:site_name" content="BLUECOM Stratégies">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content={title}>
+  <meta name="twitter:description" content={description}>
+  <link rel="canonical" href={currentCanonical}>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <script type="application/ld+json" set:html={JSON.stringify(schemaJson)} />
+  <style>
+    @import '../styles/global.css';
+  </style>
+  <slot name="head" />
+</head>
+<body>
+  <slot name="skip" />
+  <slot name="grain" />
+  <slot />
+  <slot name="scripts" />
+  <script>
+    import '../scripts/animations.ts';
+  </script>
+</body>
+</html>
